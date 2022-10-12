@@ -7,7 +7,6 @@
 #include <fstream>
 
 class test {
-
+    void prog();
 };
-
 #endif

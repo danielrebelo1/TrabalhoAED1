@@ -12,3 +12,4 @@ Estudantes com mais de n UCs (C/ BST) (ordem alfabética, ordem nºs UCs,++)
 Remover estudante de turma/UC
 Adicionar/alterar estudante a uma/conjunto de turma/UC --> SÓ POSSIVEL SE TIVER VAGA (N ALUNOS < CAP) || abs(turma origem - turma destino) < 4 
 Fazer trocas entre turmas
+Tentar usar ll para remocao e adicionar alunos a turmas(mais rapido)
