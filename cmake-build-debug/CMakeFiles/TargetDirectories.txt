@@ -1,0 +1,3 @@
+/Users/danielrebelo/uni/aed/aedtp1/cmake-build-debug/CMakeFiles/aedtp1.dir
+/Users/danielrebelo/uni/aed/aedtp1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/danielrebelo/uni/aed/aedtp1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
