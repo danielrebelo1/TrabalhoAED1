@@ -1,4 +1,8 @@
 README do nosso trabalho
+
+C++ Naming Conventions:
+https://www.geeksforgeeks.org/naming-convention-in-c/
+
 tentar por aqui todas as mudancas feitas/problemas a corrigir
 
 CONCEITO:
