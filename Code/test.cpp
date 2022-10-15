@@ -30,27 +30,35 @@ void prog() {
             break;
         case 3:
             int Ano;
-            cout << "Qual Ano\n";
+            cout << "Qual é o Ano\n";
             cin >> Ano;
             int NrTurma;
-            cout << "Qual Turma\n";
+            cout << "Qual é a Turma\n";
             cin >> NrTurma; // 1,2 ano turmas 1-16 ,, 3 ano turmas 1-15
             switch (Ano) {
                 case 1:
-                    if (NrTurma < 1 || NrTurma > 16){cout << "Essa turma não existe\n";}
+                    if (NrTurma >= 1 && NrTurma <= 16){
+
+                    }
                     // definir string 1LEIC{NrTurma}
                     // chamar VerTurma
                     break;
                 case 2:
-                    if (NrTurma < 1 || NrTurma > 16){cout << "Essa turma não existe\n";}
+                    if (NrTurma >= 1 && NrTurma <= 16){
+
+                    }
                     // definir string 2LEIC{NrTurma}
                     // chamar VerTurma
                     break;
                 case 3:
-                    if (NrTurma < 1 || NrTurma > 15){cout << "Essa turma não existe\n";}
+                    if (NrTurma >= 1 && NrTurma <= 15){
+
+                    }
                     // definir string 3LEIC{NrTurma}
                     // chamar VerTurma
                     break;
+                default:
+                    cout << "Essa turma não existe";
             }
             VerTurma();
             ifstream StudentsInfo;
