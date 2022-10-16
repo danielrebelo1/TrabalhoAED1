@@ -11,8 +11,8 @@
 class Student {
 public:
     Student(std::string& Name, int StudentCode);
-    std::string get_Name()const;
-    int get_StudentCode()const;
+    std::string get_Name() const;
+    int get_StudentCode() const;
 private:
     std::string Name_;
     int StudentCode_;
