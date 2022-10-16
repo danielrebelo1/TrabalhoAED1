@@ -20,20 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b848a33b-9078-47cc-bd52-f31fb1dede24" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Menu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/archive.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/schedule/archive.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code/schedule/classes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/classes_per_uc.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code/schedule/classes_per_uc.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/students_classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code/schedule/students_classes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/aedtp1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/aedtp1" afterDir="false" />
-    </list>
+    <list default="true" id="b848a33b-9078-47cc-bd52-f31fb1dede24" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +95,7 @@
       <workItem from="1665748259742" duration="3049000" />
       <workItem from="1665834961037" duration="1683000" />
       <workItem from="1665956001060" duration="1057000" />
-      <workItem from="1665958652600" duration="1760000" />
+      <workItem from="1665958652600" duration="1931000" />
     </task>
     <servers />
   </component>
