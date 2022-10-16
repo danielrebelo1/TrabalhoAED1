@@ -4,4 +4,4 @@ project(aedtp1)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(aedtp1
-        Code/test.cpp)
+        Code/main.cpp Code/Menu.cpp Code/Menu.h)
