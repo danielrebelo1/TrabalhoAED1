@@ -2,15 +2,15 @@
 // Created by Daniel Rebelo on 14/10/2022.
 //
 
-#ifndef AEDTP1_CLASSE_H
-#define AEDTP1_CLASSE_H
+#ifndef AEDTP1_TURMA_H
+#define AEDTP1_TURMA_H
 
 #include <string>
 
 
-class Classe {
+class Turma {
 public:
-    Classe(std::string Turma , std::string UcCode);
+    Turma(std::string Turma , std::string UcCode);
     std::string get_Turma()const;
     std::string get_UcCode()const;
 private:
@@ -19,4 +19,4 @@ private:
 };
 
 
-#endif //AEDTP1_CLASSE_H
+#endif //AEDTP1_TURMA_H
