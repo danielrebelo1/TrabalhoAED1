@@ -6,16 +6,22 @@
 #define AEDTP1_STUDENT_H
 
 #include <string>
+#include <vector>
+#include "Turma.h"
 
 
 class Student {
 public:
-    Student(std::string& Name, int StudentCode);
+
+    Student(std::string& Name, std::string& StudentCode , std::vector<Turma> Turmas );
     std::string get_Name() const;
-    int get_StudentCode() const;
+    std::string get_StudentCode() const;
+    std::vector<Turma> get_TurmasVector() const;
+
 private:
-    std::string Name_;
-    int StudentCode_;
+    std::string Name;
+    std::string StudentCode;
+    std::vector<Turma> Turmas;
 };
 
 #endif //AEDTP1_STUDENT_H

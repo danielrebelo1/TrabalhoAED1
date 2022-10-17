@@ -4,16 +4,21 @@
 
 #include "Student.h"
 
-Student::Student(std::string& Name, int StudentCode){
-    Name_ = Name;
-    StudentCode_ = StudentCode;
+Student::Student(std::string& Name, std::string& StudentCode , std::vector<Turma> Turmas ){
+    this->Name = Name;
+    this->StudentCode = StudentCode;
+    this->Turmas = Turmas;
 }
 
 std::string Student::get_Name() const {
-    return Name_;
+    return Name;
 }
 
-int Student::get_StudentCode() const {
-    return StudentCode_;
+std::string Student::get_StudentCode() const {
+    return StudentCode;
+}
+
+std::vector<Turma> Student::get_TurmasVector() const {
+    return Turmas;
 }
 
