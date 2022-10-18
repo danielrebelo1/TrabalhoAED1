@@ -19,7 +19,7 @@ int main() {
     Course course(studentsinfo_file,aulas_file,turmas_file);
     vector <Turma *> Turmas = course.getTurmas();
     // cout << *(Turmas.back() << endl;
-    set <Student *> Students = course.getStudents();
+    set <Student*, studentComparator> students = course.getStudents();
 
     return 0;
 

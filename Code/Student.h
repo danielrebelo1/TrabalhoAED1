@@ -13,17 +13,17 @@
 
 class Student {
 public:
-    Student(std::string& Name, std::string& StudentCode , std::vector<Turma *> Turmas);
+    Student(std::string& name, std::string& studentcode , std::vector<Turma *> turmas);
     std::string get_Name() const;
-    std::string get_StudentCode() const;
-    std::vector<Turma*> get_TurmasVector() const;
+    std::string get_student_code() const;
+    std::vector<Turma*> get_TurmasAluno() const;
     void AddTurma(Turma *turma);
     bool operator<(Student &s1);
 
 private:
-    std::string Name;
-    std::string StudentCode;
-    std::vector<Turma *> Turmas;
+    std::string name;
+    std::string studentcode;
+    std::vector<Turma *> turmas;
     // std::vector<Turma> Turmas;
 };
 

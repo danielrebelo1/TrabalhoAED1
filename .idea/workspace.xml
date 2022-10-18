@@ -22,24 +22,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b848a33b-9078-47cc-bd52-f31fb1dede24" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Course.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Course.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Course.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Course.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/schedule/classes_per_uc.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code/schedule/classes_per_uc.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-a3e46f91523fc71c3149.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-10-18T08-02-45-0003.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-aedtp1-Debug-8ff7d30127801f8a413c.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Course.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Course.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Turma.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Turma.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Student.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Student.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/aedtp1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/aedtp1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +80,8 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -96,11 +91,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="aedtp1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aedtp1" TARGET_NAME="aedtp1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="aedtp1" RUN_TARGET_NAME="aedtp1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -122,7 +112,8 @@
       <workItem from="1665748259742" duration="3049000" />
       <workItem from="1665834961037" duration="1683000" />
       <workItem from="1665956001060" duration="1057000" />
-      <workItem from="1665958652600" duration="27246000" />
+      <workItem from="1665958652600" duration="34407000" />
+      <workItem from="1666108142757" duration="394000" />
     </task>
     <servers />
   </component>
@@ -144,14 +135,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Code/Course.cpp</url>
-          <line>26</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Code/main.cpp</url>
           <line>21</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Code/Course.cpp</url>
+          <line>31</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
