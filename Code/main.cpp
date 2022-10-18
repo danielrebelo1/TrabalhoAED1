@@ -18,9 +18,9 @@ int main() {
     turmas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes_per_uc.csv");
     Course course(studentsinfo_file,aulas_file,turmas_file);
     vector <Turma *> Turmas = course.getTurmas();
-    for (Turma *turma : Turmas){
-        cout << (*turma).get_UcCode() << endl;
-    }
+    // cout << *(Turmas.back() << endl;
+    set <Student *> Students = course.getStudents();
+
     return 0;
 
 }

@@ -7,16 +7,19 @@
 
 #include <string>
 #include <vector>
+#include <set>
 #include "Turma.h"
 
 
 class Student {
 public:
-    Student(std::string& Name, std::string& StudentCode , std::vector<Turma *> Turmas );
+    Student(std::string& Name, std::string& StudentCode , std::vector<Turma *> Turmas);
     std::string get_Name() const;
     std::string get_StudentCode() const;
     std::vector<Turma*> get_TurmasVector() const;
     void AddTurma(Turma *turma);
+    bool operator<(Student &s1);
+
 private:
     std::string Name;
     std::string StudentCode;

@@ -13,15 +13,15 @@
 #include <sstream>
 
 class Course {
-        std::vector<Student*> Students;
+
+        std::set<Student*> Students;
         std::vector<Turma*> Turmas;
 
     public:
         Course(std::istream &studentsinfo_file, std::istream &aulas_file , std::istream &turmas_file);
 
-        std::vector<Student *> getStudents();
+        std::set<Student *> getStudents();
         std::vector<Turma *> getTurmas();
-
         void addStudent(Student student);
 };
 

@@ -16,15 +16,34 @@ Course::Course(std::istream &studentsinfo_file, std::istream &aulas_file , std::
     while (!turmas_file.eof()){
         getline(turmas_file , line );
         UcCode = line.substr(0,line.find_first_of(','));
-        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('/n'));
+        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
         TurmaCode = line.substr(0,line.find_first_of('\r'));
-        // getline(turmas_file,UcCode,',');
-        // getline(turmas_file,TurmaCode,',');
         Turma *new_turma = new Turma(TurmaCode,UcCode);
         Turmas.push_back(new_turma);
     }
-    // student_file.open(); // mudem para o vosso absolute path
-    // turmas_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' ); // ignorar a 1 linha
+
+    studentsinfo_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
+    while(!studentsinfo_file.eof()){
+        getline(studentsinfo_file,line);
+
+        StudentCode = line.substr(0,line.find_first_of(','));
+
+        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
+        StudentName = line.substr(0,line.find_first_of(','));
+
+        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
+        UcCode = line.substr(0 ,line.find_first_of(','));
+
+        line = line.substr(line.find_first_of(',') + 1,line.find_first_of('\r'));
+        TurmaCode = line.substr(0 ,line.find_first_of('\r'));
+        vector<Turma*> Turmas;
+        Turma *turma = new Turma(TurmaCode , UcCode);
+        Turmas.push_back(turma);
+        Student *student = new Student(StudentCode,StudentName,Turmas);
+        Students.insert(student);
+    }
+
+
 
     /*
     while (getline(in,line)){
@@ -71,7 +90,8 @@ void Course::addStudent(Student student)  {
 
 }
 
-vector<Student*> Course::getStudents() {
+
+set<Student*> Course::getStudents() {
     return this->Students;
 }
 
