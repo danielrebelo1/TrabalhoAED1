@@ -19,6 +19,7 @@ public:
     std::vector<Turma*> get_TurmasAluno() const;
     void AddTurma(Turma *turma);
     bool operator<(Student &s1);
+    void UpdateTurmas(Turma *turma);
 
 private:
     std::string name;

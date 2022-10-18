@@ -21,7 +21,6 @@ struct studentComparator
 };
 
 
-
 class Course {
 
         std::set<Student*, studentComparator> students;

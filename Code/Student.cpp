@@ -18,7 +18,6 @@ std::string Student::get_student_code() const {
     return studentcode;
 }
 
-
 std::vector<Turma*> Student::get_TurmasAluno() const {
     return turmas;
 }
@@ -26,6 +25,11 @@ std::vector<Turma*> Student::get_TurmasAluno() const {
 void Student::AddTurma(Turma *turma){
     this->turmas.push_back(turma);
 }
+
+void Student::UpdateTurmas(Turma *turma){
+    this->turmas.push_back(turma);
+}
+
 /*
 bool Student::operator<(Student &s1) {
 

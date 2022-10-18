@@ -26,7 +26,6 @@
       <change beforePath="$PROJECT_DIR$/Code/Course.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Course.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Course.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Course.cpp.o" afterDir="false" />
@@ -113,7 +112,7 @@
       <workItem from="1665834961037" duration="1683000" />
       <workItem from="1665956001060" duration="1057000" />
       <workItem from="1665958652600" duration="34407000" />
-      <workItem from="1666108142757" duration="394000" />
+      <workItem from="1666108142757" duration="2752000" />
     </task>
     <servers />
   </component>
@@ -141,8 +140,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Code/Course.cpp</url>
-          <line>31</line>
-          <option name="timeStamp" value="16" />
+          <line>43</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
