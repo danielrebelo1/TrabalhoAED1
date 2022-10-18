@@ -8,7 +8,7 @@
 
 class Menu {
     public:
-        int MainMenu();
+        void MainMenu();
 
 };
 

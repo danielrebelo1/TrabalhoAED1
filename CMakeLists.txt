@@ -4,4 +4,4 @@ project(aedtp1)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(aedtp1
-        Code/main.cpp Code/Menu.cpp Code/Menu.h)
+        Code/main.cpp Code/Menu.cpp Code/Menu.h Code/Course.cpp Code/Course.h Code/Turma.h Code/Turma.cpp )

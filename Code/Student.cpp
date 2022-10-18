@@ -4,7 +4,7 @@
 
 #include "Student.h"
 
-Student::Student(std::string& Name, std::string& StudentCode , std::vector<Turma> Turmas ){
+Student::Student(std::string& Name, std::string& StudentCode , std::vector<Turma *> Turmas ){
     this->Name = Name;
     this->StudentCode = StudentCode;
     this->Turmas = Turmas;
@@ -18,7 +18,11 @@ std::string Student::get_StudentCode() const {
     return StudentCode;
 }
 
-std::vector<Turma> Student::get_TurmasVector() const {
+
+std::vector<Turma*> Student::get_TurmasVector() const {
     return Turmas;
 }
 
+void Student::AddTurma(Turma *turma){
+    this->Turmas.push_back(turma);
+}

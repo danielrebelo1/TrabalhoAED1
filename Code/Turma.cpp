@@ -4,7 +4,7 @@
 
 #include "Turma.h"
 
-Turma::Turma(std::string TurmaCode, std::string UcCode) {
+Turma::Turma(std::string &TurmaCode, std::string &UcCode) {
     this->TurmaCode = TurmaCode;
     this->UcCode = UcCode;
 }
@@ -16,3 +16,4 @@ std::string Turma::get_TurmaCode()const {
 std::string Turma::get_UcCode() const {
     return UcCode;
 }
+

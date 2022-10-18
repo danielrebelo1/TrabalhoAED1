@@ -10,9 +10,10 @@
 
 class Turma {
 public:
-    Turma(std::string TurmaCode,std::string UcCode);
+    Turma(std::string &TurmaCode,std::string &UcCode);
     std::string get_TurmaCode() const;
     std::string get_UcCode() const;
+
 private:
     std::string TurmaCode;
     std::string UcCode;
