@@ -58,8 +58,8 @@ build CMakeFiles/aedtp1.dir/Code/Menu.cpp.o: CXX_COMPILER__aedtp1_Debug /Users/d
   OBJECT_DIR = CMakeFiles/aedtp1.dir
   OBJECT_FILE_DIR = CMakeFiles/aedtp1.dir/Code
 
-build CMakeFiles/aedtp1.dir/Code/Course.cpp.o: CXX_COMPILER__aedtp1_Debug /Users/danielrebelo/uni/aed/aedtp1/Code/Course.cpp || cmake_object_order_depends_target_aedtp1
-  DEP_FILE = CMakeFiles/aedtp1.dir/Code/Course.cpp.o.d
+build CMakeFiles/aedtp1.dir/Code/FileReader.cpp.o: CXX_COMPILER__aedtp1_Debug /Users/danielrebelo/uni/aed/aedtp1/Code/FileReader.cpp || cmake_object_order_depends_target_aedtp1
+  DEP_FILE = CMakeFiles/aedtp1.dir/Code/FileReader.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++14
   OBJECT_DIR = CMakeFiles/aedtp1.dir
   OBJECT_FILE_DIR = CMakeFiles/aedtp1.dir/Code
@@ -84,7 +84,7 @@ build CMakeFiles/aedtp1.dir/Code/Student.cpp.o: CXX_COMPILER__aedtp1_Debug /User
 #############################################
 # Link the executable aedtp1
 
-build aedtp1: CXX_EXECUTABLE_LINKER__aedtp1_Debug CMakeFiles/aedtp1.dir/Code/main.cpp.o CMakeFiles/aedtp1.dir/Code/Menu.cpp.o CMakeFiles/aedtp1.dir/Code/Course.cpp.o CMakeFiles/aedtp1.dir/Code/Turma.cpp.o CMakeFiles/aedtp1.dir/Code/Student.cpp.o
+build aedtp1: CXX_EXECUTABLE_LINKER__aedtp1_Debug CMakeFiles/aedtp1.dir/Code/main.cpp.o CMakeFiles/aedtp1.dir/Code/Menu.cpp.o CMakeFiles/aedtp1.dir/Code/FileReader.cpp.o CMakeFiles/aedtp1.dir/Code/Turma.cpp.o CMakeFiles/aedtp1.dir/Code/Student.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
   OBJECT_DIR = CMakeFiles/aedtp1.dir
   POST_BUILD = :

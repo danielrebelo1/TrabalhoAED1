@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Student.h"
 #include "Turma.h"
-#include "Course.h"
+#include "FileReader.h"
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -16,10 +16,10 @@ int main() {
     studentsinfo_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/students_classes.csv");
     aulas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes.csv");
     turmas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes_per_uc.csv");
-    Course course(studentsinfo_file,aulas_file,turmas_file);
-    vector <Turma *> Turmas = course.getTurmas();
+    FileReader fileReader(studentsinfo_file, aulas_file, turmas_file);
+    vector <Turma *> Turmas = fileReader.getTurmas();
     // cout << *(Turmas.back() << endl;
-    set <Student*, studentComparator> students = course.getStudents();
+    set <Student*, studentComparator> students = fileReader.getStudents();
 
     return 0;
 
