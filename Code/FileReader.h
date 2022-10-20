@@ -35,10 +35,11 @@ struct turmaComparator
     bool operator()(Turma* t1, Turma* t2) const {
         if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_turmaCode()[0] < t2->get_turmaCode()[0]);
         else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode()[0] < t2->get_turmaCode()[0]);
-        return false;
+        return true;
     }
 };
  */
+
 
 class FileReader{
 
@@ -52,6 +53,7 @@ class FileReader{
         std::set<Student*,studentComparator> getStudents()const;
         std::vector<Turma*> getTurmas() const;
         std::vector<Slot*> getSlots() const;
+        bool operator==(Turma* t1)const;
 
 };
 

@@ -32,6 +32,7 @@ private:
     std::string ucCode;
     // std::set<Student*, studentComparator> studentsTurma;
     std::vector<Student *> studentsTurma;
+    bool operator==(Turma* t1)const ;
 };
 
 

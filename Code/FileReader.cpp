@@ -45,13 +45,23 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         while(getline(ss, data, ','))
             line_vector.push_back(data);
 
+        studentCode = line_vector[0];
+        studentName = line_vector[1];
         ucCode = line_vector[2];
         turmaCode = line_vector[3].substr(0, line_vector[3].size() - 1);
 
         vector<Turma *> turmaAluno;
         Turma *turma = new Turma(turmaCode , ucCode);
-        // auto it_ = allTurmas.find(turma);
-        // turma = *it_; turma.addEstudante(student);
+        /*
+        auto itr = find(allTurmas.begin(),allTurmas.end(),turma);
+        if (itr != allTurmas.end())
+        {
+            int x = 1;
+        }
+        else{
+            int x = 0;
+        }
+         */
 
         turmaAluno.push_back(turma);
         Student *student = new Student(studentName,studentCode,turmaAluno);
@@ -91,19 +101,18 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         diaSemana = line_vector[2];
         horarioInicio = line_vector[3];
         duracao = line_vector[4];
+
         tipoAula = line.substr(0 ,line.find_first_of('\r'));
         Slot *slot = new Slot(diaSemana,horarioInicio,duracao,tipoAula);
         allSlots.push_back(slot);
     }
-
-    int a = 2;
 }
 
 
 set<Student*,  studentComparator> FileReader::getStudents()const {
     return this->students;
 }
-
+// vector<Turma*> FileReader::getTurmas
 vector<Turma*> FileReader::getTurmas()const {
     return this->allTurmas;
 }
@@ -111,3 +120,11 @@ vector<Turma*> FileReader::getTurmas()const {
 vector<Slot*> FileReader::getSlots()const {
     return this->allSlots;
 }
+
+// usado para tentar usar o find na comparacao das turmas
+bool FileReader::operator==(Turma* t1)const{
+    //if (t1->get_ucCode() != this->get_ucCode()) return (t1->get_turmaCode()[0] < this->get_turmaCode()[0]);
+    // else if (t1->get_turmaCode() != this->get_turmaCode()) return (t1->get_turmaCode()[0] < this->get_turmaCode()[0]);
+    return true;
+}
+
