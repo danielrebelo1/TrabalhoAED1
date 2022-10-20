@@ -7,12 +7,16 @@
 
 #include <iostream>
 #include <string>
+#include "Turma.h"
+#include "Student.h"
 
 class PedidoAlteracao {
 
-public:
-    void RemoveFromClass(int StudentCode , string UcCode, string ClassCode);
 
+public:
+    void AddtoClass(Student *student, Turma *turma);
+    void RemoveFromClass(Student *student, Turma *turma);
+    void ChangeClass(Student *student1 , Student *student2 , Turma *turma);
 };
 
 

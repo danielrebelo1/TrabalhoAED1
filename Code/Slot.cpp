@@ -4,34 +4,41 @@
 
 #include "Slot.h"
 
+Slot::Slot(std::string& diaSemana,std::string& horarioInicio,std::string& duracao,std::string& tipoAula){
+    this->diaSemana = diaSemana;
+    this->horarioInicio = horarioInicio;
+    this->duracao = duracao;
+    this->tipoAula = tipoAula;
+}
+
 std::string Slot::getDiaSemana() const {
-    return dia_semana;
+    return diaSemana;
 }
 
-float Slot::getHorarioInicio() const {
-    return horario_inicio;
+std::string Slot::getHorarioInicio() const {
+    return horarioInicio;
 }
 
-float Slot::getDuracao() const {
+std::string Slot::getDuracao() const {
     return duracao;
 }
 
 std::string Slot::getTipo() const {
-    return tipo;
+    return tipoAula;
 }
 
-void Slot::setHorarioInicio(float horario_inicio) {
-    this->horario_inicio = horario_inicio;
+void Slot::setHorarioInicio(std::string horarioInicio) {
+    this->horarioInicio = horarioInicio;
 }
 
-void Slot::setDiaSemana(const std::string dia_semana) {
-    this->dia_semana = dia_semana;
+void Slot::setDiaSemana( std::string diaSemana) {
+    this->diaSemana = diaSemana;
 }
 
-void Slot::setDuracao(float duracao) {
+void Slot::setDuracao(std::string duracao) {
     this->duracao = duracao;
 }
 
-void Slot::setTipo(const std::string tipo) {
-    this->tipo = tipo;
+void Slot::setTipo( std::string tipo) {
+    this->tipoAula = tipoAula;
 }

@@ -5,25 +5,29 @@
 #ifndef AEDTP1_STUDENT_H
 #define AEDTP1_STUDENT_H
 
+
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <limits>
+#include <set>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <set>
-#include "Turma.h"
 
+class Turma;
 
 class Student {
 public:
-    Student(std::string& name, std::string& studentcode , std::vector<Turma *> turmas);
+    Student(std::string& name, std::string& studentCode , std::vector<Turma *> turmas);
     std::string get_Name() const;
-    std::string get_student_code() const;
-    std::vector<Turma*> get_TurmasAluno() const;
-    void AddTurma(Turma *turma);
-    bool operator<(Student &s1);
+    std::string get_student_Code() const;
+    std::vector<Turma *> get_TurmasAluno() const;
     void UpdateTurmas(Turma *turma);
 
 private:
     std::string name;
-    std::string studentcode;
+    std::string studentCode;
     std::vector<Turma *> turmas;
     // std::vector<Turma> Turmas;
 };

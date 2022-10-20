@@ -17,7 +17,7 @@ int main() {
     aulas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes.csv");
     turmas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes_per_uc.csv");
     FileReader fileReader(studentsinfo_file, aulas_file, turmas_file);
-    vector <Turma *> Turmas = fileReader.getTurmas();
+    vector <Turma *> turmas = fileReader.getTurmas();
     // cout << *(Turmas.back() << endl;
     set <Student*, studentComparator> students = fileReader.getStudents();
 

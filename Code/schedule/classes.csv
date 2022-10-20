@@ -489,6 +489,7 @@ ClassCode,UcCode,Weekday,StartHour,Duration,Type
 3LEIC05,L.EIC025,Thursday,10.5,2,T
 3LEIC06,L.EIC025,Thursday,10.5,2,T
 3LEIC07,L.EIC025,Thursday,10.5,2,T
+
 1LEIC01,UP001,Wednesday,14,1.5,TP
 1LEIC02,UP001,Wednesday,14,1.5,TP
 1LEIC03,UP001,Wednesday,15.5,1.5,TP

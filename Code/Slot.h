@@ -5,24 +5,25 @@
 #ifndef AEDTP1_SLOT_H
 #define AEDTP1_SLOT_H
 
-#include <string>
+#include "FileReader.h"
 
 class Slot {
 private:
-    std::string dia_semana;
-    float horario_inicio;
-    float duracao;
-    std::string tipo;
+    std::string diaSemana;
+    std::string horarioInicio;
+    std::string duracao;
+    std::string tipoAula;
 public:
+    Slot(std::string& diaSemana,std::string& horarioInicio,std::string& duracao,std::string& tipoAula);
     std::string getDiaSemana() const;
-    float getHorarioInicio() const;
-    float getDuracao() const;
+    std::string getHorarioInicio() const;
+    std::string getDuracao() const;
     std::string getTipo() const;
 
-    void setHorarioInicio(float horario_inicio);
-    void setDiaSemana(const std::string dia_semana);
-    void setDuracao(float duracao);
-    void setTipo(const std::string tipo);
+    void setHorarioInicio(std::string horarioInicio);
+    void setDiaSemana(std::string diaSemana);
+    void setDuracao(std::string duracao);
+    void setTipo( std::string tipo);
 };
 
 

@@ -4,16 +4,31 @@
 
 #include "Turma.h"
 
-Turma::Turma(std::string &TurmaCode, std::string &UcCode) {
-    this->TurmaCode = TurmaCode;
-    this->UcCode = UcCode;
+Turma::Turma(std::string &turmaCode, std::string &ucCode) {
+    this->turmaCode = turmaCode;
+    this->ucCode = ucCode;
 }
 
-std::string Turma::get_TurmaCode()const {
-    return TurmaCode;
+std::string Turma::get_turmaCode()const {
+    return turmaCode;
 }
 
-std::string Turma::get_UcCode() const {
-    return UcCode;
+std::string Turma::get_ucCode()const {
+    return ucCode;
 }
+
+size_t Turma::get_nrStudentsTurma()const{
+    return studentsTurma.size();
+}
+
+void Turma::AddStudent(Student *student){
+    this->studentsTurma.push_back(student);
+}
+
+
+/*
+void Turma::InitTurma() {
+    return;
+}
+*/
 

@@ -23,15 +23,24 @@
     <list default="true" id="b848a33b-9078-47cc-bd52-f31fb1dede24" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Course.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/FileReader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Course.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/FileReader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/FileReader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/FileReader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/FileReader.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/FileReader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/PedidoAlteracao.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/PedidoAlteracao.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Slot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Slot.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Slot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Slot.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Student.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Turma.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Turma.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Turma.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Turma.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-02fb22282efa48da720d.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-10-18T08-21-38-0595.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-aedtp1-Debug-822379cd724529c02d70.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/schedule/classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Code/schedule/classes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b302d5acc2dca2615021.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-10-18T18-10-08-0886.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-aedtp1-Debug-df6d3d486522cf5994bd.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Course.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Course.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Student.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Student.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Turma.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/Turma.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/aedtp1.dir/Code/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/aedtp1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/aedtp1" afterDir="false" />
@@ -93,9 +102,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="aedtp1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="aedtp1" TARGET_NAME="aedtp1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="aedtp1" RUN_TARGET_NAME="aedtp1">
@@ -120,7 +129,11 @@
       <workItem from="1665834961037" duration="1683000" />
       <workItem from="1665956001060" duration="1057000" />
       <workItem from="1665958652600" duration="34407000" />
-      <workItem from="1666108142757" duration="7993000" />
+      <workItem from="1666108142757" duration="10290000" />
+      <workItem from="1666256580293" duration="954000" />
+      <workItem from="1666257559466" duration="439000" />
+      <workItem from="1666258017616" duration="2128000" />
+      <workItem from="1666260600305" duration="3642000" />
     </task>
     <servers />
   </component>
@@ -142,9 +155,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Code/main.cpp</url>
-          <line>23</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/Code/FileReader.cpp</url>
+          <line>89</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
