@@ -22,7 +22,6 @@ std::vector<Turma*> Student::get_TurmasAluno() const {
     return turmas;
 }
 
-
 void Student::UpdateTurmas(Turma *turma){
     this->turmas.push_back(turma);
 }

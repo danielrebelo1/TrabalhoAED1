@@ -43,17 +43,16 @@ struct turmaComparator
 class FileReader{
 
         std::set<Student*, studentComparator> students;
-        std::vector<Turma*> turmas;
+        std::vector<Turma*> turmaAluno;
         std::vector<Turma*> allTurmas;
         std::vector<Slot *> allSlots;
 
     public:
-        FileReader(std::istream &studentsinfo_file, std::istream &aulas_file , std::istream &turmas_file);
-
-        std::set<Student*, studentComparator> getStudents();
-        std::vector<Turma *> getTurmas();
+        FileReader(std::istream &studentsinfo_file,std::istream &aulas_file,std::istream &turmas_file);
+        std::set<Student*,studentComparator> getStudents()const;
+        std::vector<Turma*> getTurmas() const;
+        std::vector<Slot*> getSlots() const;
 
 };
-
 
 #endif //AEDTP1_FILEREADER_H

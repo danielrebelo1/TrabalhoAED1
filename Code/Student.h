@@ -1,10 +1,8 @@
 //
 // Created by Daniel Rebelo on 14/10/2022.
 //
-
 #ifndef AEDTP1_STUDENT_H
 #define AEDTP1_STUDENT_H
-
 
 #include <algorithm>
 #include <fstream>
@@ -16,7 +14,6 @@
 #include <vector>
 
 class Turma;
-
 class Student {
 public:
     Student(std::string& name, std::string& studentCode , std::vector<Turma *> turmas);
@@ -31,5 +28,4 @@ private:
     std::vector<Turma *> turmas;
     // std::vector<Turma> Turmas;
 };
-
 #endif //AEDTP1_STUDENT_H

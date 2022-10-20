@@ -12,42 +12,50 @@ using namespace std;
 FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file , std::istream &turmas_file){
 
     // if (s_file.peek() == ifstream::traits_type::eof()) goto TURMASFILE;
-    string line,studentCode = "0",studentName,ucCode,turmaCode;
+    string line,data,studentCode,studentName,ucCode,turmaCode;
+    vector<string> line_vector;
 
     turmas_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
 
-    while (!turmas_file.eof()){
-        getline(turmas_file , line );
-        ucCode = line.substr(0,line.find_first_of(','));
-        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
-        turmaCode = line.substr(0,line.find_first_of('\r'));
-        Turma *new_turma = new Turma(turmaCode,ucCode);
-        allTurmas.push_back(new_turma);
-    }
+    while (turmas_file.good()){
+        line_vector.clear();
+        getline(turmas_file, line);
+        if(line.empty()) break;
+        stringstream ss(line);
 
+        while(getline(ss,data, ','))
+            line_vector.push_back(data);
+
+        turmaCode = line_vector[0];
+        ucCode = line_vector[1].substr(0, line_vector[1].size() - 1);
+
+        Turma *turma = new Turma(turmaCode, ucCode);
+        allTurmas.push_back(turma);
+    }
     // INICIALIZAÇÃO DOS ESTUDANTES E CRIACAO DO VETOR DAS TURMAS DOS ESTUDANTES
 
     studentsinfo_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
-    while(!studentsinfo_file.eof()){
+    while(studentsinfo_file.good()){
         getline(studentsinfo_file,line);
 
         if (line.empty()) break;
 
-        studentCode = line.substr(0,line.find_first_of(','));
-        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
-        studentName = line.substr(0,line.find_first_of(','));
-        line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
-        ucCode = line.substr(0 ,line.find_first_of(','));
-        line = line.substr(line.find_first_of(',') + 1,line.find_first_of('\r'));
-        turmaCode = line.substr(0 ,line.find_first_of('\r'));
+        stringstream ss(line);
 
-        vector<Turma *> turmas;
+        while(getline(ss, data, ','))
+            line_vector.push_back(data);
+
+        ucCode = line_vector[2];
+        turmaCode = line_vector[3].substr(0, line_vector[3].size() - 1);
+
+        vector<Turma *> turmaAluno;
         Turma *turma = new Turma(turmaCode , ucCode);
         // auto it_ = allTurmas.find(turma);
         // turma = *it_; turma.addEstudante(student);
 
-        turmas.push_back(turma);
-        Student *student = new Student(studentName,studentCode,turmas);
+        turmaAluno.push_back(turma);
+        Student *student = new Student(studentName,studentCode,turmaAluno);
+
         auto it = students.find(student);
         if ( it != students.end() ) {
             student = *it;
@@ -61,27 +69,28 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 
     // ate encontrar melhor solucao!
     for (Student *student : students){
-        turmas = student->get_TurmasAluno();
-        for (Turma *turma : turmas){
+        turmaAluno = student->get_TurmasAluno();
+        for (Turma *turma : turmaAluno){
             turma->AddStudent(student);
         }
     }
-    turmas.clear();
+    turmaAluno.clear();
 
     aulas_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
     while(!aulas_file.eof()){
         getline(aulas_file,line);
+        line_vector.clear();
         if (line.empty() || line == "\r") break;
-        vector<string> infoVector;
-        while (line.find_first_of(',') != std::string::npos){
-            string info = line.substr(0,line.find_first_of(','));
-            infoVector.push_back(info);
-            line = line.substr(line.find_first_of(',') + 1 , line.find_first_of('\r'));
-        }
+        stringstream ss(line);
+
+
+        while(getline(ss, data, ','))
+            line_vector.push_back(data);
+
         string diaSemana , horarioInicio, duracao , tipoAula;
-        diaSemana = infoVector[2];
-        horarioInicio = infoVector[3];
-        duracao = infoVector[4];
+        diaSemana = line_vector[2];
+        horarioInicio = line_vector[3];
+        duracao = line_vector[4];
         tipoAula = line.substr(0 ,line.find_first_of('\r'));
         Slot *slot = new Slot(diaSemana,horarioInicio,duracao,tipoAula);
         allSlots.push_back(slot);
@@ -91,10 +100,14 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 }
 
 
-set<Student*,  studentComparator> FileReader::getStudents() {
+set<Student*,  studentComparator> FileReader::getStudents()const {
     return this->students;
 }
 
-vector<Turma*> FileReader::getTurmas() {
+vector<Turma*> FileReader::getTurmas()const {
     return this->allTurmas;
+}
+
+vector<Slot*> FileReader::getSlots()const {
+    return this->allSlots;
 }
