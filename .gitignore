@@ -1,7 +1,7 @@
-.DS_Store/
+Code/.DS_Store/
 .idea/
 cmake-build-debug/
-main.cpp/
+Code/main.cpp/
 CMakeLists.txt/
 
 
