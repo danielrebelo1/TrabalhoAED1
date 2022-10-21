@@ -37,6 +37,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
     studentsinfo_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
     while(studentsinfo_file.good()){
         getline(studentsinfo_file,line);
+        line_vector.clear();
 
         if (line.empty()) break;
 
@@ -72,10 +73,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
             student->UpdateTurmas(turma);
         } else students.insert(student);
     }
-    studentCode.clear();
-    studentName.clear();
-    ucCode.clear();
-    turmaCode.clear();
+
 
     // ate encontrar melhor solucao!
     for (Student *student : students){
@@ -87,7 +85,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
     turmaAluno.clear();
 
     aulas_file.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
-    while(!aulas_file.eof()){
+    while(aulas_file.good()){
         getline(aulas_file,line);
         line_vector.clear();
         if (line.empty() || line == "\r") break;
@@ -101,8 +99,8 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         diaSemana = line_vector[2];
         horarioInicio = line_vector[3];
         duracao = line_vector[4];
-
         tipoAula = line.substr(0 ,line.find_first_of('\r'));
+
         Slot *slot = new Slot(diaSemana,horarioInicio,duracao,tipoAula);
         allSlots.push_back(slot);
     }
