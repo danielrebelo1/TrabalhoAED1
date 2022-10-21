@@ -1,8 +1,8 @@
 Code/.DS_Store/
 .idea/
 cmake-build-debug/
-Code/main.cpp/
-CMakeLists.txt/
+Code/main.cpp
+CMakeLists.txt
 
 
 
