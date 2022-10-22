@@ -26,10 +26,10 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         while(getline(ss,data, ','))
             line_vector.push_back(data);
 
-        turmaCode = line_vector[0];
-        ucCode = line_vector[1].substr(0, line_vector[1].size() - 1);
+        ucCode = line_vector[0];
+        turmaCode = line_vector[1].substr(0, line_vector[1].size() - 1);
 
-        Turma *turma = new Turma(turmaCode, ucCode);
+        Turma *turma = new Turma(turmaCode, ucCode, std::vector<Student *>());
         allTurmas.push_back(turma);
     }
     // INICIALIZAÇÃO DOS ESTUDANTES E CRIACAO DO VETOR DAS TURMAS DOS ESTUDANTES
@@ -52,7 +52,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         turmaCode = line_vector[3].substr(0, line_vector[3].size() - 1);
 
         vector<Turma *> turmaAluno;
-        Turma *turma = new Turma(turmaCode , ucCode);
+        Turma *turma = new Turma(turmaCode, ucCode, std::vector<Student *>());
         /*
         auto itr = find(allTurmas.begin(),allTurmas.end(),turma);
         if (itr != allTurmas.end())

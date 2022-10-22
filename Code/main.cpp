@@ -13,9 +13,9 @@ using namespace std;
 
 int main() {
     ifstream studentsinfo_file , aulas_file ,turmas_file;
-    studentsinfo_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/students_classes.csv");
-    aulas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes.csv");
-    turmas_file.open("/Users/danielrebelo/uni/aed/aedtp1/Code/schedule/classes_per_uc.csv");
+    studentsinfo_file.open("/home/helder/Desktop/aedtp1/Code/schedule/students_classes.csv");
+    aulas_file.open("/home/helder/Desktop/aedtp1/Code/schedule/classes.csv");
+    turmas_file.open("/home/helder/Desktop/aedtp1/Code/schedule/classes_per_uc.csv");
     FileReader fileReader(studentsinfo_file, aulas_file, turmas_file);
     vector <Turma *> turmas = fileReader.getTurmas();
     // cout << *(Turmas.back() << endl;

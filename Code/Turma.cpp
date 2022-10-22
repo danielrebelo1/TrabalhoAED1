@@ -4,9 +4,10 @@
 
 #include "Turma.h"
 
-Turma::Turma(std::string &turmaCode, std::string &ucCode) {
+Turma::Turma(std::string &turmaCode, std::string &ucCode, std::vector<Student *> studentsTurma ) {
     this->turmaCode = turmaCode;
     this->ucCode = ucCode;
+    this->studentsTurma = studentsTurma;
 }
 
 std::string Turma::get_turmaCode()const {
@@ -15,6 +16,10 @@ std::string Turma::get_turmaCode()const {
 
 std::string Turma::get_ucCode()const {
     return ucCode;
+}
+
+std::vector<Student *> Turma::get_studentsTurma() const {
+    return studentsTurma;
 }
 
 size_t Turma::get_nrStudentsTurma()const{

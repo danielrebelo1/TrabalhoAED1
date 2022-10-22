@@ -20,9 +20,10 @@ class Student;
 
 class Turma {
 public:
-    Turma(std::string &turmaCode,std::string &ucCode);
+    Turma(std::string &turmaCode, std::string &ucCode, std::vector<Student *> studentsTurma);
     std::string get_turmaCode() const;
     std::string get_ucCode() const;
+    std::vector<Student *> get_studentsTurma() const;
     size_t get_nrStudentsTurma()const;
     void AddStudent(Student *student);
     // static void InitTurma();
@@ -30,7 +31,7 @@ public:
 private:
     std::string turmaCode;
     std::string ucCode;
-    // std::set<Student*, studentComparator> studentsTurma;
+    //std::set<Student*, studentComparator> studentsTurma;
     std::vector<Student *> studentsTurma;
     bool operator==(Turma* t1)const ;
 };
