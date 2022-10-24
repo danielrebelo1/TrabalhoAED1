@@ -3,20 +3,9 @@ README do nosso trabalho
 C++ Naming Conventions:
 https://www.geeksforgeeks.org/naming-convention-in-c/
 
-tentar por aqui todas as mudancas feitas/problemas a corrigir
+Proximos objetivos:
 
-CONCEITO:
+- Implementar StudentComparator
 
-- menu com diversas opções de escolha : 
-OCUPACAO DAS TURMAS/ANO/UC - ordenacao (por uc , crescente , decrescente , ++)
-HORARIO DE DETERMINADO ESTUDANTE (cin >> Nome de estudante || cin >> Nr estudante) -> horario 
-REQUEST POR TURMA/UC/ANO
-Estudantes com mais de n UCs (C/ BST) (ordem alfabética, ordem nºs UCs,++)
-
-Remover estudante de turma/UC
-Adicionar/alterar estudante a uma/conjunto de turma/UC --> SÓ POSSIVEL SE TIVER VAGA (N ALUNOS < CAP) || abs(turma origem - turma destino) < 4 
-Fazer trocas entre turmas
-Tentar usar ll para remocao e adicionar alunos a turmas(mais rapido)
-
-UPDATE (14/10):
-criadas classes de Student e Classe ( representa a Turma mas "Class" nao se pode usar)
+- Passar a ler apenas o classes.csv(inicializar as turmas , add ao vetor allTurmas , inicializar Slot e ligá-lo a Turma)
+ e o students_classes.csv( em vez de criar turma fazer find() e encontrar a turma já inicializada e add Student a respetiva) para poupar tempo
