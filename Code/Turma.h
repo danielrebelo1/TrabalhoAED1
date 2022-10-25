@@ -32,7 +32,7 @@ public:
 private:
     std::string turmaCode;
     std::string ucCode;
-    std::set<Student *, studentComparator> studentsTurma;
+    std::set<Student *> studentsTurma;
     std::list<Slot *> horarioUcTurma;
 };
 
