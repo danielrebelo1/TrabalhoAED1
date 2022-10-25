@@ -31,7 +31,6 @@ struct studentComparator
     }
 };
 
-
 struct turmaComparator
 {
     bool operator()(Turma* t1, Turma* t2) const {

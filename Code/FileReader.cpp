@@ -21,8 +21,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         if (line.empty() || line == "\r") break;
         stringstream ss(line);
 
-        while (getline(ss, data, ','))
-            line_vector.push_back(data);
+        while (getline(ss, data, ','))line_vector.push_back(data);
 
         string ucCode, turmaCode;
         turmaCode = line_vector[0];
