@@ -26,3 +26,9 @@ void Student::UpdateTurmas(Turma *turma){
     this->turmas.push_back(turma);
 }
 
+void Student::PrintStudentTurmas(){
+    std::cout << "A/O estudante " << this->get_Name() << " com o número de estudante " << this->get_student_Code() << " encontra-se nas seguintes UC/Turmas:" << std::endl;
+    for (Turma* turma : turmas){
+        std::cout << "Cadeira: " << turma->get_ucCode() << " Turma: " << turma->get_turmaCode() << std::endl;
+    }
+}

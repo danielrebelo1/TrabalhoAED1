@@ -23,9 +23,8 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 
         while (getline(ss, data, ','))line_vector.push_back(data);
 
-        string ucCode, turmaCode;
-        turmaCode = line_vector[0];
-        ucCode = line_vector[1];
+        string turmaCode = line_vector[0]
+                , ucCode = line_vector[1];;
 
         Turma *turma = new Turma(turmaCode, ucCode);
         auto itr = allTurmas.find(turma);
@@ -39,6 +38,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         horarioInicio = line_vector[3],
         duracao = line_vector[4],
         tipoAula = line_vector[5].substr(0 , line_vector[5].find("\r"));
+
         Slot *slot = new Slot(diaSemana, horarioInicio, duracao, tipoAula);
         allSlots.push_back(slot);
         turma->AddSlot(slot);
@@ -58,11 +58,10 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 
         while (getline(ss, data, ','))line_vector.push_back(data);
 
-        string studentCode, studentName, ucCode, turmaCode;
-        studentCode = line_vector[0];
-        studentName = line_vector[1];
-        ucCode = line_vector[2];
-        turmaCode = line_vector[3].substr(0, line_vector[3].size() - 1);
+        string studentCode = line_vector[0],
+        studentName = line_vector[1],
+        ucCode = line_vector[2],
+        turmaCode = line_vector[3].substr(0, line_vector[3].find("\r"));
 
         vector<Turma *> turmaAluno;
         Turma *turma = new Turma(turmaCode, ucCode);
