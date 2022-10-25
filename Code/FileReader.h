@@ -14,6 +14,7 @@
 #include <set>
 #include <sstream>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 class Student;
@@ -29,32 +30,29 @@ struct studentComparator
         return false;
     }
 };
-/*
+
+
 struct turmaComparator
 {
     bool operator()(Turma* t1, Turma* t2) const {
-        if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_turmaCode()[0] < t2->get_turmaCode()[0]);
-        else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode()[0] < t2->get_turmaCode()[0]);
-        return true;
+        if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_ucCode() < t2->get_ucCode());
+        else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode() < t2->get_turmaCode());
+        return false;
     }
 };
- */
-
 
 class FileReader{
 
         std::set<Student*, studentComparator> students;
         std::vector<Turma*> turmaAluno;
-        std::vector<Turma*> allTurmas;
+        std::set<Turma*, turmaComparator> allTurmas;
         std::vector<Slot *> allSlots;
 
     public:
         FileReader(std::istream &studentsinfo_file,std::istream &aulas_file,std::istream &turmas_file);
         std::set<Student*,studentComparator> getStudents()const;
-        std::vector<Turma*> getTurmas() const;
+        std::set<Turma* , turmaComparator> getTurmas() const;
         std::vector<Slot*> getSlots() const;
-        bool operator==(Turma* t1)const;
-
 };
 
 #endif //AEDTP1_FILEREADER_H

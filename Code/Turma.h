@@ -9,14 +9,15 @@
 #include <fstream>
 #include <iostream>
 #include <limits>
+#include <list>
 #include <set>
 #include <sstream>
 #include <string>
 #include <vector>
 
 class Student;
-
-
+class Slot;
+class FileReader;
 
 class Turma {
 public:
@@ -25,14 +26,14 @@ public:
     std::string get_ucCode() const;
     size_t get_nrStudentsTurma()const;
     void AddStudent(Student *student);
+    void AddSlot(Slot *slot);
     // static void InitTurma();
 
 private:
     std::string turmaCode;
     std::string ucCode;
-    // std::set<Student*, studentComparator> studentsTurma;
-    std::vector<Student *> studentsTurma;
-    bool operator==(Turma* t1)const;
+    std::set<Student *, studentComparator> studentsTurma;
+    std::list<Slot *> horarioUcTurma;
 };
 
 

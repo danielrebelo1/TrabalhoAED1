@@ -1,15 +1,13 @@
 //
-// Created by jaimefrf on 17-10-2022.
+// Created by danielrebelo1 on 17-10-2022.
 //
 
 #include "FileReader.h"
-#include <algorithm>
-#include <sstream>
-#include <type_traits>
+
 
 using namespace std;
 
-FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file , std::istream &turmas_file) {
+FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file, std::istream &turmas_file) {
 
     // if (s_file.peek() == ifstream::traits_type::eof()) goto TURMASFILE;
 
@@ -31,40 +29,22 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         ucCode = line_vector[1];
 
         Turma *turma = new Turma(turmaCode, ucCode);
-        // por comparador aqui , se nao encontrar criar e adicionar ao vetor allTurmas , se encontrar adicionar ao vetor de Slots
-        allTurmas.push_back(turma);
+        auto itr = allTurmas.find(turma);
+        if (itr != allTurmas.end()) {
+            turma = *itr;
+        } else {
+            allTurmas.insert(turma);
+        }
 
-        string diaSemana, horarioInicio, duracao, tipoAula;
-
-        diaSemana = line_vector[2];
-        horarioInicio = line_vector[3];
-        duracao = line_vector[4];
-        tipoAula = line.substr(0, line.find_first_of('\r'));
-
+        string diaSemana = line_vector[2],
+        horarioInicio = line_vector[3],
+        duracao = line_vector[4],
+        tipoAula = line_vector[5].substr(0 , line_vector[5].find("\r"));
         Slot *slot = new Slot(diaSemana, horarioInicio, duracao, tipoAula);
         allSlots.push_back(slot);
+        turma->AddSlot(slot);
+
     }
-
-/*
-    turmas_file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    while (turmas_file.good()) {
-        line_vector.clear();
-        getline(turmas_file, line);
-        if (line.empty()) break;
-        stringstream ss(line);
-
-        while (getline(ss, data, ','))
-            line_vector.push_back(data);
-
-        ucCode = line_vector[0];
-        turmaCode = line_vector[1].substr(0, line_vector[1].size() - 1);
-
-        Turma *turma = new Turma(turmaCode, ucCode);
-        allTurmas.push_back(turma);
-    }
-    */
-    // INICIALIZAÇÃO DOS ESTUDANTES E CRIACAO DO VETOR DAS TURMAS DOS ESTUDANTES
 
     studentsinfo_file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while (studentsinfo_file.good()) {
@@ -89,7 +69,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         vector<Turma *> turmaAluno;
         Turma *turma = new Turma(turmaCode, ucCode);
 
-        // por comparador aqui
+        // por comparador das turmas aqui para que possamos adicionar os alunos à turma
 
         turmaAluno.push_back(turma);
         Student *student = new Student(studentName, studentCode, turmaAluno);
@@ -97,7 +77,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         auto it = students.find(student);
         if (it != students.end()) {
             student = *it;
-            student->UpdateTurmas(turma);
+            student->UpdateTurmas(turma); // adding turma to student "profile"
         } else students.insert(student);
     }
 
@@ -111,47 +91,20 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
     }
     turmaAluno.clear();
 
-    // pode ser apagável
-
-    aulas_file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    while (aulas_file.good()) {
-        string line, data;
-        getline(aulas_file, line);
-        line_vector.clear();
-        if (line.empty() || line == "\r") break;
-        stringstream ss(line);
-
-
-        while (getline(ss, data, ','))
-            line_vector.push_back(data);
-
-        string diaSemana, horarioInicio, duracao, tipoAula;
-        diaSemana = line_vector[2];
-        horarioInicio = line_vector[3];
-        duracao = line_vector[4];
-        tipoAula = line.substr(0, line.find_first_of('\r'));
-
-        Slot *slot = new Slot(diaSemana, horarioInicio, duracao, tipoAula);
-        allSlots.push_back(slot);
-    }
 }
 
-set<Student*,  studentComparator> FileReader::getStudents()const {
+set<Student *, studentComparator> FileReader::getStudents() const {
     return this->students;
 }
+
 // vector<Turma*> FileReader::getTurmas
-vector<Turma*> FileReader::getTurmas()const {
+std::set<Turma *, turmaComparator> FileReader::getTurmas() const {
     return this->allTurmas;
 }
 
-vector<Slot*> FileReader::getSlots()const {
+vector<Slot *> FileReader::getSlots() const {
     return this->allSlots;
 }
 
-// usado para tentar usar o find na comparacao das turmas
-bool FileReader::operator==(Turma* t1)const{
-    // if (t1->get_ucCode() != this->get_ucCode()) return (t1->get_turmaCode()[0] < this->get_turmaCode()[0]);
-    // else if (t1->get_turmaCode() != this->get_turmaCode()) return (t1->get_turmaCode()[0] < this->get_turmaCode()[0]);
-    return true;
-}
+
 

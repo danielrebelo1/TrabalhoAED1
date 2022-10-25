@@ -22,15 +22,12 @@ size_t Turma::get_nrStudentsTurma()const{
 }
 
 void Turma::AddStudent(Student *student){
-    this->studentsTurma.push_back(student);
+    this->studentsTurma.insert(student);
 }
 
-bool Turma::operator==(Turma* t1)const{
-    //if (t1->get_ucCode() != this->get_ucCode()) return (t1->get_turmaCode()[0] < this->get_turmaCode()[0]);
-    // else if (t1->get_turmaCode() != this->get_turmaCode()) return (t1->get_turmaCode()[0] < this->get_turmaCode()[0]);
-    return true;
+void Turma::AddSlot(Slot *slot) {
+    this->horarioUcTurma.push_back(slot);
 }
-
 
 /*
 void Turma::InitTurma() {
