@@ -5,6 +5,8 @@
 #ifndef AEDTP1_TURMA_H
 #define AEDTP1_TURMA_H
 
+#include "Student.h"
+
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -27,6 +29,7 @@ public:
     size_t get_nrStudentsTurma()const;
     void AddStudent(Student *student);
     void AddSlot(Slot *slot);
+    void PrintTurma();
     // static void InitTurma();
 
 private:
@@ -35,6 +38,5 @@ private:
     std::set<Student *> studentsTurma;
     std::list<Slot *> horarioUcTurma;
 };
-
 
 #endif //AEDTP1_TURMA_H

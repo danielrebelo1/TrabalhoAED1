@@ -4,6 +4,8 @@
 #ifndef AEDTP1_STUDENT_H
 #define AEDTP1_STUDENT_H
 
+// #include "FileReader.h"
+#include "Turma.h"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -14,6 +16,7 @@
 #include <vector>
 
 class Turma;
+
 class Student {
 public:
     Student(std::string& name, std::string& studentCode , std::vector<Turma *> turmas);
@@ -21,6 +24,7 @@ public:
     std::string get_student_Code() const;
     std::vector<Turma *> get_TurmasAluno() const;
     void UpdateTurmas(Turma *turma);
+    void PrintStudentTurmas();
 
 private:
     std::string name;
