@@ -56,8 +56,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 
         stringstream ss(line);
 
-        while (getline(ss, data, ','))
-            line_vector.push_back(data);
+        while (getline(ss, data, ','))line_vector.push_back(data);
 
         string studentCode, studentName, ucCode, turmaCode;
         studentCode = line_vector[0];
@@ -67,36 +66,27 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 
         vector<Turma *> turmaAluno;
         Turma *turma = new Turma(turmaCode, ucCode);
-
-        // por comparador das turmas aqui para que possamos adicionar os alunos à turma
-
-        turmaAluno.push_back(turma);
-        Student *student = new Student(studentName, studentCode, turmaAluno);
-
-        auto it = students.find(student);
-        if (it != students.end()) {
-            student = *it;
-            student->UpdateTurmas(turma); // adding turma to student "profile"
-        } else students.insert(student);
-    }
-
-
-    // ate encontrar melhor solucao! *1
-    for (Student *student: students) {
-        turmaAluno = student->get_TurmasAluno();
-        for (Turma *turma: turmaAluno) {
+        auto itr = allTurmas.find(turma);
+        if (itr != allTurmas.end()) {
+            turma = *itr;
+            turmaAluno.push_back(turma);
+            Student *student = new Student(studentName, studentCode, turmaAluno);
+            auto it = students.find(student);
+            if (it != students.end()) {
+                student = *it;
+                student->UpdateTurmas(turma); // adding turma to student "profile"
+            } else students.insert(student);
             turma->AddStudent(student);
+        } else {
+            cout << "error : no class found";
         }
     }
-    turmaAluno.clear();
-
 }
 
 set<Student *, studentComparator> FileReader::getStudents() const {
     return this->students;
 }
 
-// vector<Turma*> FileReader::getTurmas
 std::set<Turma *, turmaComparator> FileReader::getTurmas() const {
     return this->allTurmas;
 }
