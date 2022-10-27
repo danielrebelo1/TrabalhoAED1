@@ -37,6 +37,7 @@ public:
     std::string get_turmaCode() const;
     std::string get_ucCode() const;
     int get_nrStudentsTurma()const;
+    std::list<Slot *> getHorarioUcTurma() const;
 
     void AddStudent(Student *student);
     void RemoveStudent(Student *student);

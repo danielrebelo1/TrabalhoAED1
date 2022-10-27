@@ -36,6 +36,17 @@ void Student::PrintStudentTurmas(){
     for (Turma *turma : turmas){
         std::cout << "Cadeira: " << turma->get_ucCode() << " Turma: " << turma->get_turmaCode() << std::endl;
     }
+
+
+}
+
+void Student::createHorario() {
+    for(Turma *turma : turmas){
+        for (Slot *slot : turma->getHorarioUcTurma()){
+            horarioStudent.push_back(slot);
+        }
+    }
+    std::sort(horarioStudent.begin(), horarioStudent.end());
 }
 
 
