@@ -6,6 +6,7 @@
 
 // #include "FileReader.h"
 #include "Turma.h"
+#include "Slot.h"
 
 #include <algorithm>
 #include <fstream>
@@ -29,6 +30,7 @@ struct turmaComparator
 */
 
 class Turma;
+class Slot;
 
 class Student {
 public:
@@ -41,14 +43,13 @@ public:
     void UpdateTurmas(Turma *turma);
     void RemoveFromTurma(Turma *turma);
     void PrintStudentTurmas();
-    // bool Student::IsSame(Turma* turma);
+    void createHorario();
 
 private:
     std::string name;
     std::string studentCode;
     std::vector<Turma *> turmas;
-    // std::set<Turma *,turmaComparator> newTurmas;
-    // std::vector<Turma*> turmas;
+    std::vector<Slot *> horarioStudent;
 };
 /*
 struct studentComparator

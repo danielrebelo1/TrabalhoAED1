@@ -41,3 +41,7 @@ void Turma::PrintTurma(){
       std::cout << student->get_Name() << " " << student->get_student_Code() << std::endl;
     }
 }
+
+std::list<Slot *> Turma::getHorarioUcTurma() const {
+    return this->horarioUcTurma;
+}
