@@ -48,14 +48,23 @@ void Student::createHorario() {
             horarioStudent.push_back(slot);
         }
     }
-    std::sort(horarioStudent.begin(), horarioStudent.end());
+    std::sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
+
 }
 
-void Student::PrintHorario(){
+void Student::PrintHorario() {
     createHorario();
     for (Slot *slot : horarioStudent){
         std::cout << slot->getDiaSemana() << " " << slot->getTipo() << " " << slot->getHorarioInicio() << std::endl;
     }
 }
 
+std::map<std::string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
+
+bool Student::sorterHorario(Slot *s1, Slot *s2) {
+
+    if(weekDays[s1->getDiaSemana()] != weekDays[s2->getDiaSemana()]) return (weekDays[s1->getDiaSemana()] < weekDays[s2->getDiaSemana()]);
+    else if (s1->getHorarioInicio() != s2->getHorarioInicio()) return (s1->getHorarioInicio() < s2->getHorarioInicio());
+    return true;
+}
 

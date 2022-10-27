@@ -60,8 +60,6 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         studentName = line_vector[1],
         ucCode = line_vector[2],
         turmaCode = line_vector[3].substr(0, line_vector[3].find("\r"));
-
-        vector<Turma *> turmaAluno;
         Turma *turma = new Turma(turmaCode, ucCode);
         auto itr = allTurmas.find(turma);
         if (itr != allTurmas.end()) {
