@@ -5,18 +5,31 @@
 #ifndef AEDTP1_PEDIDOALTERACAO_H
 #define AEDTP1_PEDIDOALTERACAO_H
 
+#include "Student.h"
+#include "Turma.h"
 #include <iostream>
 #include <string>
-#include "Turma.h"
-#include "Student.h"
+#include <set>
+
+using namespace std;
 
 class PedidoAlteracao {
 
-
 public:
-    void AddtoClass(Student *student, Turma *turma);
+    PedidoAlteracao(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino, string tipoPedido);
+    PedidoAlteracao(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2);
+
+    void TrocaTurma(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino);
     void RemoveFromClass(Student *student, Turma *turma);
-    void ChangeClass(Student *student1 , Student *student2 , Turma *turma);
+    void TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2 );
+
+private:
+    Student* student;
+    Turma* turmaOrigem;
+    Turma* turmaDestino;
+    string tipoPedido;
+    set<Turma*> newTurmas;
+
 };
 
 

@@ -17,12 +17,17 @@ std::string Turma::get_ucCode()const {
     return ucCode;
 }
 
-size_t Turma::get_nrStudentsTurma()const{
-    return studentsTurma.size();
+int Turma::get_nrStudentsTurma()const{
+    return (int) studentsTurma.size();
 }
 
 void Turma::AddStudent(Student *student){
     this->studentsTurma.insert(student);
+}
+
+void Turma::RemoveStudent(Student *student) {
+    auto it = studentsTurma.find(student);
+    studentsTurma.erase(it);
 }
 
 void Turma::AddSlot(Slot *slot) {
@@ -32,7 +37,8 @@ void Turma::AddSlot(Slot *slot) {
 void Turma::PrintTurma(){
     std::cout << "Cadeira: " << this->get_ucCode() << " Turma: " << this->get_turmaCode() << std::endl;
     std::cout << "Lista de Alunos:" << std::endl;
+    int nrAluno = 0;
     for (Student* student : studentsTurma){
-      std::cout << student->get_Name() << " " << student->get_student_Code() << std::endl;
+      std::cout << ++nrAluno << ". " << student->get_Name() << " " << student->get_student_Code() << std::endl;
     }
 }

@@ -4,7 +4,7 @@
 
 #include "Slot.h"
 
-Slot::Slot(std::string& diaSemana,std::string& horarioInicio,std::string& duracao,std::string& tipoAula){
+Slot::Slot(std::string& diaSemana,std::string& horarioInicio,std::string& duracao,std::string& tipoAula) {
     this->diaSemana = diaSemana;
     this->horarioInicio = horarioInicio;
     this->duracao = duracao;
@@ -40,5 +40,5 @@ void Slot::setDuracao(std::string duracao) {
 }
 
 void Slot::setTipo( std::string tipo) {
-    this->tipoAula = tipoAula;
+    this->tipoAula = tipo;
 }
