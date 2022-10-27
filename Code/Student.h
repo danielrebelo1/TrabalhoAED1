@@ -45,7 +45,6 @@ private:
     std::string name;
     std::string studentCode;
     std::vector<Turma *> turmas;
-    std::set<Turma *> newTurmas;
     // std::set<Turma *,turmaComparator> newTurmas;
     // std::vector<Turma*> turmas;
 };
