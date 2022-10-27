@@ -32,12 +32,14 @@ void Student::RemoveFromTurma(Turma *turma) {
 }
 
 void Student::PrintStudentTurmas(){
+    std::sort(turmas.begin(),turmas.end(),[] (Turma *t1 , Turma *t2) -> bool {if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_ucCode() < t2->get_ucCode());
+    else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode() < t2->get_turmaCode());
+        return false;}); // default sort ,  talvez implementar sort por turmas
+
     std::cout << "A/O estudante " << this->get_Name() << " com o número de estudante " << this->get_student_Code() << " encontra-se nas seguintes UC/Turmas:" << std::endl;
     for (Turma *turma : turmas){
-        std::cout << "Cadeira: " << turma->get_ucCode() << " Turma: " << turma->get_turmaCode() << std::endl;
+        std::cout << "UC: " << turma->get_ucCode() << " Turma: " << turma->get_turmaCode() << std::endl;
     }
-
-
 }
 
 void Student::createHorario() {
@@ -49,5 +51,11 @@ void Student::createHorario() {
     std::sort(horarioStudent.begin(), horarioStudent.end());
 }
 
+void Student::PrintHorario(){
+    createHorario();
+    for (Slot *slot : horarioStudent){
+        std::cout << slot->getDiaSemana() << " " << slot->getTipo() << " " << slot->getHorarioInicio() << std::endl;
+    }
+}
 
 

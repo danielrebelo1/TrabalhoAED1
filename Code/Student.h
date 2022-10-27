@@ -44,6 +44,7 @@ public:
     void RemoveFromTurma(Turma *turma);
     void PrintStudentTurmas();
     void createHorario();
+    void PrintHorario();
 
 private:
     std::string name;
