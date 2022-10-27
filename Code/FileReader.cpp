@@ -7,9 +7,7 @@
 
 using namespace std;
 
-FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file, std::istream &turmas_file) {
-
-    // if (s_file.peek() == ifstream::traits_type::eof()) goto TURMASFILE;
+FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file) {
 
     aulas_file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while (aulas_file.good()) {
@@ -21,7 +19,7 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         if (line.empty() || line == "\r") break;
         stringstream ss(line);
 
-        while (getline(ss, data, ','))line_vector.push_back(data);
+        while (getline(ss, data, ',')) line_vector.push_back(data);
 
         string turmaCode = line_vector[0]
                 , ucCode = line_vector[1];;

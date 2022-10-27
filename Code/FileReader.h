@@ -49,7 +49,7 @@ class FileReader{
         std::vector<Slot *> allSlots;
 
     public:
-        FileReader(std::istream &studentsinfo_file,std::istream &aulas_file,std::istream &turmas_file);
+        FileReader(std::istream &studentsinfo_file,std::istream &aulas_file);
         std::set<Student*,studentComparator> getStudents()const;
         std::set<Turma*, turmaComparator> getTurmas() const;
         std::vector<Slot*> getSlots() const;

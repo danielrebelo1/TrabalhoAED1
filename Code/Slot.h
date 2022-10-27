@@ -5,7 +5,8 @@
 #ifndef AEDTP1_SLOT_H
 #define AEDTP1_SLOT_H
 
-#include "FileReader.h"
+#include <iostream>
+
 
 class Slot {
 private:
