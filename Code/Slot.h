@@ -26,6 +26,8 @@ public:
     void setDiaSemana(std::string diaSemana);
     void setDuracao(std::string duracao);
     void setTipo( std::string tipo);
+    static std::string Fixer(std::string horarioInicio);
+    static std::string GetFinishTime(std::string horarioInicio,std::string duracao);
 };
 
 

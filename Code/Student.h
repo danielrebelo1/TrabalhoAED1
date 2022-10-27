@@ -7,7 +7,7 @@
 // #include "FileReader.h"
 #include "Turma.h"
 #include "Slot.h"
-
+#include <iomanip>
 #include <algorithm>
 #include <fstream>
 #include <iostream>
