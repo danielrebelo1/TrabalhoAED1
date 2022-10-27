@@ -4,10 +4,9 @@
 
 #include "Student.h"
 
-Student::Student(std::string& name, std::string& studentCode , std::vector<Turma *> turmas ){
+Student::Student(std::string& name, std::string& studentCode ){
     this->name = name;
     this->studentCode = studentCode;
-    this->turmas = turmas;
 }
 
 std::string Student::get_Name() const {
@@ -39,9 +38,5 @@ void Student::PrintStudentTurmas(){
     }
 }
 
-/*
-bool Student::IsSame(Turma* turma, Turma* t) {
-    return (t->get_ucCode() == turma->get_ucCode() && t->get_turmaCode() == turma->get_turmaCode());
-}
-*/
+
 

@@ -32,10 +32,12 @@ class Turma;
 
 class Student {
 public:
-    Student(std::string& name, std::string& studentCode , std::vector<Turma *> turmas);
+    Student(std::string& name, std::string& studentCode);
+
     std::string get_Name() const;
     std::string get_student_Code() const;
     std::vector<Turma *> get_TurmasAluno() const;
+
     void UpdateTurmas(Turma *turma);
     void RemoveFromTurma(Turma *turma);
     void PrintStudentTurmas();

@@ -66,14 +66,13 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
         auto itr = allTurmas.find(turma);
         if (itr != allTurmas.end()) {
             turma = *itr;
-            turmaAluno.push_back(turma);
-            Student *student = new Student(studentName, studentCode, turmaAluno);
+            Student *student = new Student(studentName, studentCode);
             auto it = students.find(student);
             if (it != students.end()) {
                 student = *it;
-                student->UpdateTurmas(turma); // adding turma to student "profile"
             } else students.insert(student);
             turma->AddStudent(student);
+            student->UpdateTurmas(turma);
         } else {
             cout << "error : no class found";
         }
