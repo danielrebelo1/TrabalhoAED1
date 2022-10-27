@@ -16,6 +16,7 @@ private:
     std::string tipoAula;
 public:
     Slot(std::string& diaSemana,std::string& horarioInicio,std::string& duracao,std::string& tipoAula);
+
     std::string getDiaSemana() const;
     std::string getHorarioInicio() const;
     std::string getDuracao() const;
