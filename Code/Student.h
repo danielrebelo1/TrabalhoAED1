@@ -12,6 +12,7 @@
 #include <fstream>
 #include <iostream>
 #include <limits>
+#include <map>
 #include <set>
 #include <sstream>
 #include <string>
@@ -45,6 +46,7 @@ public:
     void PrintStudentTurmas();
     void createHorario();
     void PrintHorario();
+    bool static sorterHorario(Slot *s1, Slot *s2);
 
 private:
     std::string name;
