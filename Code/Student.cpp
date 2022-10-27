@@ -3,6 +3,7 @@
 //
 
 #include "Student.h"
+using namespace std;
 
 Student::Student(std::string& name, std::string& studentCode ){
     this->name = name;
@@ -54,12 +55,13 @@ void Student::createHorario() {
 
 void Student::PrintHorario() {
     createHorario();
+    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type"<< '\t' << setw(5) << "Starting Time" << std::endl;
     for (Slot *slot : horarioStudent){
-        std::cout << slot->getDiaSemana() << " " << slot->getTipo() << " " << slot->getHorarioInicio() << std::endl;
+        cout << setw(9) << left << slot->getDiaSemana() << '\t' << setw(13) << slot->getTipo() << '\t' << Slot::Fixer(slot->getHorarioInicio()) << "-"<<  Slot::GetFinishTime(slot->getHorarioInicio(),slot->getDuracao()) << std::endl;
     }
 }
 
-std::map<std::string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
+map<std::string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
 
 bool Student::sorterHorario(Slot *s1, Slot *s2) {
 
