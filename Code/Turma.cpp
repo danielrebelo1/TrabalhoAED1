@@ -4,10 +4,9 @@
 
 #include "Turma.h"
 
-Turma::Turma(std::string &turmaCode, std::string &ucCode, std::vector<Student *> studentsTurma ) {
+Turma::Turma(std::string &turmaCode, std::string &ucCode) {
     this->turmaCode = turmaCode;
     this->ucCode = ucCode;
-    this->studentsTurma = studentsTurma;
 }
 
 std::string Turma::get_turmaCode()const {
@@ -18,16 +17,17 @@ std::string Turma::get_ucCode()const {
     return ucCode;
 }
 
-std::vector<Student *> Turma::get_studentsTurma() const {
-    return studentsTurma;
-}
-
-size_t Turma::get_nrStudentsTurma()const{
-    return studentsTurma.size();
+int Turma::get_nrStudentsTurma()const{
+    return (int) studentsTurma.size();
 }
 
 void Turma::AddStudent(Student *student){
     this->studentsTurma.insert(student);
+}
+
+void Turma::RemoveStudent(Student *student) {
+    auto it = studentsTurma.find(student);
+    studentsTurma.erase(it);
 }
 
 void Turma::AddSlot(Slot *slot) {
@@ -37,8 +37,9 @@ void Turma::AddSlot(Slot *slot) {
 void Turma::PrintTurma(){
     std::cout << "Cadeira: " << this->get_ucCode() << " Turma: " << this->get_turmaCode() << std::endl;
     std::cout << "Lista de Alunos:" << std::endl;
+    int nrAluno = 0;
     for (Student* student : studentsTurma){
-      std::cout << student->get_Name() << " " << student->get_student_Code() << std::endl;
+      std::cout << ++nrAluno << ". " << student->get_Name() << " " << student->get_student_Code() << std::endl;
     }
 }
 
