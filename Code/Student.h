@@ -49,7 +49,7 @@ public:
     bool static sorterHorario(Slot *s1, Slot *s2);
 
 private:
-    std::string name;
+    std::string studentName;
     std::string studentCode;
     std::vector<Turma *> turmas;
     std::vector<Slot *> horarioStudent;

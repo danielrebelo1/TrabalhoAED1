@@ -9,6 +9,7 @@
 #include "Slot.h"
 
 #include <algorithm>
+#include <iomanip>
 #include <fstream>
 #include <iostream>
 #include <limits>
@@ -17,16 +18,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
-/*
-struct studentComparator
-{
-    bool operator()(Student* s1, Student* s2) const {
-        if (s1->get_student_Code() != s2->get_student_Code()) return (s1->get_Name() < s2->get_Name());
-        return false;
-    }
-};
-*/
 
 class Student;
 
@@ -49,19 +40,9 @@ public:
 private:
     std::string turmaCode;
     std::string ucCode;
-    std::set<Student *> studentsTurma;
-    // std::set<Student *, studentComparator> studentsTurma;
+    std::vector<Student *> studentsTurma;
+    // std::set<Student *, studentComparator> studentsTurma; ordenar students na turma
     std::list<Slot *> horarioUcTurma;
 };
-/*
-struct turmaComparator
-{
-    bool operator()(Turma* t1, Turma* t2) const {
-        if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_ucCode() < t2->get_ucCode());
-        else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode() < t2->get_turmaCode());
-        return false;
-    }
-};
- */
 
 #endif //AEDTP1_TURMA_H

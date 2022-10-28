@@ -53,6 +53,7 @@ class FileReader{
         std::set<Student*,studentComparator> getStudents()const;
         std::set<Turma*, turmaComparator> getTurmas() const;
         std::vector<Slot*> getSlots() const;
+        void Init();
 };
 
 #endif //AEDTP1_FILEREADER_H
