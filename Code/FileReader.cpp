@@ -89,5 +89,11 @@ vector<Slot *> FileReader::getSlots() const {
     return this->allSlots;
 }
 
+void FileReader::Init() {
+    for (Student* student : students){
+        student->createHorario();
+    }
+}
+
 
 

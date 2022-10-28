@@ -5,13 +5,13 @@
 #include "Student.h"
 using namespace std;
 
-Student::Student(std::string& name, std::string& studentCode ){
-    this->name = name;
+Student::Student(std::string& studentName, std::string& studentCode ){
+    this->studentName = studentName;
     this->studentCode = studentCode;
 }
 
 std::string Student::get_Name() const {
-    return name;
+    return studentName;
 }
 
 std::string Student::get_student_Code() const {
@@ -46,6 +46,7 @@ void Student::PrintStudentTurmas(){
 void Student::createHorario() {
     for(Turma *turma : turmas){
         for (Slot *slot : turma->getHorarioUcTurma()){
+            slot->setTurma(turma);
             horarioStudent.push_back(slot);
         }
     }
@@ -55,9 +56,10 @@ void Student::createHorario() {
 
 void Student::PrintHorario() {
     createHorario();
-    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type"<< '\t' << setw(5) << "Starting Time" << std::endl;
+    cout << "Horário de " << studentName << ":" << endl;
+    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type"<< '\t' << setw(3) << "Time" << std::endl;
     for (Slot *slot : horarioStudent){
-        cout << setw(9) << left << slot->getDiaSemana() << '\t' << setw(13) << slot->getTipo() << '\t' << Slot::Fixer(slot->getHorarioInicio()) << "-"<<  Slot::GetFinishTime(slot->getHorarioInicio(),slot->getDuracao()) << std::endl;
+        cout << setw(9) << left << slot->getDiaSemana() << '\t' << setw(13) << slot->getTipo() << '\t' << Slot::Fixer(slot->getHorarioInicio()) << "-"<<  Slot::GetFinishTime(slot->getHorarioInicio(),slot->getDuracao()) << "\t" << (slot->getTurma())->get_ucCode() <<std::endl;
     }
 }
 
