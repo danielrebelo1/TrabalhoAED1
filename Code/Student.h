@@ -6,6 +6,7 @@
 
 // #include "FileReader.h"
 #include "Turma.h"
+#include "Utils.h"
 #include "Slot.h"
 #include <iomanip>
 #include <algorithm>
@@ -46,7 +47,6 @@ public:
     void PrintStudentTurmas();
     void createHorario();
     void PrintHorario();
-    bool static sorterHorario(Slot *s1, Slot *s2);
 
 private:
     std::string studentName;
