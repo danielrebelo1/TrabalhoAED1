@@ -52,7 +52,7 @@ private:
     std::string studentName;
     std::string studentCode;
     std::vector<Turma *> turmas;
-    std::vector<Slot *> horarioStudent;
+    std::vector< std::pair <Slot * , Turma *>>  horarioStudent;
 };
 /*
 struct studentComparator
