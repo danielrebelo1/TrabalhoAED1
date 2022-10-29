@@ -47,22 +47,6 @@ void Slot::setTurma(Turma *t) {
     this->turma = t;
 }
 
-std::string Slot::Fixer(std::string horarioInicio) {
-    float hInicio_f = std::stof(horarioInicio);
-    if ((float) (hInicio_f - (int)hInicio_f) != 0){
-        return std::to_string((int)hInicio_f) + ":30h";
-    }
-    else {
-        return std::to_string((int)hInicio_f) + "h";
-    }
-}
-
-std::string Slot::GetFinishTime(std::string horarioInicio,std::string duracao) {
-    float hInicio_f = std::stof(horarioInicio);
-    float duracao_f = std::stof(duracao);
-    hInicio_f += duracao_f;
-    return Fixer(std::to_string(hInicio_f));
-}
 
 Turma* Slot::getTurma()const{
     return turma;

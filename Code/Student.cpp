@@ -59,16 +59,8 @@ void Student::PrintHorario() {
     cout << "Horário de " << studentName << ":" << endl;
     cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type"<< '\t' << setw(3) << "Time" << std::endl;
     for (Slot *slot : horarioStudent){
-        cout << setw(9) << left << slot->getDiaSemana() << '\t' << setw(13) << slot->getTipo() << '\t' << Slot::Fixer(slot->getHorarioInicio()) << "-"<<  Slot::GetFinishTime(slot->getHorarioInicio(),slot->getDuracao()) << "\t" << (slot->getTurma())->get_ucCode() <<std::endl;
+        cout << setw(9) << left << slot->getDiaSemana() << '\t' << setw(13) << slot->getTipo() << '\t' << Fixer(slot->getHorarioInicio()) << "-"<<  GetFinishTime(slot->getHorarioInicio(),slot->getDuracao()) << "\t" << (slot->getTurma())->get_ucCode() <<std::endl;
     }
 }
 
-map<std::string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
-
-bool Student::sorterHorario(Slot *s1, Slot *s2) {
-
-    if(weekDays[s1->getDiaSemana()] != weekDays[s2->getDiaSemana()]) return (weekDays[s1->getDiaSemana()] < weekDays[s2->getDiaSemana()]);
-    else if (s1->getHorarioInicio() != s2->getHorarioInicio()) return (s1->getHorarioInicio() < s2->getHorarioInicio());
-    return true;
-}
 
