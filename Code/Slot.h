@@ -33,8 +33,6 @@ public:
     void setDuracao(std::string duracao);
     void setTipo( std::string tipo);
     void setTurma(Turma * t);
-    static std::string Fixer(std::string horarioInicio);
-    static std::string GetFinishTime(std::string horarioInicio,std::string duracao);
 };
 
 
