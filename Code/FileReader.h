@@ -8,6 +8,7 @@
 #include "Turma.h"
 #include "Slot.h"
 
+
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -22,7 +23,6 @@ class Student;
 class Turma;
 class Slot;
 
-using namespace std;
 
 struct studentComparator
 {

@@ -42,4 +42,3 @@ void Slot::setDuracao(std::string duracao) {
 void Slot::setTipo( std::string tipo) {
     this->tipoAula = tipo;
 }
-

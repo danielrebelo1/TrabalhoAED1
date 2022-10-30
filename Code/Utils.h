@@ -13,11 +13,11 @@ using namespace std;
 class Slot;
 class Turma;
 
-bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2);
-
 std::string GetFinishTime(std::string horarioInicio,std::string duracao);
 
 std::string Fixer(std::string horarioInicio);
+
+bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2);
 
 
 
