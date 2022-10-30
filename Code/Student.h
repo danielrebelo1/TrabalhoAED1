@@ -8,6 +8,7 @@
 #include "Turma.h"
 #include "Utils.h"
 #include "Slot.h"
+
 #include <iomanip>
 #include <algorithm>
 #include <fstream>
@@ -18,7 +19,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
 
 class Turma;
 class Slot;
@@ -41,7 +41,7 @@ private:
     std::string studentName;
     std::string studentCode;
     std::vector<Turma *> turmas;
-    std::vector< std::pair <Slot * , Turma *>>  horarioStudent;
+    std::vector< std::pair <Slot * , Turma *>> horarioStudent;
 };
 
 
