@@ -36,7 +36,7 @@ map<std::string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3},
 bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2){
     if(weekDays[s1.first->getDiaSemana()] != weekDays[s2.first->getDiaSemana()]) return (weekDays[s1.first->getDiaSemana()] < weekDays[s2.first->getDiaSemana()]);
     if(s1.first->getHorarioInicio() != s2.first->getHorarioInicio()) return (s1.first->getHorarioInicio() < s2.first->getHorarioInicio());
-    return true;
+    return false;
 }
 
 std::string GetFinishTime(std::string horarioInicio,std::string duracao) {
@@ -97,25 +97,22 @@ void PrintStudents(std::set<Student* , studentComparator> students , char option
     std::set<Student* , studentComparator2> newstudents2;
     std::set<Student* , studentComparatorCode> newstudents3;
     std::set<Student* , studentComparatorDecreasingCode> newstudents4;
+    cout << setw(15) << left << "Nome" << "\t" << setw(20) << "Número de estudante" << endl;
     switch (option) {
         case '1':
-            cout << "Nome" << setw(15) << "Número de estudante" << endl;
-            for (Student *s : students){cout << s->get_Name() << "\t" << setw(9) << s->get_student_Code() << endl;}
+            for (Student *s : students){cout << setw(15) << left << s->get_Name() << "\t\t" << setw(9) << s->get_student_Code() << endl;}
             break;
         case '2':
             newstudents2 = StudentReverseSortAlpha(students);
-            cout << "Nome" << setw(15) << "Número de estudante" << endl;
-            for (Student *s : newstudents2){cout << s->get_Name() << "\t" << setw(9) << s->get_student_Code() << endl;}
+            for (Student *s : newstudents2){cout << setw(15) << left << s->get_Name() << "\t\t" << setw(9) << s->get_student_Code() << endl;}
             break;
         case '3':
             newstudents3 = StudentSortCode(students);
-            cout << "Nome" << setw(15) << "Número de estudante" << endl;
-            for (Student *s : newstudents3){cout << s->get_Name() << "\t" << setw(9) << s->get_student_Code() << endl;}
+            for (Student *s : newstudents3){cout << setw(15) << left << s->get_Name() << "\t\t" << setw(9) << s->get_student_Code() << endl;}
             break;
         case '4':
             newstudents4 = StudentReverseSortCode(students);
-            cout << "Nome" << setw(15) << "Número de estudante" << endl;
-            for (Student *s : newstudents4){cout << s->get_Name() << "\t" << setw(9) << s->get_student_Code() << endl;}
+            for (Student *s : newstudents4){cout << setw(15) << left << s->get_Name() << "\t\t" << setw(9) << s->get_student_Code() << endl;}
             break;
     }
 }

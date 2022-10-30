@@ -46,13 +46,11 @@ void Student::PrintStudentTurmas(){
 void Student::createHorario() {
     for(Turma *turma : turmas){
         for (Slot *slot : turma->getHorarioUcTurma()){
-            horarioStudent.push_back(slot);
             horarioStudent.push_back(make_pair(slot, turma));
         }
     }
     // std::sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
     sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
-
 }
 
 void Student::PrintHorario() {

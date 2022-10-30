@@ -5,13 +5,13 @@
 #ifndef PROJECT_AED_UTILS_H
 #define PROJECT_AED_UTILS_H
 #include "Slot.h"
+#include "Turma.h"
 #include <map>
 
 using namespace std;
 
 class Slot;
-
-bool sorterHorario(Slot *s1, Slot *s2);
+class Turma;
 
 std::string GetFinishTime(std::string horarioInicio,std::string duracao);
 
