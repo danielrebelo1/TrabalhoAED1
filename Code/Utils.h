@@ -21,5 +21,6 @@ bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2);
 
 
 
+
 #endif //PROJECT_AED_UTILS_H
 

@@ -117,3 +117,58 @@ void PrintStudents(std::set<Student* , studentComparator> students , char option
             break;
     }
 }
+
+void PrintVector(std::vector<Turma*> v , char option){
+    char orderType;
+    switch(orderType){
+        case '1':
+            break;
+        case '2':
+            reverse(v.begin(),v.end());
+            break;
+    }
+
+    switch (option) {
+        case '1':
+            cout << "Turma" << "\t" << "Nº de alunos" << endl;
+            for (Turma* t : v){cout << t->get_turmaCode() << "\t" << t->get_nrStudentsTurma() << endl;}
+            break;
+        case '2':
+            cout << "Turma" << "\t" << "Nº de vagas" << endl;
+            for (Turma* t : v){cout << t->get_turmaCode() << "\t" << 24 - (int)(t->get_nrStudentsTurma()) << endl;}
+            break;
+    }
+
+}
+
+void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , char option){
+    vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
+    auto it = std::remove_if(todasTurmas.begin(), todasTurmas.end(),[ucCode] (Turma* t){return (t->get_ucCode() != ucCode); } );
+    todasTurmas.erase(it,todasTurmas.end());
+    cout << "Para a UC : " << ucCode << endl;
+    std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
+    switch (option) {
+        case '1': // ORDENAR POR Nº ALUNOS
+            break;
+        case '2': // ORDENAR POR Nº DE VAGAS
+            option = '2';
+            break;
+    }
+    PrintVector(todasTurmas,option);
+}
+
+void SortByEnrolledUC(std::set<Turma*, turmaComparator> allTurmas , char option){
+    vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
+    map<std::string , int> nrEnrolledUC;
+    for (Turma *t : todasTurmas){
+        nrEnrolledUC[t->get_ucCode()] += t->get_nrStudentsTurma();
+    }
+    /*
+    switch (option) {
+        case '1': // ordenação crescente
+
+
+    }
+     */
+    
+}
