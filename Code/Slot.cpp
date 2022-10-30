@@ -43,11 +43,3 @@ void Slot::setTipo( std::string tipo) {
     this->tipoAula = tipo;
 }
 
-void Slot::setTurma(Turma *t) {
-    this->turma = t;
-}
-
-
-Turma* Slot::getTurma()const{
-    return turma;
-}
