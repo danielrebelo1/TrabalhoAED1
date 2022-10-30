@@ -46,20 +46,26 @@ void Student::PrintStudentTurmas(){
 void Student::createHorario() {
     for(Turma *turma : turmas){
         for (Slot *slot : turma->getHorarioUcTurma()){
-            slot->setTurma(turma);
             horarioStudent.push_back(slot);
+            horarioStudent.push_back(make_pair(slot, turma));
         }
     }
-    std::sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
+    // std::sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
+    sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
 
 }
 
 void Student::PrintHorario() {
     createHorario();
-    cout << "Horário de " << studentName << ":" << endl;
-    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type"<< '\t' << setw(3) << "Time" << std::endl;
-    for (Slot *slot : horarioStudent){
-        cout << setw(9) << left << slot->getDiaSemana() << '\t' << setw(13) << slot->getTipo() << '\t' << Fixer(slot->getHorarioInicio()) << "-"<<  GetFinishTime(slot->getHorarioInicio(),slot->getDuracao()) << "\t" << (slot->getTurma())->get_ucCode() <<std::endl;
+    cout << "Horario de " << studentName << ":" << endl;
+    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
+         << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
+    for (pair<Slot *, Turma *> it: horarioStudent) {
+        cout << setw(9) << left << it.first->getDiaSemana() << '\t' << setw(9) << it.first->getTipo() << '\t' << setw(3)
+             << Fixer(it.first->getHorarioInicio()) << setw(1) <<
+             "-" << setw(8) << GetFinishTime(it.first->getHorarioInicio(), it.first->getDuracao()) << '\t'
+             << (it.second->get_ucCode()) << '\t'
+             << setw(3) << it.second->get_turmaCode() << endl;
     }
 }
 
