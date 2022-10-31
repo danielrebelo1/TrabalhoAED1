@@ -67,3 +67,15 @@ void Curso::PrintStudents(std::set<Student *, studentComparator> students, char 
         }
 
 }
+
+
+std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *, studentComparator> students,char year)
+{
+    std::set<Student* , studentComparator> students2;
+    for (Student* s : students){
+        std::vector<Turma*> v = s->get_TurmasAluno();
+        auto it = std::find_if(v.begin(),v.end(),[year](const Turma* t) {return (t->get_turmaCode()[0]) == year ;});
+        if (it != v.end()){students2.insert(s);}
+    }
+    return students2;
+}
