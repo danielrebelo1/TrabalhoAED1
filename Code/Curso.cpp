@@ -13,6 +13,14 @@ Curso::Curso(std::set<Student*, studentComparator> allStudents, std::set<Turma*,
     this->allTurmas = allTurmas;
 }
 
+std::set<Student*, studentComparator> Curso::getAllStudents() const{
+    return allStudents;
+}
+
+std::set<Turma*, turmaComparator> Curso::getAllTurmas() const {
+    return allTurmas;
+}
+
 std::set<Student* , studentComparator2> Curso::StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents) {
     for (Student *s : students) {newstudents.insert(s);}
     return newstudents;
@@ -21,12 +29,12 @@ std::set<Student* , studentComparator2> Curso::StudentReverseSortAlpha(std::set<
 std::set<Student* , studentComparatorCode> Curso::StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents){
     for (Student *s : students) {newstudents.insert(s);}
     return newstudents;
-};
+}
 
 std::set<Student* , studentComparatorDecreasingCode> Curso::StudentReverseSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorDecreasingCode> &newstudents) {
     for (Student *s : students) {newstudents.insert(s);}
     return newstudents;
-};
+}
 
 
 void Curso::PrintStudents(std::set<Student *, studentComparator> students, char option) {

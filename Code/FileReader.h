@@ -8,7 +8,6 @@
 #include "Turma.h"
 #include "Slot.h"
 
-
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -70,7 +69,7 @@ class FileReader{
 
     public:
         FileReader(std::istream &studentsinfo_file,std::istream &aulas_file);
-        std::set<Student*,studentComparator> getStudents()const;
+        set<Student *, studentComparator> getStudents() const;
         std::set<Turma*, turmaComparator> getTurmas() const;
         std::vector<Slot*> getSlots() const;
         void Init();
