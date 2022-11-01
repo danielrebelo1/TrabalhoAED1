@@ -81,22 +81,25 @@ void Menu::StudentMenu(){
     cout << "Qual o estudante pretendido?" << endl;
     cout << "1.Procurar por nome de estudante" << endl;
     cout << "2.Procurar por nº do estudante " << endl;
+    cout << "q.Sair" << endl;
     char option;
+    cout << "Choose option: ";
     cin >> option;
 
     switch(option){
         case '1':
             caso1:
                 string studentName, studentCode = "";
-                cout << "Insira nome completo do estudante: " ;
+                cout << "Insira nome completo do estudante: ";
                 // cin >> studentName;
+                // studentName = cin.get();
                 std::getline(std::cin, studentName);
                 cout << studentName << endl;
-                if (studentName == "q"){goto quit;}
+                if (studentName == "q"){StudentMenu();}
                 Student* s = new Student(studentName , studentCode);
                 auto it = studentsSet.find(s);
                 if (it == studentsSet.end()){cout << "Estudante não existente na base de dados.Tente novamente ou carregue 'q' para voltar atrás"<< endl;
-                    goto caso1;}
+                    StudentMenu();}
                 else {
                     s = *it;
                     foundstudent:
@@ -107,6 +110,7 @@ void Menu::StudentMenu(){
                     cout << "2. Ver horário do aluno" << endl;
                     cout << "q. Sair" << endl;
                     char option;
+                    cout << "Choose option: ";
                     cin >> option;
                     switch (option) {
                         case '1':
