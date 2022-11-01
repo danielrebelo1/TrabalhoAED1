@@ -50,3 +50,12 @@ std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , stude
     return students2;
 }
 
+int auxMenu(int maxOption){
+    int op;
+    do{
+        cin >> op;
+        if( op > maxOption || op < 0)
+            cout << "Numero invalido\n" << endl;
+    } while(op > maxOption || op < 0);
+    return op;
+}

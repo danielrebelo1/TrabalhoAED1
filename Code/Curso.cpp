@@ -79,3 +79,16 @@ std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *
     }
     return students2;
 }
+
+void Curso::PrintStudentByName() {
+    cout << "Qual o nome?\n";
+    string name;
+    cin.clear();
+    cin.sync();
+    getline(std::cin, name);
+    auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&name](const Student* student){return student->get_Name() == name;});
+    if(iterator != allStudents.end()){
+        cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
+    }
+
+}
