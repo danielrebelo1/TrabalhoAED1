@@ -90,5 +90,15 @@ void Curso::PrintStudentByName() {
     if(iterator != allStudents.end()){
         cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
     }
+}
 
+void Curso::PrintStudentByCode() {
+    cout << "Qual o codigo de estudante\n";
+    string ucCode;
+    cin.clear();
+    cin.sync();
+    getline(std::cin, ucCode);
+    auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&ucCode](const Student* student){return student->get_student_Code() == ucCode;});
+    if(iterator != allStudents.end())
+        cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
 }
