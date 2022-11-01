@@ -1,16 +1,18 @@
 //
-// Created by jaimefrf on 16-10-2022.
+// Created by Jaime on 01/11/2022.
 //
 
-#ifndef AEDTP1_MENU_H
-#define AEDTP1_MENU_H
+#ifndef PROJETO_AED_MENU_H
+#define PROJETO_AED_MENU_H
+#include "Curso.h"
+#include <fstream>
+using namespace std;
+
+void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file);
+
+int mainMenu(Curso curso);
+
+void studentMenu(Curso curso);
 
 
-class Menu {
-    public:
-        void MainMenu();
-
-};
-
-
-#endif //AEDTP1_MENU_H
+#endif //PROJETO_AED_MENU_H
