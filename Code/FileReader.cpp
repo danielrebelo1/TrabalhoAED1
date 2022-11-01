@@ -4,9 +4,6 @@
 
 #include "FileReader.h"
 
-
-
-
 using namespace std;
 
 FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file) {

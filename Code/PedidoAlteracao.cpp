@@ -1,7 +1,7 @@
 
 
 #include "PedidoAlteracao.h"
-#include <cmath>
+
 
 using namespace std;
 

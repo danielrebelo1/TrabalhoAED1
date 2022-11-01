@@ -3,7 +3,6 @@
 //
 
 #include "Curso.h"
-#include <set>
 
 using namespace std;
 
@@ -39,6 +38,7 @@ std::set<Student* , studentComparatorDecreasingCode> Curso::StudentReverseSortCo
 
 void Curso::PrintStudents(std::set<Student *, studentComparator> students, char option) {
         cout << setw(15) << left << "Nome" << "\t" << setw(20) << "Número de estudante" << endl;
+        // option é tipo de ordenação que user quer : alfabética , code
         switch (option) {
             case '1':
                 for (Student *s : students){cout << setw(15) << left << s->get_Name() << "\t\t" << setw(9) << s->get_student_Code() << endl;}
@@ -69,7 +69,7 @@ void Curso::PrintStudents(std::set<Student *, studentComparator> students, char 
 }
 
 
-std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *, studentComparator> students,char year)
+std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *, studentComparator> students,int year)
 {
     std::set<Student* , studentComparator> students2;
     for (Student* s : students){
@@ -78,4 +78,27 @@ std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *
         if (it != v.end()){students2.insert(s);}
     }
     return students2;
+}
+
+void Curso::PrintStudentByName() {
+    cout << "Qual o nome?\n";
+    string name;
+    cin.clear();
+    cin.sync();
+    getline(std::cin, name);
+    auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&name](const Student* student){return student->get_Name() == name;});
+    if(iterator != allStudents.end()){
+        cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
+    }
+}
+
+void Curso::PrintStudentByCode() {
+    cout << "Qual o código de estudante\n";
+    string ucCode;
+    cin.clear();
+    cin.sync();
+    getline(std::cin, ucCode);
+    auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&ucCode](const Student* student){return student->get_student_Code() == ucCode;});
+    if(iterator != allStudents.end())
+        cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Menu::Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
+void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
     char option;
     cout << "1 -> Processar dados atuais" << endl;
     cout << "2 -> Inserir novos dados" << endl;
@@ -11,16 +11,6 @@ Menu::Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
     cin >> option;
 
     switch (option) {
-        case '2':
-        {
-            string studentsInfoFilePath, aulasFilePath;
-            cout << "Insira o 'path' para os novos dados: " << "\n" << "'Path' para ficheiro com informação dos estudantes: ";
-            cin >> studentsInfoFilePath;
-
-            cout << "'Path' para ficheiro com informação das turmas: " << endl;
-            cin >>aulasFilePath;
-            break;
-        }
         case '1':
         {
             ifstream studentsinfo_file, aulas_file;
@@ -36,21 +26,59 @@ Menu::Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
             }
-            FileReader fr(studentsinfo_file, aulas_file);
-            studentsSet = fr.getStudents();
-            turmasSet = fr.getTurmas();
             break;
         }
-        default:
+        case '2':
+        {
+            string studentsInfoFilePath, aulasFilePath;
+            cout << "Insira o 'path' para os novos dados: " << "\n" << "'Path' para ficheiro com informação dos estudantes: ";
+            cin >> studentsInfoFilePath;
+            try {
+                studentsinfo_file.open(studentsInfoFilePath);
+            }
+            catch (exception e) {
+                cout << "Couldn't open students file" << endl;
+            }
+            cout << "'Path' para ficheiro com informação das turmas: " ;
+            cin >>aulasFilePath;
+            try {
+                studentsinfo_file.open(studentsInfoFilePath);
+            }
+            catch (exception e) {
+                cout << "Couldn't open classes file" << endl;
+            }
+            break;
+        }
+        default: {
             cout << "Escolha inválida " << endl;
-            Menu(studentsinfo_file,aulas_file);
+            Menu(studentsinfo_file, aulas_file);
+        }
     }
-    Curso *curso = new Curso(studentsSet,turmasSet);
-    MainMenu(curso);
 }
 
-void Menu::MainMenu(Curso* curso) {
-    cout << "Bem-vindo à plataforma de gestão dos horários de LEIC. O que deseja fazer?\n" << std::endl;
+int mainMenu() {
+    cout << "Bem-vindo a plataforma de gestao dos horarios de LEIC. O que deseja fazer?\n" << std::endl;
+    cout << "1.Ver informacoes de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Consultar horarios" << '\t'<< "4.Pedidos de alteracao" << '\t' << "0.Sair" << '\n';
+    return auxMenu(5);
+}
+
+int studentMenu(){
+    cout << setw(30) << left << "Informacoes estudante" << endl;
+    cout << "Qual o estudante pretendido?" << endl;
+    cout << "\n";
+    cout << "1.Procurar por nome de estudante" << endl;
+    cout << "2.Procurar por numero do estudante " << endl;
+    cout << "0.Sair\n" << endl;
+    return auxMenu(3);
+}
+
+
+
+
+
+
+/*
+void MainMenu(Curso* curso) {
     cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Consultar horários"
          << '\t' << "4.Pedidos de alteração" << '\t' << "q.Sair" << '\n';
     char option;
@@ -81,7 +109,7 @@ void Menu::MainMenu(Curso* curso) {
     }
 }
 
-void Menu::StudentMenu() {
+void StudentMenu() {
     cout << setw(30) << left << "Informações estudante" << endl;
     cout << "Qual o estudante pretendido?" << endl;
     cout << "\n";
@@ -145,3 +173,5 @@ void Menu::StudentMenu() {
     return;
 
 }
+*/
+

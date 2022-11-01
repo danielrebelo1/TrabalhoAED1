@@ -4,11 +4,9 @@
 
 #ifndef PROJECT_AED_UTILS_H
 #define PROJECT_AED_UTILS_H
-#include "Slot.h"
-#include "Turma.h"
-#include <map>
 
-using namespace std;
+#include <string>
+#include <map>
 
 class Slot;
 class Turma;
@@ -17,10 +15,11 @@ std::string GetFinishTime(std::string horarioInicio,std::string duracao);
 
 std::string Fixer(std::string horarioInicio);
 
-bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2);
+bool sorterHorario(std::pair <Slot *, Turma *> s1, std::pair <Slot *, Turma *> s2);
 
+int auxMenu(int maxOption);
 
-
+void PrintVector(std::vector<Turma*> v , char option);
 
 #endif //PROJECT_AED_UTILS_H
 

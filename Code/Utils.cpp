@@ -2,12 +2,14 @@
 // Created by Jaime on 29/10/2022.
 //
 
-// #include "Utils.h"
+#include "Utils.h"
 #include "FileReader.h"
-#include "Student.h"
-#include "Turma.h"
 
-map<std::string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
+
+
+using namespace std;
+
+map<string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
 
 bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2){
     if(weekDays[s1.first->getDiaSemana()] != weekDays[s2.first->getDiaSemana()]) return (weekDays[s1.first->getDiaSemana()] < weekDays[s2.first->getDiaSemana()]);
@@ -52,6 +54,7 @@ std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , stude
 
 void PrintVector(std::vector<Turma*> v , char option){
     char orderType;
+    cout << "Que tipo";
     switch(orderType){
         case '1':
             break;
@@ -70,9 +73,7 @@ void PrintVector(std::vector<Turma*> v , char option){
             for (Turma* t : v){cout << t->get_turmaCode() << "\t" << 24 - (int)(t->get_nrStudentsTurma()) << endl;}
             break;
     }
-
 }
-
 
 void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , char option){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
@@ -104,4 +105,14 @@ void SortByEnrolledUC(std::set<Turma*, turmaComparator> allTurmas , char option)
     }
      */
     
+}
+
+int auxMenu(int maxOption){
+    int op;
+    do{
+        cin >> op;
+        if( op > maxOption || op < 0)
+            cout << "Numero invalido\n" << endl;
+    } while(op > maxOption || op < 0);
+    return op;
 }
