@@ -5,14 +5,15 @@
 #ifndef PROJETO_AED_MENU_H
 #define PROJETO_AED_MENU_H
 #include "Curso.h"
+#include "Utils.h"
 #include <fstream>
 using namespace std;
 
 void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file);
 
-int mainMenu(Curso curso);
+int mainMenu();
 
-void studentMenu(Curso curso);
+int studentMenu();
 
 
 #endif //PROJETO_AED_MENU_H
