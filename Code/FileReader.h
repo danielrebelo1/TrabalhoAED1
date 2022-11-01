@@ -8,7 +8,6 @@
 #include "Turma.h"
 #include "Slot.h"
 
-
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -23,6 +22,12 @@ class Student;
 class Turma;
 class Slot;
 
+struct studentComparator2{
+    bool operator()(Student* s1, Student* s2) const {
+        if (s1->get_student_Code() != s2->get_student_Code()) return (s2->get_Name() < s1->get_Name());
+        return false;
+    }
+};
 
 struct studentComparator
 {
@@ -41,6 +46,20 @@ struct turmaComparator
     }
 };
 
+struct studentComparatorCode {
+    bool operator()(Student* s1, Student* s2) const {
+        if (s1->get_student_Code() != s2->get_student_Code()) return (s1->get_student_Code() < s2->get_student_Code());
+        return false;
+    }
+};
+
+struct studentComparatorDecreasingCode {
+    bool operator()(Student* s1, Student* s2) const {
+        if (s1->get_student_Code() != s2->get_student_Code()) return (s2->get_student_Code() < s1->get_student_Code());
+        return false;
+    }
+};
+
 class FileReader{
 
         std::set<Student*, studentComparator> students;
@@ -50,7 +69,7 @@ class FileReader{
 
     public:
         FileReader(std::istream &studentsinfo_file,std::istream &aulas_file);
-        std::set<Student*,studentComparator> getStudents()const;
+        set<Student *, studentComparator> getStudents() const;
         std::set<Turma*, turmaComparator> getTurmas() const;
         std::vector<Slot*> getSlots() const;
         void Init();
