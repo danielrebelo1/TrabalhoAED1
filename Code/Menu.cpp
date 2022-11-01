@@ -16,6 +16,7 @@ Menu::Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
             string studentsInfoFilePath, aulasFilePath;
             cout << "Insira o 'path' para os novos dados: " << "\n" << "'Path' para ficheiro com informação dos estudantes: ";
             cin >> studentsInfoFilePath;
+
             cout << "'Path' para ficheiro com informação das turmas: " << endl;
             cin >>aulasFilePath;
             break;
@@ -38,19 +39,20 @@ Menu::Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
             FileReader fr(studentsinfo_file, aulas_file);
             studentsSet = fr.getStudents();
             turmasSet = fr.getTurmas();
-            
             break;
         }
         default:
             cout << "Escolha inválida " << endl;
             Menu(studentsinfo_file,aulas_file);
     }
+    Curso *curso = new Curso(studentsSet,turmasSet);
+    MainMenu(curso);
 }
 
 void Menu::MainMenu(Curso* curso) {
     cout << "Bem-vindo à plataforma de gestão dos horários de LEIC. O que deseja fazer?\n" << std::endl;
     cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Consultar horários"
-         << '\t' << "4.Pedidos de alteração" << '\t' << "5.Sair" << '\n';
+         << '\t' << "4.Pedidos de alteração" << '\t' << "q.Sair" << '\n';
     char option;
     cin >> option;
 
@@ -82,27 +84,30 @@ void Menu::MainMenu(Curso* curso) {
 void Menu::StudentMenu() {
     cout << setw(30) << left << "Informações estudante" << endl;
     cout << "Qual o estudante pretendido?" << endl;
+    cout << "\n";
     cout << "1.Procurar por nome de estudante" << endl;
     cout << "2.Procurar por nº do estudante " << endl;
-    cout << "q.Sair" << endl;
+    cout << "q.Sair\n" << endl;
     char option;
     cout << "Choose option: ";
+    // scanf(" %c", &option);
     cin >> option;
+    cout << "\n";
 
     switch (option) {
         case '1':
+        {
         caso1:
             string studentName, studentCode = "";
-            cout << "Insira nome completo do estudante: ";
-            // cin >> studentName;
-            // studentName = cin.get();
+            cout << "Insira nome completo do estudante: " << endl;
             std::getline(std::cin, studentName);
             cout << studentName << endl;
+            cout << "\n";
             if (studentName == "q") { StudentMenu(); }
             Student *s = new Student(studentName, studentCode);
             auto it = studentsSet.find(s);
             if (it == studentsSet.end()) {
-                cout << "Estudante não existente na base de dados.Tente novamente ou carregue 'q' para voltar atrás"
+                cout << "Estudante não existente na base de dados.Tente novamente ou carregue 'q' para voltar atrás\n"
                      << endl;
                 StudentMenu();
             } else {
@@ -133,6 +138,7 @@ void Menu::StudentMenu() {
                 }
             }
             break;
+        }
     }
     StudentMenu();
     quit:
