@@ -1,160 +1,177 @@
-//
-
-//
 
 #include "Menu.h"
-#include <iostream>
 
-/*
-void Menu::MenuInit(){
-    std::cout << "Bem-vindo à plataforma de gestão dos horários de LEIC. O que desejas fazer?\n" << std::endl;
-}
- */
+using namespace std;
 
-void Menu::MainMenu() {
-    std::cout << "Bem-vindo à plataforma de gestão dos horários de LEIC. O que desejas fazer?\n" << std::endl;
-    std::cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Consultar horários" << '\t'<< "4.Pedidos de alteração" << '\t' << "5.Sair" << '\n';
-    std::string choice, student;
-    std::cin >> choice;
+void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
+    char option;
+    cout << "1 -> Processar dados atuais" << endl;
+    cout << "2 -> Inserir novos dados" << endl;
 
-    while (true) {
-        if (choice == "1") {
-            Menu1();
-            break;
-        } else if (choice == "2") {
-            Menu2();
-            break;
-        } else if (choice == "3") {
-            Menu3();
-            break;
-        } else if (choice == "4") {
-            Menu4();
-            break;
-        } else if (choice == "5") { break; }
+    cin >> option;
 
-        else {
-            std::cout << "Escolha inválida, insira outra opção:" << '\n';
-            std::cin >> choice;
+    switch (option) {
+        case '1':
+        {
+            ifstream studentsinfo_file, aulas_file;
+            try {
+                studentsinfo_file.open("Code/schedule/students_classes.csv");
+            }
+            catch (exception e) {
+                cout << "Couldn't open students file" << endl;
+            }
+            try {
+                aulas_file.open("Code/schedule/classes.csv");
+            }
+            catch (exception e) {
+                cout << "Couldn't open classes file" << endl;
+            }
+            break;
+        }
+        case '2':
+        {
+            string studentsInfoFilePath, aulasFilePath;
+            cout << "Insira o 'path' para os novos dados: " << "\n" << "'Path' para ficheiro com informação dos estudantes: ";
+            cin >> studentsInfoFilePath;
+            try {
+                studentsinfo_file.open(studentsInfoFilePath);
+            }
+            catch (exception e) {
+                cout << "Couldn't open students file" << endl;
+            }
+            cout << "'Path' para ficheiro com informação das turmas: " ;
+            cin >>aulasFilePath;
+            try {
+                studentsinfo_file.open(studentsInfoFilePath);
+            }
+            catch (exception e) {
+                cout << "Couldn't open classes file" << endl;
+            }
+            break;
+        }
+        default: {
+            cout << "Escolha inválida " << endl;
+            Menu(studentsinfo_file, aulas_file);
         }
     }
 }
 
-void Menu::Menu1() {
-    std::cout << std::endl << "1.UC's em que está inscrito" << '\t' << "2.Turmas em que está inscrito" << '\t' << "3.Não sei mais" << '\t' << "4.Voltar" << '\n';
-    std::string choice;
-    std::cin >> choice;
-    if (choice == "1"){
-        //AskForStudent();
-        //print uc's
-    }
-    else if (choice == "2")
-    {
-        //AskForStudent();
-        //student.PrintStudentTurmas();
-    }
-    else if(choice == "3"){
-        //coisas
-    }
-    else if(choice == "4"){
-        MainMenu();
+int mainMenu() {
+    cout << "Bem-vindo a plataforma de gestao dos horarios de LEIC. O que deseja fazer?\n" << std::endl;
+    cout << "1.Ver informacoes de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Consultar horarios" << '\t'<< "4.Pedidos de alteracao" << '\t' << "0.Sair" << '\n';
+    return auxMenu(5);
+}
+
+int studentMenu(){
+    cout << setw(30) << left << "Informacoes estudante" << endl;
+    cout << "Qual o estudante pretendido?" << endl;
+    cout << "\n";
+    cout << "1.Procurar por nome de estudante" << endl;
+    cout << "2.Procurar por numero do estudante " << endl;
+    cout << "0.Sair\n" << endl;
+    return auxMenu(3);
+}
+
+
+
+
+
+
+/*
+void MainMenu(Curso* curso) {
+    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Consultar horários"
+         << '\t' << "4.Pedidos de alteração" << '\t' << "q.Sair" << '\n';
+    char option;
+    cin >> option;
+
+    switch (option) {
+
+        case '1':
+            StudentMenu();
+            break;
+        case '2':
+            // Menu2();
+            break;
+        case '3':
+            // Menu3();
+            break;
+        case '4':
+            // Menu4();
+            break;
+        case 'q':
+            // Quit();
+            cout << "Thanks for using LEIC Schedule Manager" << endl;
+            return;
+        default: {
+            cout << "Escolha inválida, insira outra opção:" << '\n';
+            MainMenu(curso);
+        }
     }
 }
 
-void Menu::Menu2() {
-    std::cout << std::endl << "1.Consultar turmas de uma UC" << '\t' << "2.Consultar estudantes de uma turma " << '\t' << "3.Não sei mais" << '\t' << "4.Voltar" << '\n';
-    std::string choice;
-    std::cin >> choice;
-    if (choice == "1"){
-        //AskForUc();
-        //print turmas;
+void StudentMenu() {
+    cout << setw(30) << left << "Informações estudante" << endl;
+    cout << "Qual o estudante pretendido?" << endl;
+    cout << "\n";
+    cout << "1.Procurar por nome de estudante" << endl;
+    cout << "2.Procurar por nº do estudante " << endl;
+    cout << "q.Sair\n" << endl;
+    char option;
+    cout << "Choose option: ";
+    // scanf(" %c", &option);
+    cin >> option;
+    cout << "\n";
+
+    switch (option) {
+        case '1':
+        {
+        caso1:
+            string studentName, studentCode = "";
+            cout << "Insira nome completo do estudante: " << endl;
+            std::getline(std::cin, studentName);
+            cout << studentName << endl;
+            cout << "\n";
+            if (studentName == "q") { StudentMenu(); }
+            Student *s = new Student(studentName, studentCode);
+            auto it = studentsSet.find(s);
+            if (it == studentsSet.end()) {
+                cout << "Estudante não existente na base de dados.Tente novamente ou carregue 'q' para voltar atrás\n"
+                     << endl;
+                StudentMenu();
+            } else {
+                s = *it;
+                foundstudent:
+                cout << "Estudante encontrado!" << endl;
+                cout << "Nome estudante : " << setw(20) << s->get_Name() << "\t" << "Número de estudante: " << setw(10)
+                     << s->get_student_Code() << endl;
+                cout << "Escolha a ação que quer realizar: " << endl;
+                cout << "1. Ver turmas e UCs do aluno" << endl;
+                cout << "2. Ver horário do aluno" << endl;
+                cout << "q. Sair" << endl;
+                char option;
+                cout << "Choose option: ";
+                cin >> option;
+                switch (option) {
+                    case '1':
+                        s->PrintStudentTurmas();
+                        break;
+                    case '2':
+                        s->PrintHorario();
+                        break;
+                    case 'q':
+                        goto quit;
+                    default:
+                        cout << "Escolha inválida, insira outra opção:" << '\n';
+                        goto foundstudent;
+                }
+            }
+            break;
+        }
     }
-    else if (choice == "2")
-    {
-        //AskForClass();
-        //print estudantes;
-    }
-    else if(choice == "3"){
-        //coisas
-    }
-    else if(choice == "4"){
-        MainMenu();
-    }
+    StudentMenu();
+    quit:
+    return;
+
 }
-
-void Menu::Menu3() {
-    std::cout << std::endl << "1.Consultar horários de uma turma" << '\t' << "2.Consultar horários de um aluno" << '\t' << "3.Não sei mais" << '\t' << "4.Voltar" << '\n';
-    std::string choice;
-    std::cin >> choice;
-    if (choice == "1"){
-        //AskForClass();
-        //print horário da turma;
-    }
-    else if (choice == "2")
-    {
-        //AskForStudent();
-        //student.PrintHorario();
-    }
-    else if(choice == "3"){
-        //coisas
-    }
-    else if(choice == "4"){
-        MainMenu();
-    }
-}
-
-void Menu::Menu4() {
-    std::cout << std::endl << "1.Troca direta de turmas entre dois alunos" << '\t' << "2.Troca de turma de um aluno " << '\t' << "3.Adicionar aluno a uma turma" << '\t' << "4.Remover aluno de uma turma" << "5.Voltar" << '\n';
-    std::string choice;
-    std::cin >> choice;
-    if (choice == "1"){
-        //AskForStudent();
-        //AskForStudent();
-        //AskforClass();
-        //AskForClass();
-        //mudança
-    }
-    else if (choice == "2")
-    {
-        //AskForStudent();
-        //AskForClass();
-        //mudança
-    }
-    else if(choice == "3"){
-        //AskForStudent();
-        //AskForClass();
-        //mudança
-    }
-
-    else if(choice == "4"){
-        //AskForStudent();
-        //AskForClass();
-        //mudança
-    }
-
-    else if(choice == "5"){
-        MainMenu();
-    }
-}
-
-std::string Menu::AskForStudent() {
-        std::string student;
-        std::cout << std::endl << "Insira o número mecanográfico do estudante em questão:" << '\n' ;
-        std::cin >> student;
-        return student;
-}
-
-std::string Menu::AskForClass() {
-    std::string turma;
-    std::cout <<std::endl << "Insira o código da turma em questão:" << '\n' ;
-    std::cin >> turma;
-    return turma;
-}
-
-std::string Menu::AskForUc() {
-    std::string uc;
-    std::cout << std::endl << "Insira o código da UC em questão:" << '\n' ;
-    std::cin >> uc;
-    return uc;
-}
-
+*/
 

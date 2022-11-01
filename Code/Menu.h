@@ -1,25 +1,23 @@
 //
-// Created by jaimefrf on 16-10-2022.
+// Created by Jaime on 01/11/2022.
 //
 
 #ifndef AEDTP1_MENU_H
 #define AEDTP1_MENU_H
 
+#include "Curso.h"
+#include "Utils.h"
+
+#include <fstream>
+#include <iostream>
 #include <string>
+#include <iomanip>
 
-class Menu {
-    public:
-        //void MenuInit();
-        void MainMenu();
-        void Menu1();
-        void Menu2();
-        void Menu3();
-        void Menu4();
-        std::string AskForStudent();
-        std::string AskForClass();
-        std::string AskForUc();
+void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file);
 
-};
+int MainMenu();
 
+int StudentMenu();
 
 #endif //AEDTP1_MENU_H
+

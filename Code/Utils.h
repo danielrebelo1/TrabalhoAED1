@@ -4,20 +4,22 @@
 
 #ifndef PROJECT_AED_UTILS_H
 #define PROJECT_AED_UTILS_H
-#include "Slot.h"
+
+#include <string>
 #include <map>
 
-using namespace std;
-
 class Slot;
-
-bool sorterHorario(Slot *s1, Slot *s2);
+class Turma;
 
 std::string GetFinishTime(std::string horarioInicio,std::string duracao);
 
 std::string Fixer(std::string horarioInicio);
 
+bool sorterHorario(std::pair <Slot *, Turma *> s1, std::pair <Slot *, Turma *> s2);
 
+int auxMenu(int maxOption);
+
+void PrintVector(std::vector<Turma*> v , char option);
 
 #endif //PROJECT_AED_UTILS_H
 
