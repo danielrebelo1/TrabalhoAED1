@@ -18,7 +18,8 @@ Menu::Menu(){
             cin >>aulasFilePath;
             break;
         }
-        default:
+        case '1':
+        {
             ifstream studentsinfo_file, aulas_file;
             try {
                 studentsinfo_file.open("Code/schedule/students_classes.csv");
@@ -35,6 +36,11 @@ Menu::Menu(){
             FileReader fr(studentsinfo_file, aulas_file);
             studentsSet = fr.getStudents();
             turmasSet = fr.getTurmas();
+            break;
+        }
+        default:
+            cout << "Escolha inválida " << endl;
+            Menu();
     }
 }
 void Menu::MainMenu() {
@@ -82,8 +88,10 @@ void Menu::StudentMenu(){
         case '1':
             caso1:
                 string studentName, studentCode = "";
-                cout << "Insira nome completo do estudante: " << endl;
-                cin >> studentName;
+                cout << "Insira nome completo do estudante: " ;
+                // cin >> studentName;
+                std::getline(std::cin, studentName);
+                cout << studentName << endl;
                 if (studentName == "q"){goto quit;}
                 Student* s = new Student(studentName , studentCode);
                 auto it = studentsSet.find(s);
