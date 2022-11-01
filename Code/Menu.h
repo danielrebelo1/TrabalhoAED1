@@ -1,22 +1,23 @@
 //
-// Created by jaimefrf on 16-10-2022.
+// Created by Jaime on 01/11/2022.
 //
 
 #ifndef AEDTP1_MENU_H
 #define AEDTP1_MENU_H
 
 #include "FileReader.h"
+#include "Curso.h"
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <iomanip>
 
 class Menu {
-
     set <Student* , studentComparator> studentsSet;
     set <Turma*,turmaComparator> turmasSet;
 public:
-    Menu();
-    void MainMenu();
+    Menu(std::ifstream& studentsinfo_file,std::ifstream& aulas_file);
+    void MainMenu(Curso* curso);
     void StudentMenu();
     void Menu2();
     void Menu3();
@@ -29,3 +30,4 @@ public:
 
 
 #endif //AEDTP1_MENU_H
+
