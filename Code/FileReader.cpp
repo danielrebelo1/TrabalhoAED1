@@ -78,11 +78,11 @@ FileReader::FileReader(std::istream &studentsinfo_file, std::istream &aulas_file
 }
 
 set<Student *, studentComparator> FileReader::getStudents() const {
-    return this->students;
+    return students;
 }
 
 std::set<Turma *, turmaComparator> FileReader::getTurmas() const {
-    return this->allTurmas;
+    return allTurmas;
 }
 
 vector<Slot *> FileReader::getSlots() const {

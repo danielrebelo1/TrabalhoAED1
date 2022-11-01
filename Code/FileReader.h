@@ -18,12 +18,11 @@
 #include <string>
 #include <type_traits>
 #include <vector>
-
+/*
 class Student;
 class Turma;
 class Slot;
-
-
+ */
 struct studentComparator
 {
     bool operator()(Student* s1, Student* s2) const {
