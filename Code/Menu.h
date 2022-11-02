@@ -21,11 +21,15 @@ int studentMenu();
 
 int studentMenu2();
 
-int studentMenu2();
-
 int turmaMenu();
 
 int turmaMenu2(int ano);
+
+int turmaMenu3();
+
+int turmaMenuHorário();
+
+int turmaMenuStudents();
 
 #endif //AEDTP1_MENU_H
 
