@@ -97,17 +97,19 @@ int turmaMenu2(int ano){
 }
 
 
+int turmaMenu3(){
+    cout << "O que deseja fazer?\n";
+    cout << "1. Ver o horário desta turma" << "\n";
+    cout << "2. Ver os estudantes desta turma" << "\n";
+    return auxMenu(2,1);
+}
 
-
-
-
-
-
-
-
-
-
-
+int turmaMenuHorário(){
+    cout << "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?";
+    cout << "1. Todas as UCs";
+    cout << "2. De apenas uma UC em específico";
+    return auxMenu(2,1);
+}
 
 
 

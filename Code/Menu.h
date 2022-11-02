@@ -27,5 +27,9 @@ int turmaMenu();
 
 int turmaMenu2(int ano);
 
+int turmaMenu3();
+
+int turmaMenuHorário();
+
 #endif //AEDTP1_MENU_H
 
