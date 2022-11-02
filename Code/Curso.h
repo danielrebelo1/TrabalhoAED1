@@ -8,6 +8,7 @@
 #include <set>
 #include "Student.h"
 #include "FileReader.h"
+#include "Menu.h"
 
 struct studentComparator2{
     bool operator()(Student* s1, Student* s2) const {
@@ -40,6 +41,7 @@ public:
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
+    Turma* FindTurma();
     Student* PrintStudentByName();
     Student* PrintStudentByCode();
     static std::set<Student* , studentComparator2> StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents);

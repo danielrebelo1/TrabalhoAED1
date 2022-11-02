@@ -107,13 +107,13 @@ void SortByEnrolledUC(std::set<Turma*, turmaComparator> allTurmas , char option)
     
 }
 
-int auxMenu(int maxOption){
+int auxMenu(int maxOption, int minOption){
     int op;
     do{
         cin >> op;
         cout << endl;
-        if( op > maxOption || op < 0)
+        if( op > maxOption || op < minOption)
             cout << "Número inválido\n" << endl;
-    } while(op > maxOption || op < 0);
+    } while(op > maxOption || op < minOption);
     return op;
 }
