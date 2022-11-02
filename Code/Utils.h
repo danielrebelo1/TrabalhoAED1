@@ -6,6 +6,7 @@
 #define PROJECT_AED_UTILS_H
 
 #include <string>
+#include <vector>
 #include <map>
 
 class Slot;

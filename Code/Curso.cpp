@@ -80,25 +80,33 @@ std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *
     return students2;
 }
 
-void Curso::PrintStudentByName() {
-    cout << "Qual o nome?\n";
-    string name;
-    cin.clear();
-    cin.sync();
-    getline(std::cin, name);
-    auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&name](const Student* student){return student->get_Name() == name;});
-    if(iterator != allStudents.end()){
-        cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
+Student* Curso::PrintStudentByName() {
+    cout << "Qual o nome do estudante ?\n";
+    while(true) {
+        string name;
+        cin.sync();
+        getline(std::cin, name);
+        auto iterator = std::find_if(allStudents.begin(), allStudents.end(),
+                                     [&name](const Student *student) { return student->get_Name() == name; });
+        if (iterator != allStudents.end()) {
+            cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
+            return (*iterator);
+        } else { cout << "\nEstudante nao encontrado, insira novamente o nome: \n";}
     }
 }
 
-void Curso::PrintStudentByCode() {
+Student* Curso::PrintStudentByCode() {
     cout << "Qual o código de estudante\n";
-    string ucCode;
-    cin.clear();
-    cin.sync();
-    getline(std::cin, ucCode);
-    auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&ucCode](const Student* student){return student->get_student_Code() == ucCode;});
-    if(iterator != allStudents.end())
-        cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
+    while(true) {
+        string ucCode;
+        cin.sync();
+        getline(std::cin, ucCode);
+        auto iterator = std::find_if(allStudents.begin(), allStudents.end(), [&ucCode](const Student *student) {
+            return student->get_student_Code() == ucCode;
+        });
+        if (iterator != allStudents.end()) {
+            cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
+            return (*iterator);
+        }else { cout << "\nCódigo inválido, insira novamente o nome: \n";}
+    }
 }

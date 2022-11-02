@@ -15,9 +15,11 @@
 
 void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file);
 
-int MainMenu();
+int mainMenu();
 
-int StudentMenu();
+int studentMenu();
+
+int studentMenu2();
 
 #endif //AEDTP1_MENU_H
 

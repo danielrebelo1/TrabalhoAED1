@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
+void Menu(ifstream &studentsinfo_file,ifstream &aulas_file){
     char option;
     cout << "1 -> Processar dados atuais" << endl;
     cout << "2 -> Inserir novos dados" << endl;
@@ -13,15 +13,14 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
     switch (option) {
         case '1':
         {
-            ifstream studentsinfo_file, aulas_file;
             try {
-                studentsinfo_file.open("Code/schedule/students_classes.csv");
+                studentsinfo_file.open("/home/daniel/aedtp1/Code/schedule/students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("Code/schedule/classes.csv");
+                aulas_file.open("/home/daniel/aedtp1/Code/schedule/classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -72,10 +71,10 @@ int studentMenu(){
     return auxMenu(3);
 }
 
-
-
-
-
+int studentMenu2(){
+    cout << endl << "1.Ver UC's/Turmas em que está inscrito \n" << "2.Ver horário \n" << "0.Voltar \n";
+    return auxMenu(3);
+}
 
 /*
 void MainMenu(Curso* curso) {

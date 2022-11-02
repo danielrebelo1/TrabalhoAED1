@@ -40,12 +40,11 @@ public:
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
-    void PrintStudentByName();
-    void PrintStudentByCode();
     static std::set<Student* , studentComparator2> StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents);
     static std::set<Student* , studentComparatorCode> StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents);
     static std::set<Student* , studentComparatorDecreasingCode> StudentReverseSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorDecreasingCode> &newstudents);
-
+    Student* PrintStudentByName();
+    Student* PrintStudentByCode();
     std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
 };
 
