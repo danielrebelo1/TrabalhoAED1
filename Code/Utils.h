@@ -6,6 +6,7 @@
 #define PROJECT_AED_UTILS_H
 
 #include <string>
+#include <vector>
 #include <map>
 
 class Slot;
@@ -17,7 +18,9 @@ std::string Fixer(std::string horarioInicio);
 
 bool sorterHorario(std::pair <Slot *, Turma *> s1, std::pair <Slot *, Turma *> s2);
 
-int auxMenu(int maxOption);
+int auxMenu(int maxOption, int minOption);
+
+void PrintVector(std::vector<Turma*> v , char option);
 
 void PrintVector(std::vector<Turma*> v , char option);
 
