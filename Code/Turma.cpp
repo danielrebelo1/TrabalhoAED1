@@ -49,6 +49,7 @@ void Turma::PrintTurma(){
     }
 }
 
+
 std::list<Slot *> Turma::getHorarioUcTurma() const {
     return this->horarioUcTurma;
 }

@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("/home/daniel/aedtp1/Code/schedule/students_classes.csv");
+                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("Code/schedule/classes.csv");
+                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -96,8 +96,30 @@ int turmaMenu2(int ano){
     return 0;
 }
 
+int turmaMenu3(){
+    cout << "O que deseja fazer?\n";
+    cout << "1. Ver o horário desta turma" << "\n";
+    cout << "2. Ver os estudantes desta turma" << "\n";
+    return auxMenu(2,1);
+}
 
+int turmaMenuHorário(){
+    cout << "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+    cout << "1. Todas as UCs\n";
+    cout << "2. De apenas uma UC em específico\n";
+    return auxMenu(2,1);
+}
 
+int turmaMenuStudents(){
+    cout << "Deseja ver os students desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+    cout << "1. Todas as UCs\n";
+    cout << "2. De apenas uma UC em específico\n";
+    return auxMenu(2, 1);
+}
+
+int displayStudents(){
+
+}
 
 
 

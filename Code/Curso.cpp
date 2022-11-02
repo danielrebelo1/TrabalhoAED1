@@ -112,7 +112,8 @@ Student* Curso::PrintStudentByCode() {
 
 }
 
-Turma* Curso::FindTurma(){
+vector<Turma*> Curso::FindTurma(){
+    vector<Turma *>  allTurmasPrev(allTurmas.begin(), allTurmas.end());
     while(true) {
         int turmaAno = turmaMenu();
         std::string turmaCode = to_string(turmaMenu2(turmaAno));
@@ -120,13 +121,34 @@ Turma* Curso::FindTurma(){
         if(turmaCode.length() == 1)
             turmaCode = "0" + turmaCode;
         std::string turma = turmaAnoStr + "LEIC" + turmaCode;
-        auto itr = std::find_if(allTurmas.begin(), allTurmas.end(),
-                                [&turma](const Turma *t) { return t->get_turmaCode() == turma; });
-        if (itr != allTurmas.end()) {
+        auto itr = std::remove_if(allTurmasPrev.begin(), allTurmasPrev.end(),
+                                [&turma](const Turma *t) { return t->get_turmaCode() != turma; });
+        allTurmasPrev.erase(itr, allTurmasPrev.end());
+        if (allTurmasPrev.size() != 0) {
             cout << "Turma encontrada!" << endl;
-            cout << "Turma: " << (*itr)->get_turmaCode() << "\n";
-            return (*itr);
+            cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << "\n";
         } else { cout << "\nTurma nao encontrada, tente novamente: \n"; }
+        return allTurmasPrev;
     }
+}
 
+void Curso::PrintHorarioInteiroTurma(std::vector<Turma *> vt) {
+     vector<Slot*> horarioTurmaInteira;
+    for (Turma *t : vt)
+    {
+        list<Slot*> l = t->getHorarioUcTurma();
+        horarioTurmaInteira.insert(horarioTurmaInteira.begin(),l.begin(),l.end());
+    }
+    sort(horarioTurmaInteira.begin(), horarioTurmaInteira.end(), sorterHorarioSlot);
+    // sort(horarioTurmaInteira.begin(), horarioTurmaInteira.end(), [] (const Slot* s1 , const Slot* s2) {if(weekDays[s1->getDiaSemana()] != weekDays[s2->getDiaSemana()]) return (weekDays[s1->getDiaSemana()] < weekDays[s2->getDiaSemana()]);
+    //    if(s1->getHorarioInicio() != s2->getHorarioInicio()) return ((s1->getHorarioInicio * 10) < s2->getHorarioInicio());
+    //    return false;});
+    cout << "Horario da turma: " << (vt[0])->get_turmaCode() << endl;
+    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
+         << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
+    for (Slot* s : horarioTurmaInteira){
+        cout << setw(9) << left << s->getDiaSemana() << '\t' << setw(9) << s->getTipo() << '\t' << setw(3)
+                 << Fixer(s->getHorarioInicio()) << setw(1) <<
+                 "-" << setw(8) << GetFinishTime(s->getHorarioInicio(), s->getDuracao()) << endl;
+    }
 }
