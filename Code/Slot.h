@@ -7,8 +7,6 @@
 
 #include <iostream>
 
-
-
 class Slot {
 private:
     std::string diaSemana;

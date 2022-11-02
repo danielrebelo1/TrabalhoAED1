@@ -8,6 +8,7 @@
 #include "Turma.h"
 #include "Utils.h"
 #include "Slot.h"
+
 #include <iomanip>
 #include <algorithm>
 #include <fstream>
@@ -18,18 +19,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
-
-/*
-struct turmaComparator
-{
-    bool operator()(Turma* t1, Turma* t2) const {
-        if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_ucCode() < t2->get_ucCode());
-        else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode() < t2->get_turmaCode());
-        return false;
-    }
-};
-*/
 
 class Turma;
 class Slot;
@@ -52,16 +41,8 @@ private:
     std::string studentName;
     std::string studentCode;
     std::vector<Turma *> turmas;
-    std::vector< std::pair <Slot * , Turma *>>  horarioStudent;
+    std::vector< std::pair <Slot * , Turma *>> horarioStudent;
 };
-/*
-struct studentComparator
-{
-    bool operator()(Student* s1, Student* s2) const {
-        if (s1->get_student_Code() != s2->get_student_Code()) return (s1->get_Name() < s2->get_Name());
-        return false;
-    }
-};
- */
+
 
 #endif //AEDTP1_STUDENT_H

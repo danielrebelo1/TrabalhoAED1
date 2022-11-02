@@ -91,7 +91,7 @@ Student* Curso::PrintStudentByName() {
         if (iterator != allStudents.end()) {
             cout << (*iterator)->get_Name() << "  " << (*iterator)->get_student_Code() << "\n";
             return (*iterator);
-        } else { cout << "\nNome inválido, insira novamente o nome: \n";}
+        } else { cout << "\nEstudante nao encontrado, insira novamente o nome: \n";}
     }
 }
 
@@ -109,6 +109,7 @@ Student* Curso::PrintStudentByCode() {
             return (*iterator);
         }else { cout << "\nCódigo inválido, insira novamente o nome: \n";}
     }
+
 }
 
 Turma* Curso::FindTurma(){

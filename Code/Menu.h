@@ -21,6 +21,8 @@ int studentMenu();
 
 int studentMenu2();
 
+int studentMenu2();
+
 int turmaMenu();
 
 int turmaMenu2(int ano);

@@ -5,7 +5,6 @@
 #include "Turma.h"
 #include "Student.h"
 
-
 Turma::Turma(std::string &turmaCode, std::string &ucCode) {
     this->turmaCode = turmaCode;
     this->ucCode = ucCode;

@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-helder\\Code\\schedule\\students_classes.csv");
+                studentsinfo_file.open("/home/daniel/aedtp1/Code/schedule/students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-helder\\Code\\schedule\\classes.csv");
+                aulas_file.open("Code/schedule/classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -73,7 +73,7 @@ int studentMenu(){
 
 int studentMenu2(){
     cout << endl << "1.Ver UC's/Turmas em que está inscrito \n" << "2.Ver horário \n" << "0.Voltar \n";
-    return auxMenu(3, 0);
+    return auxMenu(3,0);
 }
 
 int turmaMenu(){
@@ -95,6 +95,32 @@ int turmaMenu2(int ano){
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
