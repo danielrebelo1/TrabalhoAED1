@@ -31,5 +31,9 @@ int turmaMenuHorário();
 
 int turmaMenuStudents();
 
+int displayStudents();
+
+std::string ucCode(std::vector<Turma*> vt);
+
 #endif //AEDTP1_MENU_H
 

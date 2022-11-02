@@ -118,10 +118,29 @@ int turmaMenuStudents(){
 }
 
 int displayStudents(){
-
+    cout << "Como deseja visualizar os estudantes?\n";
+    cout << "1. Alfabeticamente através do nome\n";
+    cout << "2. Ordem inversa através do nome\n";
+    cout << "3. Ordem crescente através do código do aluno\n";
+    cout << "4. Ordem decrescente através do código do aluno\n";
+    return auxMenu(4, 0);
 }
 
+std::string ucCode(std::vector<Turma*> vt){
+    std::string ucCode;
+    bool condition = true;
 
+    cout << "Qual é a ucCode desejada?\n";
+    while(condition){
+        cin >> ucCode;
+        auto it = std::find_if(vt.begin(), vt.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
+        if(it != vt.end())
+            condition = false;
+        else(cout << "O ucCode inserido é inválido, por favor insira uma ucCode que o seja\n");
+    }
+    return ucCode;
+
+}
 
 
 

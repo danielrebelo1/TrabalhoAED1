@@ -152,3 +152,22 @@ void Curso::PrintHorarioInteiroTurma(std::vector<Turma *> vt) {
                  "-" << setw(8) << GetFinishTime(s->getHorarioInicio(), s->getDuracao()) << endl;
     }
 }
+
+std::set<Student *, studentComparator> Curso::getStudentsTurma(std::vector<Turma*> turmas, std::string ucCode){
+    std::set<Student*, studentComparator> students;
+
+    if(ucCode == ""){
+        for(Turma* turma : turmas){
+            for(Student* student : turma->getStudentsTurma())
+                students.insert(student);
+        }
+    }
+    else{
+        auto itr = std::find_if(turmas.begin(), turmas.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
+
+        for(Student* student : (*itr)->getStudentsTurma())
+            students.insert(student);
+    }
+    return students;
+
+}
