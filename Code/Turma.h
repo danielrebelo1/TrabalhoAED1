@@ -5,7 +5,6 @@
 #ifndef AEDTP1_TURMA_H
 #define AEDTP1_TURMA_H
 
-#include "Student.h"
 #include "Slot.h"
 
 #include <algorithm>

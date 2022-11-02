@@ -6,9 +6,7 @@
 #define AEDTP1_SLOT_H
 
 #include <iostream>
-#include "Turma.h"
 
-class Turma;
 
 
 class Slot {

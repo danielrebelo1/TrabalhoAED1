@@ -18,9 +18,7 @@
 #include <type_traits>
 #include <vector>
 
-class Student;
-class Turma;
-class Slot;
+
 
 
 struct studentComparator
@@ -50,7 +48,7 @@ class FileReader{
 
     public:
         FileReader(std::istream &studentsinfo_file,std::istream &aulas_file);
-        set<Student *, studentComparator> getStudents() const;
+        std::set<Student *, studentComparator> getStudents() const;
         std::set<Turma*, turmaComparator> getTurmas() const;
         std::vector<Slot*> getSlots() const;
         void Init();

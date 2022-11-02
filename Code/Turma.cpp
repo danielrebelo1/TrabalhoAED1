@@ -3,6 +3,7 @@
 //
 
 #include "Turma.h"
+#include "Student.h"
 
 struct studentComparators
 {

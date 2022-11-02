@@ -5,6 +5,7 @@
 #ifndef PROJETO_AED_CURSO_H
 #define PROJETO_AED_CURSO_H
 
+#include <set>
 #include "Student.h"
 #include "FileReader.h"
 
@@ -39,14 +40,13 @@ public:
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
-    void PrintStudentByName();
-    void PrintStudentByCode();
+    Student* PrintStudentByName();
+    Student* PrintStudentByCode();
     static std::set<Student* , studentComparator2> StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents);
     static std::set<Student* , studentComparatorCode> StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents);
     static std::set<Student* , studentComparatorDecreasingCode> StudentReverseSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorDecreasingCode> &newstudents);
 
-    std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , char year);
+    std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
 };
-
 
 #endif //PROJETO_AED_CURSO_H

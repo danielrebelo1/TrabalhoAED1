@@ -2,12 +2,16 @@
 // Created by Jaime on 01/11/2022.
 //
 
-#ifndef PROJETO_AED_MENU_H
-#define PROJETO_AED_MENU_H
+#ifndef AEDTP1_MENU_H
+#define AEDTP1_MENU_H
+
 #include "Curso.h"
 #include "Utils.h"
+
 #include <fstream>
-using namespace std;
+#include <iostream>
+#include <string>
+#include <iomanip>
 
 void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file);
 
@@ -15,5 +19,7 @@ int mainMenu();
 
 int studentMenu();
 
+int studentMenu2();
 
-#endif //PROJETO_AED_MENU_H
+#endif //AEDTP1_MENU_H
+
