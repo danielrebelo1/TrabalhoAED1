@@ -49,6 +49,9 @@ void Turma::PrintTurma(){
     }
 }
 
+std::vector<Student *> Turma::getStudentsTurma() const{
+    return studentsTurma;
+}
 
 std::list<Slot *> Turma::getHorarioUcTurma() const {
     return this->horarioUcTurma;

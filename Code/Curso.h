@@ -43,10 +43,12 @@ public:
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
-    void PrintHorarioInteiroTurma(std::vector<Turma*> vt);
+    void PrintHorarioTurma(std::vector<Turma*> , std::string uc = "");
     std::vector<Turma*> FindTurma();
     Student* PrintStudentByName();
     Student* PrintStudentByCode();
+
+    std::set<Student*, studentComparator> getStudentsTurma(std::vector<Turma*> turmas, std::string ucCode = "");
 
     static std::set<Student* , studentComparator2> StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents);
     static std::set<Student* , studentComparatorCode> StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents);

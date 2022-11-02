@@ -3,7 +3,6 @@
 //
 
 #include "Curso.h"
-
 using namespace std;
 
 
@@ -34,7 +33,6 @@ std::set<Student* , studentComparatorDecreasingCode> Curso::StudentReverseSortCo
     for (Student *s : students) {newstudents.insert(s);}
     return newstudents;
 }
-
 
 void Curso::PrintStudents(std::set<Student *, studentComparator> students, char option) {
         cout << setw(15) << left << "Nome" << "\t" << setw(20) << "Número de estudante" << endl;
@@ -67,7 +65,6 @@ void Curso::PrintStudents(std::set<Student *, studentComparator> students, char 
         }
 
 }
-
 
 std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *, studentComparator> students,int year)
 {
@@ -132,17 +129,24 @@ vector<Turma*> Curso::FindTurma(){
     }
 }
 
-void Curso::PrintHorarioInteiroTurma(std::vector<Turma *> vt) {
+void Curso::PrintHorarioTurma(std::vector<Turma *> vt, std::string uc) {
      vector<Slot*> horarioTurmaInteira;
-    for (Turma *t : vt)
-    {
-        list<Slot*> l = t->getHorarioUcTurma();
-        horarioTurmaInteira.insert(horarioTurmaInteira.begin(),l.begin(),l.end());
+     if(uc == ""){
+         for (Turma *t : vt)
+         {
+             list<Slot*> l = t->getHorarioUcTurma();
+             horarioTurmaInteira.insert(horarioTurmaInteira.begin(),l.begin(),l.end());
+         }
+     }
+
+    else{
+         auto itr = std::find_if(vt.begin(), vt.end(), [&uc](const Turma* t) {return t->get_ucCode() == uc;});
+         for(Slot* slot : (*itr)->getHorarioUcTurma())
+             horarioTurmaInteira.push_back(slot);
     }
+
     sort(horarioTurmaInteira.begin(), horarioTurmaInteira.end(), sorterHorarioSlot);
-    // sort(horarioTurmaInteira.begin(), horarioTurmaInteira.end(), [] (const Slot* s1 , const Slot* s2) {if(weekDays[s1->getDiaSemana()] != weekDays[s2->getDiaSemana()]) return (weekDays[s1->getDiaSemana()] < weekDays[s2->getDiaSemana()]);
-    //    if(s1->getHorarioInicio() != s2->getHorarioInicio()) return ((s1->getHorarioInicio * 10) < s2->getHorarioInicio());
-    //    return false;});
+
     cout << "Horario da turma: " << (vt[0])->get_turmaCode() << endl;
     cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
          << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
@@ -151,4 +155,23 @@ void Curso::PrintHorarioInteiroTurma(std::vector<Turma *> vt) {
                  << Fixer(s->getHorarioInicio()) << setw(1) <<
                  "-" << setw(8) << GetFinishTime(s->getHorarioInicio(), s->getDuracao()) << endl;
     }
+}
+
+std::set<Student *, studentComparator> Curso::getStudentsTurma(std::vector<Turma*> turmas, std::string ucCode){
+    std::set<Student*, studentComparator> students;
+
+    if(ucCode == ""){
+        for(Turma* turma : turmas){
+            for(Student* student : turma->getStudentsTurma())
+                students.insert(student);
+        }
+    }
+    else{
+        auto itr = std::find_if(turmas.begin(), turmas.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
+
+        for(Student* student : (*itr)->getStudentsTurma())
+            students.insert(student);
+    }
+    return students;
+
 }
