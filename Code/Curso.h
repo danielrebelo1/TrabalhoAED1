@@ -6,6 +6,7 @@
 #define PROJETO_AED_CURSO_H
 
 #include <set>
+#include <string>
 #include "Student.h"
 #include "FileReader.h"
 #include "Utils.h"

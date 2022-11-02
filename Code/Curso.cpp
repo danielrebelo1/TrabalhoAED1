@@ -71,8 +71,10 @@ std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *
     std::set<Student* , studentComparator> students2;
     for (Student* s : students){
         std::vector<Turma*> v = s->get_TurmasAluno();
-        auto it = std::find_if(v.begin(),v.end(),[year](const Turma* t) {return (t->get_turmaCode()[0]) == year ;});
-        if (it != v.end()){students2.insert(s);}
+        auto it = std::find_if(v.begin(),v.end(),[&year](const Turma* t) {return (t->get_turmaCode()[0]- '0' ) == year ;});
+        if (it != v.end()){
+            students2.insert(s);
+        }
     }
     return students2;
 }

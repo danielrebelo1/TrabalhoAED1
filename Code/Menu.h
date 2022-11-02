@@ -35,6 +35,8 @@ int displayStudents();
 
 int listagensMenu();
 
+int turmaListagemMenu();
+
 std::string ucCode(std::vector<Turma*> vt);
 
 
