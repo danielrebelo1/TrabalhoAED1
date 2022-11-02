@@ -142,6 +142,13 @@ std::string ucCode(std::vector<Turma*> vt){
 
 }
 
+int listagensMenu(){
+    cout << "O que deseja fazer?\n";
+    cout << "1. Ver todos os estudantes inscritos\n";
+    cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
+    cout << "3. Ver todas as turmas\n";
+    return auxMenu(3,1);
+}
 
 
 

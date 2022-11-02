@@ -43,7 +43,7 @@ public:
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
-    void PrintHorarioInteiroTurma(std::vector<Turma*> vt);
+    void PrintHorarioTurma(std::vector<Turma*> , std::string uc = "");
     std::vector<Turma*> FindTurma();
     Student* PrintStudentByName();
     Student* PrintStudentByCode();
