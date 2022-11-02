@@ -109,4 +109,24 @@ Student* Curso::PrintStudentByCode() {
             return (*iterator);
         }else { cout << "\nCódigo inválido, insira novamente o nome: \n";}
     }
+
+}
+
+Turma* Curso::FindTurma(){
+    while(true) {
+        int turmaAno = turmaMenu();
+        std::string turmaCode = to_string(turmaMenu2(turmaAno));
+        std::string turmaAnoStr = to_string(turmaAno);
+        if(turmaCode.length() == 1)
+            turmaCode = "0" + turmaCode;
+        std::string turma = turmaAnoStr + "LEIC" + turmaCode;
+        auto itr = std::find_if(allTurmas.begin(), allTurmas.end(),
+                                [&turma](const Turma *t) { return t->get_turmaCode() == turma; });
+        if (itr != allTurmas.end()) {
+            cout << "Turma encontrada!" << endl;
+            cout << "Turma: " << (*itr)->get_turmaCode() << "\n";
+            return (*itr);
+        } else { cout << "\nTurma nao encontrada, tente novamente: \n"; }
+    }
+
 }
