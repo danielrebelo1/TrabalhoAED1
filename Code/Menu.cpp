@@ -150,7 +150,10 @@ int listagensMenu(){
     return auxMenu(3,1);
 }
 
-
+int turmaListagemMenu(){
+    cout << "Qual o ano que pretende ver?\n";
+    return auxMenu(3,1);
+}
 
 
 
