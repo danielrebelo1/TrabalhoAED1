@@ -111,8 +111,9 @@ int auxMenu(int maxOption){
     int op;
     do{
         cin >> op;
+        cout << endl;
         if( op > maxOption || op < 0)
-            cout << "Numero invalido\n" << endl;
+            cout << "Número inválido\n" << endl;
     } while(op > maxOption || op < 0);
     return op;
 }
