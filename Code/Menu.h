@@ -15,9 +15,9 @@
 
 void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file);
 
-int mainMenu();
+int MainMenu();
 
-int studentMenu();
+int StudentMenu();
 
 int studentMenu2();
 

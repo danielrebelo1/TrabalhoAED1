@@ -9,18 +9,18 @@
 
 #include <algorithm>
 #include <iomanip>
-#include <fstream>
 #include <iostream>
 #include <limits>
 #include <list>
 #include <set>
-#include <sstream>
 #include <string>
 #include <vector>
 
 class Student;
+// class Slot;
 
 class Turma {
+
 public:
     Turma(std::string &turmaCode,std::string &ucCode);
 
@@ -40,7 +40,6 @@ private:
     std::string turmaCode;
     std::string ucCode;
     std::vector<Student *> studentsTurma;
-    // std::set<Student *, studentComparator> studentsTurma; ordenar students na turma
     std::list<Slot *> horarioUcTurma;
 };
 

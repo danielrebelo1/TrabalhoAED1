@@ -22,5 +22,7 @@ int auxMenu(int maxOption, int minOption);
 
 void PrintVector(std::vector<Turma*> v , char option);
 
+void PrintVector(std::vector<Turma*> v , char option);
+
 #endif //PROJECT_AED_UTILS_H
 

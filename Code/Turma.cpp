@@ -5,14 +5,6 @@
 #include "Turma.h"
 #include "Student.h"
 
-struct studentComparators
-{
-    bool operator()(Student* s1, Student* s2) const {
-        if (s1->get_student_Code() != s2->get_student_Code()) return (s1->get_Name() < s2->get_Name());
-        return false;
-    }
-};
-
 Turma::Turma(std::string &turmaCode, std::string &ucCode) {
     this->turmaCode = turmaCode;
     this->ucCode = ucCode;
