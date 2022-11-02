@@ -19,7 +19,6 @@
 #include <vector>
 
 
-
 struct studentComparator
 {
     bool operator()(Student* s1, Student* s2) const {
