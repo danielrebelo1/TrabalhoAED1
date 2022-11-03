@@ -196,6 +196,28 @@ std::string Curso::ucCodeNormalizer(){
     return ucCode;
 }
 
+void Curso::getTurmasYear(std::set<Turma*, turmaComparator> turmas, int year){
+    std::set<string> turmas2;
+    if(year != INT_MAX){
+        for(Turma* turma : turmas){
+            if((turma->get_turmaCode()[0] - '0') == year)
+                turmas2.insert(turma->get_turmaCode());
+        }
+        for(string x : turmas2){
+            cout << setw(15) << left << x << "\n";
+        }
+    }
+    else{
+        for(Turma* turma : turmas){
+            turmas2.insert(turma->get_turmaCode());
+        }
+        for(string x : turmas2){
+            cout << setw(15) << left << x << "\n";
+        }
+    }
+
+}
+
 
 void Curso::SortByEnrolledUC(int op, string ucCode){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
@@ -227,7 +249,6 @@ Turma* Curso::FindTurmaLowestCapacity(string ucCode){
     std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
     return todasTurmas[0];
 }
-
 
 void Curso::AddPA(Student* s, Turma* t , int typeRequest){
     PedidoAlteracao* p;
