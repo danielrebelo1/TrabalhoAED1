@@ -30,6 +30,16 @@ void PedidoAlteracao::TrocaTurma(Student *student , Turma* turmaOrigem , Turma* 
     }
 }
 
+int PedidoAlteracao::AddtoClass(Student *student1 , Turma* turma ) {
+    if (turma->get_nrStudentsTurma() < turma->defaultCap){
+        student1->UpdateTurmas(turma);
+        turma->AddStudent(student1);
+        return 1;
+    }
+    return 0;
+}
+
+
 void PedidoAlteracao::RemoveFromClass(Student *student1 , Turma* turmaOrigem ) {
     student1->RemoveFromTurma(turmaOrigem);
     turmaOrigem->RemoveStudent(student1);
@@ -42,6 +52,12 @@ void PedidoAlteracao::TrocaDiretaTurma(Student *student1 , Student *student2 , T
         student2->UpdateTurmas(turma1);
         turma1->AddStudent(student2);
         turma2->AddStudent(student1);
-    }
+}
+
+Student*  PedidoAlteracao::getStudent(){return student;}
+Student*  PedidoAlteracao::getStudent2(){return student2;}
+Turma*  PedidoAlteracao::getTurma(){return turma;}
+Turma*  PedidoAlteracao::getTurma2(){return turma2;}
+int  PedidoAlteracao::getTypeRequest(){return typeRequest;}
 
 

@@ -344,3 +344,28 @@ void Curso::setDefaultCap(int newCap){
     Turma* t = *it;
     t->defaultCap = newCap;
 }
+
+void Curso::ProcessPA(){
+    if (queuePA.empty()) {cout << "Nenhum pedido para processar\n" << endl;
+        return;}
+    PedidoAlteracao* p;
+    while (!queuePA.empty()){
+        p = queuePA.front();
+        int typeR = p->getTypeRequest();
+        switch (typeR) {
+            case 1:
+                Student* s = p->getStudent();
+                Turma* t = p->getTurma();
+                int result = p->AddtoClass(s,t);
+                if (result == 1){
+                    cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " inscrito na turma: " << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;
+                }
+                else {
+                    cout << "\nPedido de alteracao nao aceite! Por favor tenha em conta o numero de alunos na turma e tambem a compatibilidade de horarios" << endl;
+                }
+
+        }
+        queuePA.pop();
+    }
+
+}

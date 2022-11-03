@@ -68,6 +68,7 @@ public:
     Turma* FindTurmaLowestCapacity(std::string ucCode);
     Turma* GetTurma(Student* s , std::string ucCode);
     void setDefaultCap(int newCap);
+    void ProcessPA();
     // static int defaultCap = 24;
 };
 

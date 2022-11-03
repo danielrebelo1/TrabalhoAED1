@@ -364,7 +364,7 @@ int main() {
                                 } // find por code
                             }
                             break;
-                        case 3:
+                        case 3: {
                             // troca direta
                             temp2 = studentMenu();
                             switch (temp2) {
@@ -381,8 +381,8 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t = curso.GetTurma(s,uc);
-                                            curso.AddPA(s, t , 3);
+                                            Turma *t = curso.GetTurma(s, uc);
+                                            curso.AddPA(s, t, 3);
                                             break;
                                         }
                                     }
@@ -398,8 +398,8 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t = curso.GetTurma(s,uc);
-                                            curso.AddPA(s, t , 3);
+                                            Turma *t = curso.GetTurma(s, uc);
+                                            curso.AddPA(s, t, 3);
                                             break;
                                         }
                                     }
@@ -407,6 +407,13 @@ int main() {
                                 } // find por code
                             }
                             break;
+                        }
+                        case 4:
+                        {
+                            curso.ProcessPA();
+                            // Process requests
+                        }
+                        break;
                     }
                     break;
                 case 5:
