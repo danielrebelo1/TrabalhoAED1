@@ -18,8 +18,8 @@ using namespace std;
 class PedidoAlteracao {
 
 public:
-    PedidoAlteracao(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino, string tipoPedido);
-    PedidoAlteracao(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2);
+    PedidoAlteracao(Student *student , Turma* turma , int typeRequest);
+    PedidoAlteracao(Student *student , Student *student2 , Turma *turma , Turma *turma2);
 
     void TrocaTurma(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino);
     void RemoveFromClass(Student *student, Turma *turma);
@@ -27,10 +27,10 @@ public:
 
 private:
     Student* student;
-    Turma* turmaOrigem;
-    Turma* turmaDestino;
-    string tipoPedido;
-    set<Turma*> newTurmas;
+    Student* student2;
+    Turma* turma;
+    Turma* turma2;
+    int typeRequest;
 
 };
 

@@ -7,8 +7,10 @@
 
 #include <set>
 #include <string>
+#include <queue>
 #include "Student.h"
 #include "FileReader.h"
+#include "PedidoAlteracao.h"
 #include "Utils.h"
 #include <algorithm>
 #include "Menu.h"
@@ -37,6 +39,7 @@ struct studentComparatorDecreasingCode {
 class Curso {
     std::set<Student*, studentComparator> allStudents;
     std::set<Turma*, turmaComparator> allTurmas;
+    std::queue<PedidoAlteracao*> queuePA;
 public:
     Curso() = default;
     Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator> );
@@ -59,6 +62,9 @@ public:
     void getTurmasYear(std::set<Turma*, turmaComparator> turmas, int year = INT_MAX);
     void SortByEnrolledUC( int op = 1 , std::string ucCode= "");
     std::string ucCodeNormalizer();
+    void AddPA(Student* s, Turma* t  , int typeRequest);
+    Turma* FindTurmaLowestCapacity(std::string ucCode);
+    Turma* GetTurma(Student* s , std::string ucCode);
 };
 
 #endif //PROJETO_AED_CURSO_H

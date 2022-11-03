@@ -246,8 +246,170 @@ int main() {
 
                     break;
                 }
+                case 4:
+                    temp = PAMenu();
+                    int temp2;
+                    switch (temp) {
+                        case 1:
+                            // alocar estudante numa uc
+                            temp2 = studentMenu();
+                            switch (temp2) {
+                                // tipo de find do student
+                                case 0:
+                                    break;
+                                case 1:
+                                {
+                                    s = curso.PrintStudentByName();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = AlocationUCMenu(); // escolher preferencia de turma ou escolher alocacao aleatoria (para a turma c menos capacidade)
+                                    switch (temp3) {
+                                        // alocar na preferida ou a toa
+                                        case 0:
+                                            break;
+                                        case 1:
+                                        {
+                                            vt = curso.FindTurma();
+                                            curso.AddPA(s,vt[0],1);
+                                            break;
+                                        }
+                                        case 2:
+                                        {
+                                            Turma* t = curso.FindTurmaLowestCapacity(uc);
+                                            curso.AddPA(s,t,1);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por nome
+                                case 2:
+                                {
+                                    s = curso.PrintStudentByCode();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = AlocationUCMenu(); // escolher preferencia de turma ou escolher alocacao aleatoria (para a turma c menos capacidade)
+                                    switch (temp3) {
+                                        // alocar na preferida ou a toa
+                                        case 0:
+                                            break;
+                                        case 1:
+                                        {
+                                            vt = curso.FindTurma();
+                                            curso.AddPA(s,vt[0],1);
+                                            break;
+                                        }
+                                        case 2:
+                                        {
+                                            Turma* t = curso.FindTurmaLowestCapacity(uc);
+                                            curso.AddPA(s,t,1);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por code
+                            }
+                            break;
+                        case 2:
+                            // remover estudante de uma uc
+                            temp2 = studentMenu();
+                            switch (temp2) {
+                                // tipo de find do student
+                                case 0:
+                                    break;
+                                case 1: {
+                                    s = curso.PrintStudentByName();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = RemovalUCMenu();
+                                    //cout << uc << endl;
+                                    switch (temp3) {
+                                        case 0:
+                                            break;
+                                        case 1: {
+                                            Turma* t;
+                                            t = curso.GetTurma(s,uc);
+                                            if (t == NULL) {
+                                                cout << "O aluno nao esta inscrito nesta turma.\n" << endl;
+                                                break;
+                                            }
+                                            curso.AddPA(s, t , 2);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por nome
+                                case 2: {
+                                    s = curso.PrintStudentByCode();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = RemovalUCMenu();
+                                    //cout << uc << endl;
+                                    switch (temp3) {
+                                        case 0:
+                                            break;
+                                        case 1: {
+                                            Turma* t;
+                                            try{
+                                                t = curso.GetTurma(s,uc);
+                                            }
+                                            catch (exception e){
+                                                cout << "O aluno nao esta inscrito nesta turma." << endl;
+                                                break;
+                                            }
+                                            curso.AddPA(s, t , 2);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por code
+                            }
+                            break;
+                        case 3:
+                            // troca direta
+                            temp2 = studentMenu();
+                            switch (temp2) {
+                                // tipo de find do student
+                                case 0:
+                                    break;
+                                case 1: {
+                                    s = curso.PrintStudentByName();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = TrocaDiretaMenu();
+                                    cout << s->get_Name() << endl;
+                                    switch (temp3) {
+                                        case 0:
+                                            break;
+                                        case 1: {
+                                            Turma* t = curso.GetTurma(s,uc);
+                                            curso.AddPA(s, t , 3);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por nome
+                                case 2: {
+                                    s = curso.PrintStudentByCode();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = TrocaDiretaMenu();
+                                    cout << s->get_Name() << endl;
+                                    switch (temp3) {
+                                        case 0:
+                                            break;
+                                        case 1: {
+                                            Turma* t = curso.GetTurma(s,uc);
+                                            curso.AddPA(s, t , 3);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por code
+                            }
+                            break;
+                    }
+                    break;
             }
-
         } while (temp != 0);
 
     } while (op != 0);

@@ -102,9 +102,17 @@ int auxMenu(int maxOption, int minOption){
     int op;
     do{
         cin >> op;
-        cout << endl;
         if( op > maxOption || op < minOption)
-            cout << "Número inválido\n" << endl;
+            cout << "Número inválido. Introduza um valor valido: " << endl;
     } while(op > maxOption || op < minOption);
     return op;
+}
+
+std::string tolowerString(std::string s){
+    string lowername;
+    for (char c : s){
+        if (c == ' '){lowername.push_back(' ');}
+        lowername.push_back(tolower(c));
+    }
+    return lowername;
 }

@@ -131,7 +131,8 @@ std::string ucCode(std::vector<Turma*> vt){
     std::string ucCode;
     bool condition = true;
 
-    cout << "Qual é a ucCode desejada?\n";
+    cout << "Qual é a ucCode desejada? (introduza apenas o numero da UC , por exemplo para L.EIC001 introduza 1)\n";
+    cout << "L.EIC: ";
     while(condition){
         cin >> ucCode;
         if (ucCode.size() == 1){ucCode = "00" + ucCode;}
@@ -172,6 +173,31 @@ int ucListagemMenu(){
     return auxMenu(2,0);
 }
 
+int PAMenu(){
+    cout << "1.Alocar estudante numa turma/UC" << endl;
+    cout << "2.Remover estudante de uma turma/UC" << endl;
+    cout << "3.Troca direta entre dois estudantes de uma turma/UC" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(3,0);
+}
+
+int AlocationUCMenu(){
+    cout << "1.Tentar alocar estudante numa respetiva turma" << endl;
+    cout << "2.Alocar estudante numa turma aleatoria" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(2,0);
+}
+int RemovalUCMenu(){
+    cout << "1.Remover estudante da UC" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(1,0);
+}
+
+int TrocaDiretaMenu(){
+    cout << "1.Pretende avancar com a troca do aluno: " << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(1,0);
+}
 
 
 
