@@ -210,7 +210,7 @@ int main() {
                                     int x;
                                     cout << "Qual o ano pretendido?\n";
                                     cin >> x;
-                                    curso.getTurmasYear(curso.getAllTurmas(), x);
+                                    curso.getTurmasYear(x);
                                     break;
                                 }
                                 case 2:{
@@ -220,7 +220,7 @@ int main() {
                                     break;
                                 }
                                 case 4:{
-                                    curso.getTurmasYear(curso.getAllTurmas());
+                                    curso.getTurmasYear();
                                 }
 
                             }
@@ -406,6 +406,26 @@ int main() {
                                     break;
                                 } // find por code
                             }
+                            break;
+                    }
+                    break;
+                case 5:
+                    // salvar alteracoes
+                    break;
+                case 6:
+                    temp = ConfigMenu();
+                    switch (temp) {
+                        // configuracoes
+                        case 1:
+                        {
+                            cout << "Qual a nova capacidade: ";
+                            int newCap;
+                            cin >> newCap;
+                            curso.setDefaultCap(newCap);
+                            // definir novo Cap
+                            break;
+                        }
+                        case 0:
                             break;
                     }
                     break;

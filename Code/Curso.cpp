@@ -196,28 +196,37 @@ std::string Curso::ucCodeNormalizer(){
     return ucCode;
 }
 
-void Curso::getTurmasYear(std::set<Turma*, turmaComparator> turmas, int year){
+void Curso::getTurmasYear(int year){
     std::set<string> turmas2;
-    if(year != INT_MAX){
-        for(Turma* turma : turmas){
-            if((turma->get_turmaCode()[0] - '0') == year)
-                turmas2.insert(turma->get_turmaCode());
+    string turmaCode;
+    switch (year) {
+        case INT_MAX: {
+            for (Turma *t: allTurmas) {
+                turmaCode = t->get_turmaCode();
+                auto itr = turmas2.find(turmaCode);
+                if (itr == turmas2.end()) {
+                    cout << turmaCode << endl;
+                    turmas2.insert(turmaCode);
+                }
+            }
+            break;
         }
-        for(string x : turmas2){
-            cout << setw(15) << left << x << "\n";
-        }
-    }
-    else{
-        for(Turma* turma : turmas){
-            turmas2.insert(turma->get_turmaCode());
-        }
-        for(string x : turmas2){
-            cout << setw(15) << left << x << "\n";
+        default:
+        {
+            char y = (char) year + 48;
+            for (Turma *t: allTurmas) {
+                turmaCode = t->get_turmaCode();
+                auto itr = turmas2.find(turmaCode);
+                if (itr == turmas2.end() && turmaCode[0] == y) {
+                    cout << turmaCode << endl;
+                    turmas2.insert(turmaCode);
+                }
+            }
+            cout << endl;
         }
     }
 
 }
-
 
 void Curso::SortByEnrolledUC(int op, string ucCode){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
@@ -328,4 +337,10 @@ Turma* Curso::GetTurma(Student* s , std::string ucCode){
     auto it = find_if(vt.begin(),vt.end(),[&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
     Turma* t = *it;
     return t;
+}
+
+void Curso::setDefaultCap(int newCap){
+    auto it = allTurmas.begin();
+    Turma* t = *it;
+    t->defaultCap = newCap;
 }
