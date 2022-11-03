@@ -82,8 +82,10 @@ int main() {
 
                     int control;
                     string choice;
+                    vector<Turma *> vt;
                     do {
-                        vt = curso.FindTurma();
+                        while (vt.size() == 0) {
+                            vt = curso.FindTurma(); }
                         temp = turmaMenu3();
                         int temp2;
                         switch (temp) {
@@ -142,11 +144,12 @@ int main() {
 
                             } while (temp2 != 0);
                         }
-                        cout << "Deseja continuar neste menu? (Y/N)\n";
+                        cout << "Deseja sair deste menu? (Y/N)\n";
                         cin >> choice;
+
                         cout << endl;
-                        if (choice == "Y" || choice == "y") { control = 1; }
-                        else if (choice == "N" || choice == "n") {
+                        if (tolower(choice[0]) == 'n') { control = 1; }
+                        else if (tolower(choice[0]) == 'y') {
                             control = 0;
                             temp = 0;
                         }
@@ -155,8 +158,70 @@ int main() {
                 }
                 case 3: //listagens menu
                 {
-
+                    temp = listagensMenu();
                     int temp2;
+
+                    switch(temp){
+
+                        case 1: {
+                            temp2 = displayStudents();
+                            switch (temp2) {
+                                case 1:
+                                    curso.PrintStudents(curso.getAllStudents(), '1');
+                                    break;
+                                case 2:
+                                    curso.PrintStudents(curso.getAllStudents(), '2');
+                                    break;
+                                case 3:
+                                    curso.PrintStudents(curso.getAllStudents(), '3');
+                                    break;
+                                case 4:
+                                    curso.PrintStudents(curso.getAllStudents(), '4');
+                                    break;
+                            }
+                            break;
+                        }
+                        case 2: {
+                            int x = turmaListagemMenu();
+                            temp2 = displayStudents();
+
+                            switch (temp2) {
+                                case 1: {
+                                    curso.PrintStudents(curso.getStudentsYear(curso.getAllStudents(), x), '1');
+                                    break;
+                                }
+                                case 2:
+                                    curso.PrintStudents(curso.getStudentsYear(curso.getAllStudents(), x), '2');
+                                    break;
+                                case 3:
+                                    curso.PrintStudents(curso.getStudentsYear(curso.getAllStudents(), x), '3');
+                                    break;
+                                case 4:
+                                    curso.PrintStudents(curso.getStudentsYear(curso.getAllStudents(), x), '4');
+                                    break;
+                            }
+                            break;
+                        }
+                        case 3:
+                            break;
+                        case 4:
+                            int temp2 = ucListagemMenu();
+                            switch (temp2) {
+                                    case 1:
+                                        curso.SortByEnrolledUC();
+                                        cout << endl;
+                                        break;
+                                    case 2:
+                                    {
+                                        string turmaCode = curso.ucCodeNormalizer();
+                                        curso.SortByEnrolledUC(2,turmaCode);
+                                        break;
+                                    }
+                                    case 0:
+                                        break;
+                                }
+                    }
+
                     break;
                 }
             }

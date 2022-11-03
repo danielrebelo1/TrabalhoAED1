@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
+                studentsinfo_file.open("Code/schedule/students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\classes.csv");
+                aulas_file.open("Code/schedule/classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -57,8 +57,8 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
 }
 
 int mainMenu() {
-    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "0.Sair" << '\n';
-    return auxMenu(4, 0);
+    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "5.Salvar alteracoes" << '\t' << "0.Sair" << '\n';
+    return auxMenu(5, 0);
 }
 
 int studentMenu(){
@@ -100,7 +100,8 @@ int turmaMenu3(){
     cout << "O que deseja fazer?\n";
     cout << "1. Ver o horário desta turma" << "\n";
     cout << "2. Ver os estudantes desta turma" << "\n";
-    return auxMenu(2,1);
+    cout << "0. Voltar atras" << "\n";
+    return auxMenu(2,0);
 }
 
 int turmaMenuHorário(){
@@ -133,21 +134,26 @@ std::string ucCode(std::vector<Turma*> vt){
     cout << "Qual é a ucCode desejada?\n";
     while(condition){
         cin >> ucCode;
+        if (ucCode.size() == 1){ucCode = "00" + ucCode;}
+        else if (ucCode.size() == 2){ucCode = "0" + ucCode;}
+        ucCode = "L.EIC" + ucCode;
         auto it = std::find_if(vt.begin(), vt.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
         if(it != vt.end())
             condition = false;
         else(cout << "O ucCode inserido é inválido, por favor insira uma ucCode que o seja\n");
     }
     return ucCode;
-
 }
+
 
 int listagensMenu(){
     cout << "O que deseja fazer?\n";
     cout << "1. Ver todos os estudantes inscritos\n";
     cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
     cout << "3. Ver todas as turmas\n";
-    return auxMenu(3,1);
+    cout << "4. Ver nr estudantes inscritos em todas as UC\n";
+    cout << "0. Voltar atras\n";
+    return auxMenu(4,0);
 }
 
 int turmaListagemMenu(){
@@ -155,6 +161,12 @@ int turmaListagemMenu(){
     return auxMenu(3,1);
 }
 
+int ucListagemMenu(){
+    cout << "1.Ver lista de todas as UC" << endl;
+    cout << "2.Ver nr de alunos inscritos numa UC" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(2,0);
+}
 
 
 

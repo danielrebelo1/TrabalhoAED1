@@ -177,3 +177,43 @@ std::set<Student *, studentComparator> Curso::getStudentsTurma(std::vector<Turma
     return students;
 
 }
+
+std::string Curso::ucCodeNormalizer(){
+    std::string ucCode;
+    while (true)
+    {
+        cout << "Qual é a ucCode desejada?\n";
+        cin >> ucCode;
+        if (ucCode.size() == 1){ucCode = "00" + ucCode;}
+        else if (ucCode.size() == 2){ucCode = "0" + ucCode;}
+        ucCode = "L.EIC" + ucCode;
+        auto it = find_if(allTurmas.begin(),allTurmas.end(),[&ucCode] (const Turma *t) {return t->get_ucCode() == ucCode;});
+        if (it != allTurmas.end()) {break;}
+        else {cout << "UC nao encontrada. Por favor tente novamente " << endl;}
+    }
+    return ucCode;
+}
+
+
+void Curso::SortByEnrolledUC(int op, string ucCode){
+    vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
+    // vector<pair<std::string , int> > nrEnrolledUC;
+    map<std::string , int> nrEnrolledUC;
+    for (Turma *t : todasTurmas){
+        nrEnrolledUC[t->get_ucCode()] += t->get_nrStudentsTurma();
+    }
+    switch (op) {
+        case 1:
+        {
+            cout << left << setw(5) << "UC" << "\t" << setw(10) << "Nr alunos" << endl;
+            for ( pair<string,int> p : nrEnrolledUC){
+                cout << p.first << "\t" << p.second << endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            cout << left << setw(5) << "UC: " << ucCode << "\t" << setw(10) << "Nr alunos: " << nrEnrolledUC[ucCode] << endl;
+        }
+    }
+}

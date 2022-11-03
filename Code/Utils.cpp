@@ -97,22 +97,20 @@ void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::stri
     }
     PrintVector(todasTurmas,option);
 }
-
+/*
 void SortByEnrolledUC(std::set<Turma*, turmaComparator> allTurmas , char option){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
+    // vector<pair<std::string , int> > nrEnrolledUC;
     map<std::string , int> nrEnrolledUC;
     for (Turma *t : todasTurmas){
         nrEnrolledUC[t->get_ucCode()] += t->get_nrStudentsTurma();
     }
-    /*
-    switch (option) {
-        case '1': // ordenação crescente
-
-
+    cout << left << setw(5) << "UC" << "\t" << setw(10) << "Nr alunos" << endl;
+    for ( pair<string,int> p : nrEnrolledUC){
+        cout << p.first << "\t" << p.second << endl;
     }
-     */
-    
 }
+*/
 
 int auxMenu(int maxOption, int minOption){
     int op;
