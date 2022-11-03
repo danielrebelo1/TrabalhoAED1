@@ -41,6 +41,13 @@ std::string ucCode(std::vector<Turma*> vt);
 
 int ucListagemMenu();
 
+int PAMenu();
+
+int AlocationUCMenu();
+
+int RemovalUCMenu();
+
+int TrocaDiretaMenu();
 
 #endif //AEDTP1_MENU_H
 
