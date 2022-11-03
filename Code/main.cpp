@@ -214,9 +214,17 @@ int main() {
                                     break;
                                 }
                                 case 2:{
+                                    std::string x;
+                                    cout << "Qual a UC pretendida?\n";
+                                    cin >> x;
+                                    curso.SortbyTurmaCapacity(curso.getAllTurmas(), x, '1');
                                     break;
                                 }
                                 case 3:{
+                                    std::string x;
+                                    cout << "Qual a UC pretendida?\n";
+                                    cin >> x;
+                                    curso.SortbyTurmaCapacity(curso.getAllTurmas(), x, '2');
                                     break;
                                 }
                                 case 4:{
