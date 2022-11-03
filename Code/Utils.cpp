@@ -11,6 +11,13 @@ using namespace std;
 
 map<string , int> weekDays{{"Monday", 1}, {"Tuesday", 2}, {"Wednesday", 3}, {"Thursday", 4}, {"Friday", 5}};
 
+bool sorterHorarioSlot(Slot* s1,Slot* s2){
+    if(weekDays[s1->getDiaSemana()] != weekDays[s2->getDiaSemana()]) return (weekDays[s1->getDiaSemana()] < weekDays[s2->getDiaSemana()]);
+    if(s1->getHorarioInicio() != s2->getHorarioInicio()) return (stof(s1->getHorarioInicio()) < stof(s2->getHorarioInicio()));
+    return false;
+}
+
+
 bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2){
     if(weekDays[s1.first->getDiaSemana()] != weekDays[s2.first->getDiaSemana()]) return (weekDays[s1.first->getDiaSemana()] < weekDays[s2.first->getDiaSemana()]);
     if(s1.first->getHorarioInicio() != s2.first->getHorarioInicio()) return (s1.first->getHorarioInicio() < s2.first->getHorarioInicio());

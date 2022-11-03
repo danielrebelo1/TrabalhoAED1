@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("/home/daniel/aedtp1/Code/schedule/students_classes.csv");
+                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("Code/schedule/classes.csv");
+                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -96,7 +96,6 @@ int turmaMenu2(int ano){
     return 0;
 }
 
-
 int turmaMenu3(){
     cout << "O que deseja fazer?\n";
     cout << "1. Ver o horário desta turma" << "\n";
@@ -105,11 +104,59 @@ int turmaMenu3(){
 }
 
 int turmaMenuHorário(){
-    cout << "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?";
-    cout << "1. Todas as UCs";
-    cout << "2. De apenas uma UC em específico";
+    cout << "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+    cout << "1. Todas as UCs\n";
+    cout << "2. De apenas uma UC em específico\n";
     return auxMenu(2,1);
 }
+
+int turmaMenuStudents(){
+    cout << "Deseja ver os students desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+    cout << "1. Todas as UCs\n";
+    cout << "2. De apenas uma UC em específico\n";
+    return auxMenu(2, 1);
+}
+
+int displayStudents(){
+    cout << "Como deseja visualizar os estudantes?\n";
+    cout << "1. Alfabeticamente através do nome\n";
+    cout << "2. Ordem inversa através do nome\n";
+    cout << "3. Ordem crescente através do código do aluno\n";
+    cout << "4. Ordem decrescente através do código do aluno\n";
+    return auxMenu(4, 0);
+}
+
+std::string ucCode(std::vector<Turma*> vt){
+    std::string ucCode;
+    bool condition = true;
+
+    cout << "Qual é a ucCode desejada?\n";
+    while(condition){
+        cin >> ucCode;
+        auto it = std::find_if(vt.begin(), vt.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
+        if(it != vt.end())
+            condition = false;
+        else(cout << "O ucCode inserido é inválido, por favor insira uma ucCode que o seja\n");
+    }
+    return ucCode;
+
+}
+
+int listagensMenu(){
+    cout << "O que deseja fazer?\n";
+    cout << "1. Ver todos os estudantes inscritos\n";
+    cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
+    cout << "3. Ver todas as turmas\n";
+    return auxMenu(3,1);
+}
+
+int turmaListagemMenu(){
+    cout << "Qual o ano que pretende ver?\n";
+    return auxMenu(3,1);
+}
+
+
+
 
 
 

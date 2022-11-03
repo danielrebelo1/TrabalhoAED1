@@ -21,8 +21,6 @@ int studentMenu();
 
 int studentMenu2();
 
-int studentMenu2();
-
 int turmaMenu();
 
 int turmaMenu2(int ano);
@@ -31,5 +29,20 @@ int turmaMenu3();
 
 int turmaMenuHorário();
 
+<<<<<<< HEAD
+=======
+int turmaMenuStudents();
+
+int displayStudents();
+
+int listagensMenu();
+
+int turmaListagemMenu();
+
+std::string ucCode(std::vector<Turma*> vt);
+
+
+
+>>>>>>> 35fddeb3c596fb9a25a52b04280de94db9c44e70
 #endif //AEDTP1_MENU_H
 

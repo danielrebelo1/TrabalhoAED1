@@ -3,7 +3,6 @@
 //
 
 #include "Curso.h"
-
 using namespace std;
 
 
@@ -34,7 +33,6 @@ std::set<Student* , studentComparatorDecreasingCode> Curso::StudentReverseSortCo
     for (Student *s : students) {newstudents.insert(s);}
     return newstudents;
 }
-
 
 void Curso::PrintStudents(std::set<Student *, studentComparator> students, char option) {
         cout << setw(15) << left << "Nome" << "\t" << setw(20) << "Número de estudante" << endl;
@@ -68,14 +66,15 @@ void Curso::PrintStudents(std::set<Student *, studentComparator> students, char 
 
 }
 
-
 std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *, studentComparator> students,int year)
 {
     std::set<Student* , studentComparator> students2;
     for (Student* s : students){
         std::vector<Turma*> v = s->get_TurmasAluno();
-        auto it = std::find_if(v.begin(),v.end(),[year](const Turma* t) {return (t->get_turmaCode()[0]) == year ;});
-        if (it != v.end()){students2.insert(s);}
+        auto it = std::find_if(v.begin(),v.end(),[&year](const Turma* t) {return (t->get_turmaCode()[0]- '0' ) == year ;});
+        if (it != v.end()){
+            students2.insert(s);
+        }
     }
     return students2;
 }
@@ -112,7 +111,8 @@ Student* Curso::PrintStudentByCode() {
 
 }
 
-Turma* Curso::FindTurma(){
+vector<Turma*> Curso::FindTurma(){
+    vector<Turma *>  allTurmasPrev(allTurmas.begin(), allTurmas.end());
     while(true) {
         int turmaAno = turmaMenu();
         std::string turmaCode = to_string(turmaMenu2(turmaAno));
@@ -120,13 +120,60 @@ Turma* Curso::FindTurma(){
         if(turmaCode.length() == 1)
             turmaCode = "0" + turmaCode;
         std::string turma = turmaAnoStr + "LEIC" + turmaCode;
-        auto itr = std::find_if(allTurmas.begin(), allTurmas.end(),
-                                [&turma](const Turma *t) { return t->get_turmaCode() == turma; });
-        if (itr != allTurmas.end()) {
+        auto itr = std::remove_if(allTurmasPrev.begin(), allTurmasPrev.end(),
+                                [&turma](const Turma *t) { return t->get_turmaCode() != turma; });
+        allTurmasPrev.erase(itr, allTurmasPrev.end());
+        if (allTurmasPrev.size() != 0) {
             cout << "Turma encontrada!" << endl;
-            cout << "Turma: " << (*itr)->get_turmaCode() << "\n";
-            return (*itr);
+            cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << "\n";
         } else { cout << "\nTurma nao encontrada, tente novamente: \n"; }
+        return allTurmasPrev;
     }
+}
+
+void Curso::PrintHorarioTurma(std::vector<Turma *> vt, std::string uc) {
+     vector<Slot*> horarioTurmaInteira;
+     if(uc == ""){
+         for (Turma *t : vt)
+         {
+             list<Slot*> l = t->getHorarioUcTurma();
+             horarioTurmaInteira.insert(horarioTurmaInteira.begin(),l.begin(),l.end());
+         }
+     }
+
+    else{
+         auto itr = std::find_if(vt.begin(), vt.end(), [&uc](const Turma* t) {return t->get_ucCode() == uc;});
+         for(Slot* slot : (*itr)->getHorarioUcTurma())
+             horarioTurmaInteira.push_back(slot);
+    }
+
+    sort(horarioTurmaInteira.begin(), horarioTurmaInteira.end(), sorterHorarioSlot);
+
+    cout << "Horario da turma: " << (vt[0])->get_turmaCode() << endl;
+    cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
+         << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
+    for (Slot* s : horarioTurmaInteira){
+        cout << setw(9) << left << s->getDiaSemana() << '\t' << setw(9) << s->getTipo() << '\t' << setw(3)
+                 << Fixer(s->getHorarioInicio()) << setw(1) <<
+                 "-" << setw(8) << GetFinishTime(s->getHorarioInicio(), s->getDuracao()) << endl;
+    }
+}
+
+std::set<Student *, studentComparator> Curso::getStudentsTurma(std::vector<Turma*> turmas, std::string ucCode){
+    std::set<Student*, studentComparator> students;
+
+    if(ucCode == ""){
+        for(Turma* turma : turmas){
+            for(Student* student : turma->getStudentsTurma())
+                students.insert(student);
+        }
+    }
+    else{
+        auto itr = std::find_if(turmas.begin(), turmas.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
+
+        for(Student* student : (*itr)->getStudentsTurma())
+            students.insert(student);
+    }
+    return students;
 
 }
