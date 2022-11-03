@@ -182,7 +182,7 @@ int main() {
                             break;
                         }
                         case 2: {
-                            int x = turmaListagemMenu();
+                            int x = turmaMenu();
                             temp2 = displayStudents();
 
                             switch (temp2) {
@@ -203,6 +203,28 @@ int main() {
                             break;
                         }
                         case 3:
+                            temp2 = turmaListagemMenu();
+
+                            switch (temp2) {
+                                case 1:{
+                                    int x;
+                                    cout << "Qual o ano pretendido?\n";
+                                    cin >> x;
+                                    curso.getTurmasYear(curso.getAllTurmas(), x);
+                                    break;
+                                }
+                                case 2:{
+                                    break;
+                                }
+                                case 3:{
+                                    break;
+                                }
+                                case 4:{
+                                    curso.getTurmasYear(curso.getAllTurmas());
+                                }
+
+                            }
+
                             break;
                         case 4:
                             int temp2 = ucListagemMenu();
