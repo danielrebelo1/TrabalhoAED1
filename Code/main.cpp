@@ -229,10 +229,7 @@ int main() {
                                 }
                                 case 4:{
                                     curso.getTurmasYear();
-<<<<<<< HEAD
                                     break;
-=======
->>>>>>> 035d29eb36fc052c1549792e5a058ba4d1466af2
                                 }
 
                             }

@@ -61,11 +61,9 @@ public:
 
     void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , int option);
     std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
-<<<<<<< HEAD
+
     void getTurmasYear( int year = INT_MAX);
-=======
-    void getTurmasYear(int year = INT_MAX);
->>>>>>> 035d29eb36fc052c1549792e5a058ba4d1466af2
+
     void SortByEnrolledUC( int op = 1 , std::string ucCode= "");
     std::string ucCodeNormalizer();
     void AddPA(Student* s, Turma* t  , int typeRequest);
