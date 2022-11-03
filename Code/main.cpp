@@ -11,7 +11,7 @@ using namespace std;
 
 int main() {
     ifstream studentsinfo_file, aulas_file;
-    cout << "Bem-vindo a plataforma de gestao dos horarios de LEIC. O que deseja fazer?\n";
+    cout << "Bem-vindo a plataforma de gestão dos horários de LEIC. O que deseja fazer?\n";
     Menu(studentsinfo_file, aulas_file);
 
     FileReader fileReader = FileReader(studentsinfo_file,
@@ -20,10 +20,12 @@ int main() {
                         fileReader.getTurmas()); //create an object curso with all the information
 
     int op;
+    bool leave;
     Student *s;
     vector<Turma *> vt;
 
     do {
+        do{
         op = mainMenu();
         int temp;
 
@@ -85,7 +87,8 @@ int main() {
                     vector<Turma *> vt;
                     do {
                         while (vt.size() == 0) {
-                            vt = curso.FindTurma(); }
+                            vt = curso.FindTurma();
+                        }
                         temp = turmaMenu3();
                         int temp2;
                         switch (temp) {
@@ -144,10 +147,10 @@ int main() {
 
                             } while (temp2 != 0);
                         }
-                        cout << "Deseja sair deste menu? (Y/N)\n";
+                        cout << endl << "Deseja sair deste menu? (Y/N)\n";
                         cin >> choice;
-
                         cout << endl;
+
                         if (tolower(choice[0]) == 'n') { control = 1; }
                         else if (tolower(choice[0]) == 'y') {
                             control = 0;
@@ -161,7 +164,7 @@ int main() {
                     temp = listagensMenu();
                     int temp2;
 
-                    switch(temp){
+                    switch (temp) {
 
                         case 1: {
                             temp2 = displayStudents();
@@ -206,20 +209,20 @@ int main() {
                             temp2 = turmaListagemMenu();
 
                             switch (temp2) {
-                                case 1:{
+                                case 1: {
                                     int x;
                                     cout << "Qual o ano pretendido?\n";
                                     cin >> x;
                                     curso.getTurmasYear(x);
                                     break;
                                 }
-                                case 2:{
+                                case 2: {
                                     break;
                                 }
-                                case 3:{
+                                case 3: {
                                     break;
                                 }
-                                case 4:{
+                                case 4: {
                                     curso.getTurmasYear();
                                 }
 
@@ -229,19 +232,18 @@ int main() {
                         case 4:
                             int temp2 = ucListagemMenu();
                             switch (temp2) {
-                                    case 1:
-                                        curso.SortByEnrolledUC();
-                                        cout << endl;
-                                        break;
-                                    case 2:
-                                    {
-                                        string turmaCode = curso.ucCodeNormalizer();
-                                        curso.SortByEnrolledUC(2,turmaCode);
-                                        break;
-                                    }
-                                    case 0:
-                                        break;
+                                case 1:
+                                    curso.SortByEnrolledUC();
+                                    cout << endl;
+                                    break;
+                                case 2: {
+                                    string turmaCode = curso.ucCodeNormalizer();
+                                    curso.SortByEnrolledUC(2, turmaCode);
+                                    break;
                                 }
+                                case 0:
+                                    break;
+                            }
                     }
 
                     break;
@@ -257,8 +259,7 @@ int main() {
                                 // tipo de find do student
                                 case 0:
                                     break;
-                                case 1:
-                                {
+                                case 1: {
                                     s = curso.PrintStudentByName();
                                     s->PrintStudentTurmas();
                                     string uc = curso.ucCodeNormalizer();
@@ -267,23 +268,20 @@ int main() {
                                         // alocar na preferida ou a toa
                                         case 0:
                                             break;
-                                        case 1:
-                                        {
+                                        case 1: {
                                             vt = curso.FindTurma();
-                                            curso.AddPA(s,vt[0],1);
+                                            curso.AddPA(s, vt[0], 1);
                                             break;
                                         }
-                                        case 2:
-                                        {
-                                            Turma* t = curso.FindTurmaLowestCapacity(uc);
-                                            curso.AddPA(s,t,1);
+                                        case 2: {
+                                            Turma *t = curso.FindTurmaLowestCapacity(uc);
+                                            curso.AddPA(s, t, 1);
                                             break;
                                         }
                                     }
                                     break;
                                 } // find por nome
-                                case 2:
-                                {
+                                case 2: {
                                     s = curso.PrintStudentByCode();
                                     s->PrintStudentTurmas();
                                     string uc = curso.ucCodeNormalizer();
@@ -292,16 +290,14 @@ int main() {
                                         // alocar na preferida ou a toa
                                         case 0:
                                             break;
-                                        case 1:
-                                        {
+                                        case 1: {
                                             vt = curso.FindTurma();
-                                            curso.AddPA(s,vt[0],1);
+                                            curso.AddPA(s, vt[0], 1);
                                             break;
                                         }
-                                        case 2:
-                                        {
-                                            Turma* t = curso.FindTurmaLowestCapacity(uc);
-                                            curso.AddPA(s,t,1);
+                                        case 2: {
+                                            Turma *t = curso.FindTurmaLowestCapacity(uc);
+                                            curso.AddPA(s, t, 1);
                                             break;
                                         }
                                     }
@@ -326,13 +322,13 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t;
-                                            t = curso.GetTurma(s,uc);
+                                            Turma *t;
+                                            t = curso.GetTurma(s, uc);
                                             if (t == NULL) {
-                                                cout << "O aluno nao esta inscrito nesta turma.\n" << endl;
+                                                cout << "O aluno não está inscrito nesta turma.\n" << endl;
                                                 break;
                                             }
-                                            curso.AddPA(s, t , 2);
+                                            curso.AddPA(s, t, 2);
                                             break;
                                         }
                                     }
@@ -348,15 +344,15 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t;
-                                            try{
-                                                t = curso.GetTurma(s,uc);
+                                            Turma *t;
+                                            try {
+                                                t = curso.GetTurma(s, uc);
                                             }
-                                            catch (exception e){
-                                                cout << "O aluno nao esta inscrito nesta turma." << endl;
+                                            catch (exception e) {
+                                                cout << "O aluno não está inscrito nesta turma." << endl;
                                                 break;
                                             }
-                                            curso.AddPA(s, t , 2);
+                                            curso.AddPA(s, t, 2);
                                             break;
                                         }
                                     }
@@ -381,8 +377,8 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t = curso.GetTurma(s,uc);
-                                            curso.AddPA(s, t , 3);
+                                            Turma *t = curso.GetTurma(s, uc);
+                                            curso.AddPA(s, t, 3);
                                             break;
                                         }
                                     }
@@ -398,8 +394,8 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t = curso.GetTurma(s,uc);
-                                            curso.AddPA(s, t , 3);
+                                            Turma *t = curso.GetTurma(s, uc);
+                                            curso.AddPA(s, t, 3);
                                             break;
                                         }
                                     }
@@ -416,8 +412,7 @@ int main() {
                     temp = ConfigMenu();
                     switch (temp) {
                         // configuracoes
-                        case 1:
-                        {
+                        case 1: {
                             cout << "Qual a nova capacidade: ";
                             int newCap;
                             cin >> newCap;
@@ -429,12 +424,21 @@ int main() {
                             break;
                     }
                     break;
+                case 0: {temp = 0;break;}
             }
         } while (temp != 0);
 
-    } while (op != 0);
+    }while(op != 0);
+        string choice;
+        cout << endl << "Pretende mesmo sair do programa? (Y/N)\n";
+        cin >> choice;
+        if (tolower(choice[0]) == 'n') { leave = false ;}
+        else if (tolower(choice[0]) == 'y') {
+            leave = true;
+        }
+    } while (!leave);
 
-    cout << "Obrigado por usar a nossa plataforma! :) " << endl;
+    cout << endl << "Obrigado por usar a nossa plataforma! :) " << endl;
 
     return 0;
 }

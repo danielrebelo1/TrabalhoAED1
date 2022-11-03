@@ -45,7 +45,7 @@ void Turma::PrintTurma(){
     std::cout << "Lista de Alunos:" << std::endl;
     int nrAluno = 0;
     for (Student* student : studentsTurma){
-      std::cout << std::left << ++nrAluno << ".\t"  << std::setw(3)  << "Nome: " << std::setw(15) << student->get_Name() << "\t\t" << std::setw(10) << "nº estudante: " << student->get_student_Code() << std::endl;
+      std::cout << std::left << ++nrAluno << ".\t"  << std::setw(3)  << "Nome: " << std::setw(15) << student->get_Name() << "\t\t" << std::setw(10) << "Nº Estudante: " << student->get_student_Code() << std::endl;
     }
 }
 
