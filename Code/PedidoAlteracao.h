@@ -7,6 +7,7 @@
 
 #include "Student.h"
 #include "Turma.h"
+
 #include <cmath>
 #include <iostream>
 #include <string>
@@ -23,7 +24,7 @@ public:
 
     void TrocaTurma(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino);
     int AddtoClass(Student *student1 , Turma* turma );
-    void RemoveFromClass(Student *student, Turma *turma);
+    int RemoveFromClass(Student *student, Turma *turma);
     void TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2 );
     Student* getStudent();
     Student* getStudent2();

@@ -61,7 +61,9 @@ std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , stude
 
 void PrintVector(std::vector<Turma*> v , char option){
     char orderType;
-    cout << "Que tipo";
+    cout << "1.Ordenacao crescente\n";
+    cout << "2.Ordenacao decrescente\n";
+    cin >> orderType;
     switch(orderType){
         case '1':
             break;
@@ -82,14 +84,13 @@ void PrintVector(std::vector<Turma*> v , char option){
     }
 }
 
-
-
 int auxMenu(int maxOption, int minOption){
     int op;
     do{
         cin >> op;
         if( op > maxOption || op < minOption)
-            cout << "Número inválido. Introduza um valor valido: " << endl;
+            cout << "Número inválido. Introduza um valor valido: \n"
+                    "Se desejar voltar atrás, introduza o valor 0\n"  << endl;
     } while(op > maxOption || op < minOption);
     return op;
 }
@@ -101,4 +102,24 @@ std::string tolowerString(std::string s){
         lowername.push_back(tolower(c));
     }
     return lowername;
+}
+
+bool isCompatible(std::list<Slot *> horarioUcTurma , std::vector< std::pair <Slot * , Turma *>> horarioStudent){
+    for (Slot* novaAula : horarioUcTurma) {
+        std::vector< std::pair <Slot * , Turma *>> hs = horarioStudent;
+        auto it = std::remove_if( hs.begin(), hs.end(),
+                                [&novaAula](const std::pair <Slot * , Turma *> aula){ return novaAula->getDiaSemana() != aula.first->getDiaSemana();} );
+        hs.erase(it,hs.end());
+        for (pair <Slot * , Turma *> p : hs ){
+            Slot* aula = p.first;
+            float begTimeAula = stof(aula->getHorarioInicio());
+            float finishTimeAula = begTimeAula + stof(aula->getDuracao());
+            float begTimenovaAula = stof(novaAula->getHorarioInicio());
+            float finishTimenovaAula = begTimenovaAula + stof(novaAula->getDuracao());
+            if (!(begTimenovaAula >= finishTimeAula || finishTimenovaAula <= begTimeAula)){
+                return false;
+            }
+        }
+    }
+    return true;
 }

@@ -29,12 +29,12 @@ public:
 
     std::string get_Name() const;
     std::string get_student_Code() const;
-    std::vector<Turma *> get_TurmasAluno() const;
+    std::vector<Turma *> get_TurmasAluno() ;
 
     void UpdateTurmas(Turma *turma);
     void RemoveFromTurma(Turma *turma);
     void PrintStudentTurmas();
-    void createHorario();
+    std::vector< std::pair <Slot * , Turma *>> createHorario();
     void PrintHorario();
 
 private:

@@ -31,7 +31,9 @@ void PedidoAlteracao::TrocaTurma(Student *student , Turma* turmaOrigem , Turma* 
 }
 
 int PedidoAlteracao::AddtoClass(Student *student1 , Turma* turma ) {
-    if (turma->get_nrStudentsTurma() < turma->defaultCap){
+    std::list<Slot *> horarioUcTurma = turma->getHorarioUcTurma();
+    std::vector< std::pair <Slot * , Turma *>> horarioStudent = student1->createHorario();
+    if (turma->get_nrStudentsTurma() < turma->defaultCap && isCompatible(horarioUcTurma , horarioStudent)){
         student1->UpdateTurmas(turma);
         turma->AddStudent(student1);
         return 1;
@@ -40,9 +42,10 @@ int PedidoAlteracao::AddtoClass(Student *student1 , Turma* turma ) {
 }
 
 
-void PedidoAlteracao::RemoveFromClass(Student *student1 , Turma* turmaOrigem ) {
+int PedidoAlteracao::RemoveFromClass(Student *student1 , Turma* turmaOrigem ) {
     student1->RemoveFromTurma(turmaOrigem);
     turmaOrigem->RemoveStudent(student1);
+    return 1;
 }
 
 void PedidoAlteracao::TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2){

@@ -18,7 +18,8 @@ std::string Student::get_student_Code() const {
     return studentCode;
 }
 
-std::vector<Turma*> Student::get_TurmasAluno() const {
+std::vector<Turma*> Student::get_TurmasAluno() {
+    sort(turmas.begin(), turmas.end(),[](Turma* t1 , Turma* t2) {return t1->get_ucCode() < t2->get_ucCode();});
     return turmas;
 }
 
@@ -43,17 +44,18 @@ void Student::PrintStudentTurmas(){
     }
 }
 
-void Student::createHorario() {
+std::vector< std::pair <Slot * , Turma *>> Student::createHorario() {
     for(Turma *turma : turmas){
         for (Slot *slot : turma->getHorarioUcTurma()){
-            horarioStudent.push_back(make_pair(slot, turma));
+            if (std::find(horarioStudent.begin(), horarioStudent.end(),make_pair(slot, turma)) == horarioStudent.end()) horarioStudent.push_back(make_pair(slot, turma));
         }
     }
     sort(horarioStudent.begin(), horarioStudent.end(), sorterHorario);
+    return horarioStudent;
 }
 
 void Student::PrintHorario() {
-    createHorario();
+    horarioStudent = createHorario();
     cout << "Horario de " << studentName << ":" << endl;
     cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
          << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
