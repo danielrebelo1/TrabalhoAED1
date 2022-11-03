@@ -49,5 +49,7 @@ int RemovalUCMenu();
 
 int TrocaDiretaMenu();
 
+int ConfigMenu();
+
 #endif //AEDTP1_MENU_H
 

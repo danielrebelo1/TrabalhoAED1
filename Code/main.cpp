@@ -229,7 +229,10 @@ int main() {
                                 }
                                 case 4:{
                                     curso.getTurmasYear();
+<<<<<<< HEAD
                                     break;
+=======
+>>>>>>> 035d29eb36fc052c1549792e5a058ba4d1466af2
                                 }
 
                             }
@@ -415,6 +418,26 @@ int main() {
                                     break;
                                 } // find por code
                             }
+                            break;
+                    }
+                    break;
+                case 5:
+                    // salvar alteracoes
+                    break;
+                case 6:
+                    temp = ConfigMenu();
+                    switch (temp) {
+                        // configuracoes
+                        case 1:
+                        {
+                            cout << "Qual a nova capacidade: ";
+                            int newCap;
+                            cin >> newCap;
+                            curso.setDefaultCap(newCap);
+                            // definir novo Cap
+                            break;
+                        }
+                        case 0:
                             break;
                     }
                     break;

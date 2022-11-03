@@ -339,6 +339,7 @@ Turma* Curso::GetTurma(Student* s , std::string ucCode){
     return t;
 }
 
+<<<<<<< HEAD
 void Curso::SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , int option){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
     auto it = std::remove_if(todasTurmas.begin(), todasTurmas.end(),[ucCode] (Turma* t){return (t->get_ucCode() != ucCode); } );
@@ -354,3 +355,10 @@ void Curso::SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , st
     }
     PrintVector(todasTurmas,option);
 }
+=======
+void Curso::setDefaultCap(int newCap){
+    auto it = allTurmas.begin();
+    Turma* t = *it;
+    t->defaultCap = newCap;
+}
+>>>>>>> 035d29eb36fc052c1549792e5a058ba4d1466af2

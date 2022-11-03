@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
+                studentsinfo_file.open("Code/schedule/students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\classes.csv");
+                aulas_file.open("Code/schedule/classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -57,8 +57,8 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
 }
 
 int mainMenu() {
-    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "5.Salvar alteracoes" << '\t' << "0.Sair" << '\n';
-    return auxMenu(5, 0);
+    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "5.Salvar alteracoes" << '\t' << "6.Configurações" << '\t' << "0.Sair" << '\n';
+    return auxMenu(6, 0);
 }
 
 int studentMenu(){
@@ -199,6 +199,11 @@ int TrocaDiretaMenu(){
     return auxMenu(1,0);
 }
 
+int ConfigMenu(){
+    cout << "1.Definir capacidade maxima das turmas " << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(1,0);
+}
 
 
 

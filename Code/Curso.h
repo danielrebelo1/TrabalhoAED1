@@ -14,6 +14,7 @@
 #include "Utils.h"
 #include <algorithm>
 #include "Menu.h"
+#include <climits>
 
 struct studentComparator2{
     bool operator()(Student* s1, Student* s2) const {
@@ -39,7 +40,7 @@ struct studentComparatorDecreasingCode {
 class Curso {
     std::set<Student*, studentComparator> allStudents;
     std::set<Turma*, turmaComparator> allTurmas;
-    std::queue<PedidoAlteracao*> queuePA;
+    std::queue<PedidoAlteracao* > queuePA;
 public:
     Curso() = default;
     Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator> );
@@ -60,12 +61,18 @@ public:
 
     void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , int option);
     std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
+<<<<<<< HEAD
     void getTurmasYear( int year = INT_MAX);
+=======
+    void getTurmasYear(int year = INT_MAX);
+>>>>>>> 035d29eb36fc052c1549792e5a058ba4d1466af2
     void SortByEnrolledUC( int op = 1 , std::string ucCode= "");
     std::string ucCodeNormalizer();
     void AddPA(Student* s, Turma* t  , int typeRequest);
     Turma* FindTurmaLowestCapacity(std::string ucCode);
     Turma* GetTurma(Student* s , std::string ucCode);
+    void setDefaultCap(int newCap);
+    // static int defaultCap = 24;
 };
 
 #endif //PROJETO_AED_CURSO_H
