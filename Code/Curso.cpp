@@ -250,7 +250,6 @@ Turma* Curso::FindTurmaLowestCapacity(string ucCode){
     return todasTurmas[0];
 }
 
-
 void Curso::AddPA(Student* s, Turma* t , int typeRequest){
     PedidoAlteracao* p;
     switch (typeRequest) {
