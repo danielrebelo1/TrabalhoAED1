@@ -54,7 +54,9 @@ public:
     static std::set<Student* , studentComparator2> StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents);
     static std::set<Student* , studentComparatorCode> StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents);
     static std::set<Student* , studentComparatorDecreasingCode> StudentReverseSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorDecreasingCode> &newstudents);
+
     std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
+    void getTurmasYear(std::set<Turma*, turmaComparator> turmas, int year = INT_MAX);
     void SortByEnrolledUC( int op = 1 , std::string ucCode= "");
     std::string ucCodeNormalizer();
 };

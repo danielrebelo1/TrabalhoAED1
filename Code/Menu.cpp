@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("Code/schedule/students_classes.csv");
+                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("Code/schedule/classes.csv");
+                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -157,8 +157,12 @@ int listagensMenu(){
 }
 
 int turmaListagemMenu(){
-    cout << "Qual o ano que pretende ver?\n";
-    return auxMenu(3,1);
+    cout << "Como deseja visualizar as turmas?\n";
+    cout << "1. Por ano\n";
+    cout << "2. Por capacidade\n";
+    cout << "3. Por número de vagas\n";
+    cout << "4. Todas as turmas\n";
+    return auxMenu(4,1);
 }
 
 int ucListagemMenu(){

@@ -194,6 +194,28 @@ std::string Curso::ucCodeNormalizer(){
     return ucCode;
 }
 
+void Curso::getTurmasYear(std::set<Turma*, turmaComparator> turmas, int year){
+    std::set<string> turmas2;
+    if(year != INT_MAX){
+        for(Turma* turma : turmas){
+            if((turma->get_turmaCode()[0] - '0') == year)
+                turmas2.insert(turma->get_turmaCode());
+        }
+        for(string x : turmas2){
+            cout << setw(15) << left << x << "\n";
+        }
+    }
+    else{
+        for(Turma* turma : turmas){
+            turmas2.insert(turma->get_turmaCode());
+        }
+        for(string x : turmas2){
+            cout << setw(15) << left << x << "\n";
+        }
+    }
+
+}
+
 
 void Curso::SortByEnrolledUC(int op, string ucCode){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
