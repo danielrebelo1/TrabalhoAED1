@@ -5,7 +5,10 @@ https://www.geeksforgeeks.org/naming-convention-in-c/
 
 Proximos objetivos:
 
-- Implementar StudentComparator
-
-- Passar a ler apenas o classes.csv(inicializar as turmas , add ao vetor allTurmas , inicializar Slot e ligá-lo a Turma)
- e o students_classes.csv( em vez de criar turma fazer find() e encontrar a turma já inicializada e add Student a respetiva) para poupar tempo
+Acabar Menu
+Acrescentar opcoes de voltar atras
+Rever Pedidos Alteracao 
+Opcao de gravar do menu principal consiste em pegar nas informacao de students que temos e escrever para o students classes (quando o user pedir para slvar) a info que temos
+da proxima vez que iniciamos , temos essa info
+tambem ter opcao de sair sem guardar
+acrescentar um "sobre nos"

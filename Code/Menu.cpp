@@ -15,13 +15,13 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-                studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
+                studentsinfo_file.open("Code/schedule/students_classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open students file" << endl;
             }
             try {
-                aulas_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\classes.csv");
+                aulas_file.open("Code/schedule/classes.csv");
             }
             catch (exception e) {
                 cout << "Couldn't open classes file" << endl;
@@ -57,8 +57,8 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
 }
 
 int mainMenu() {
-    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "0.Sair" << '\n';
-    return auxMenu(4, 0);
+    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "5.Salvar alteracoes" << '\t' << "6.Configurações" << '\t' << "0.Sair" << '\n';
+    return auxMenu(6, 0);
 }
 
 int studentMenu(){
@@ -100,7 +100,8 @@ int turmaMenu3(){
     cout << "O que deseja fazer?\n";
     cout << "1. Ver o horário desta turma" << "\n";
     cout << "2. Ver os estudantes desta turma" << "\n";
-    return auxMenu(2,1);
+    cout << "0. Voltar atras" << "\n";
+    return auxMenu(2,0);
 }
 
 int turmaMenuHorário(){
@@ -130,32 +131,79 @@ std::string ucCode(std::vector<Turma*> vt){
     std::string ucCode;
     bool condition = true;
 
-    cout << "Qual é a ucCode desejada?\n";
+    cout << "Qual é a ucCode desejada? (introduza apenas o numero da UC , por exemplo para L.EIC001 introduza 1)\n";
+    cout << "L.EIC: ";
     while(condition){
         cin >> ucCode;
+        if (ucCode.size() == 1){ucCode = "00" + ucCode;}
+        else if (ucCode.size() == 2){ucCode = "0" + ucCode;}
+        ucCode = "L.EIC" + ucCode;
         auto it = std::find_if(vt.begin(), vt.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
         if(it != vt.end())
             condition = false;
         else(cout << "O ucCode inserido é inválido, por favor insira uma ucCode que o seja\n");
     }
     return ucCode;
-
 }
+
 
 int listagensMenu(){
     cout << "O que deseja fazer?\n";
     cout << "1. Ver todos os estudantes inscritos\n";
     cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
     cout << "3. Ver todas as turmas\n";
-    return auxMenu(3,1);
+    cout << "4. Ver nr estudantes inscritos em todas as UC\n";
+    cout << "0. Voltar atras\n";
+    return auxMenu(4,0);
 }
 
+int turmaListagemMenu(){
+    cout << "Como deseja visualizar as turmas?\n";
+    cout << "1. Por ano\n";
+    cout << "2. Por capacidade\n";
+    cout << "3. Por número de vagas\n";
+    cout << "4. Todas as turmas\n";
+    return auxMenu(4,1);
+}
 
+int ucListagemMenu(){
+    cout << "1.Ver lista de todas as UC" << endl;
+    cout << "2.Ver nr de alunos inscritos numa UC" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(2,0);
+}
 
+int PAMenu(){
+    cout << "1.Alocar estudante numa turma/UC" << endl;
+    cout << "2.Remover estudante de uma turma/UC" << endl;
+    cout << "3.Troca direta entre dois estudantes de uma turma/UC" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(3,0);
+}
 
+int AlocationUCMenu(){
+    cout << "1.Tentar alocar estudante numa respetiva turma" << endl;
+    cout << "2.Alocar estudante numa turma aleatoria" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(2,0);
+}
+int RemovalUCMenu(){
+    cout << "1.Remover estudante da UC" << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(1,0);
+}
 
+int TrocaDiretaMenu(){
+    cout << "1.Pretende avancar com a troca do aluno: " << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(1,0);
+}
 
-
+int ConfigMenu(){
+    cout << "1.Definir capacidade maxima das turmas " << endl;
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(1,0);
+}
 
 
 

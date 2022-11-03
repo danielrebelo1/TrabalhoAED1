@@ -82,7 +82,7 @@ void PrintVector(std::vector<Turma*> v , char option){
     }
 }
 
-void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , char option){
+void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , int option){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
     auto it = std::remove_if(todasTurmas.begin(), todasTurmas.end(),[ucCode] (Turma* t){return (t->get_ucCode() != ucCode); } );
     todasTurmas.erase(it,todasTurmas.end());
@@ -98,29 +98,21 @@ void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::stri
     PrintVector(todasTurmas,option);
 }
 
-void SortByEnrolledUC(std::set<Turma*, turmaComparator> allTurmas , char option){
-    vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
-    map<std::string , int> nrEnrolledUC;
-    for (Turma *t : todasTurmas){
-        nrEnrolledUC[t->get_ucCode()] += t->get_nrStudentsTurma();
-    }
-    /*
-    switch (option) {
-        case '1': // ordenação crescente
-
-
-    }
-     */
-    
-}
-
 int auxMenu(int maxOption, int minOption){
     int op;
     do{
         cin >> op;
-        cout << endl;
         if( op > maxOption || op < minOption)
-            cout << "Número inválido\n" << endl;
+            cout << "Número inválido. Introduza um valor valido: " << endl;
     } while(op > maxOption || op < minOption);
     return op;
+}
+
+std::string tolowerString(std::string s){
+    string lowername;
+    for (char c : s){
+        if (c == ' '){lowername.push_back(' ');}
+        lowername.push_back(tolower(c));
+    }
+    return lowername;
 }

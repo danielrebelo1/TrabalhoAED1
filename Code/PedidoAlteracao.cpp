@@ -5,11 +5,10 @@
 using namespace std;
 
 
-PedidoAlteracao::PedidoAlteracao(Student *student , Turma* turmaOrigem , Turma* turmaDestino, string tipoPedido){
+PedidoAlteracao::PedidoAlteracao(Student *student , Turma* turma , int typeRequest){
     this->student = student;
-    this->turmaOrigem = turmaOrigem;
-    this->turmaDestino = turmaDestino;
-    this->tipoPedido = tipoPedido;
+    this->turma = turma;
+    this->typeRequest = typeRequest;
 }
 
 PedidoAlteracao::PedidoAlteracao(Student* student1, Student* student2 ,Turma *turma1 , Turma *turma2) {

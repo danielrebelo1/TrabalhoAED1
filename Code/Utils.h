@@ -26,5 +26,8 @@ void PrintVector(std::vector<Turma*> v , char option);
 
 void PrintVector(std::vector<Turma*> v , char option);
 
+std::string tolowerString(std::string s);
+
+
 #endif //PROJECT_AED_UTILS_H
 
