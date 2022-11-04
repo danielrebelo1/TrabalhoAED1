@@ -33,8 +33,5 @@ bool isCompatible(std::list<Slot *>, std::vector< std::pair <Slot * , Turma *>> 
 
 std::vector<Turma*> minMaxTurma(Turma* turma);
 
-
-
-
 #endif //PROJECT_AED_UTILS_H
 
