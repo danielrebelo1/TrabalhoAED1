@@ -20,33 +20,31 @@ PedidoAlteracao::PedidoAlteracao(Student* student1, Student* student2 ,Turma *tu
 }
 
 int PedidoAlteracao::TrocaTurma(std::set<Turma*, turmaComparator> allTurmas , Student *student ,Turma* turmaOrigem ,  Turma* turmaDestino) {
-    vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
-    auto it = std::remove_if(todasTurmas.begin(), todasTurmas.end(),[turmaDestino] (Turma* t){return (turmaDestino->get_ucCode() != t->get_ucCode()); } );
-    todasTurmas.erase(it,todasTurmas.end());
-    std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
-    Turma* t1 = todasTurmas[0];
-    Turma* t2 = todasTurmas[todasTurmas.size() - 1];
+    std::list<Slot *> horarioUcTurma = turmaDestino->getHorarioUcTurma();
+    std::vector< std::pair <Slot * , Turma *>> horarioStudent = student->createHorario();
+    bool noDesequilibrium = abs(turmaDestino->get_nrStudentsTurma() - turmaOrigem->get_nrStudentsTurma()) < 4;
     int x;
-    bool limit = turmaDestino->get_nrStudentsTurma() < turmaDestino->defaultCap ;
-    bool cap = (abs(t1 - t2) < 4);
-    if (!cap && limit){
-        cout << "Fazer esta mudanca podera gerar desequilibrio. Deseja continuar?(Y/N)";
+
+    if (!noDesequilibrium){
+        cout << "Fazer esta mudanca podera gerar desequilibrio. Deseja continuar?(Y/N) ";
         char response;
         cin >> response;
         response = tolower(response);
-        if(response == 'y') cap = true;
+        if(response == 'y') noDesequilibrium = true;
     }
-    if ( limit && cap ) {
+
+    if ( noDesequilibrium && isCompatible(horarioUcTurma,horarioStudent , turmaOrigem) ) {
         x = RemoveFromClass(student, turmaOrigem);
         x = AddtoClass(student,turmaDestino);
         student->UpdateTurmas(turmaDestino);
         turmaDestino->AddStudent(student);
+        return x;
     }
     else {
         x = 0;
         cout << "Impossível adicionar aluno à turma desejada" << endl;
+        return x;
     }
-    return x;
 }
 
 int PedidoAlteracao::AddtoClass(Student *student1 , Turma* turma ) {
@@ -72,7 +70,7 @@ int PedidoAlteracao::TrocaDiretaTurma(Student *student1 , Student *student2 , Tu
     std::vector< std::pair <Slot *,Turma *>> horarioStudent1 = student1->createHorario();
     std::list<Slot *> horarioUcTurma2 = turma2->getHorarioUcTurma();
     std::vector< std::pair <Slot * , Turma *>> horarioStudent2 = student2->createHorario();
-    if (isCompatible(horarioUcTurma1 , horarioStudent2) && isCompatible(horarioUcTurma2 , horarioStudent1) ) {
+    if (isCompatible(horarioUcTurma1 , horarioStudent2 , turma2) && isCompatible(horarioUcTurma2 , horarioStudent1,turma1)) {
         student1->RemoveFromTurma(turma1);
         student2->RemoveFromTurma(turma2);
         student1->UpdateTurmas(turma2);
@@ -89,5 +87,6 @@ Student*  PedidoAlteracao::getStudent2(){return student2;}
 Turma*  PedidoAlteracao::getTurma(){return turma;}
 Turma*  PedidoAlteracao::getTurma2(){return turma2;}
 int  PedidoAlteracao::getTypeRequest(){return typeRequest;}
+
 
 

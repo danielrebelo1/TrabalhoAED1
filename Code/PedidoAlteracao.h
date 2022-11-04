@@ -7,6 +7,7 @@
 
 #include "Student.h"
 #include "Turma.h"
+#include "Curso.h"
 
 #include <cmath>
 #include <iostream>

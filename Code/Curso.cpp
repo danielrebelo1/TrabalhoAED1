@@ -363,11 +363,6 @@ void Curso::SortbyTurmaCapacity(std::string ucCode , int option){
     PrintVector(todasTurmas,option);
 }
 
-void Curso::setDefaultCap(int newCap){
-    auto it = allTurmas.begin();
-    Turma* t = *it;
-    t->defaultCap = newCap;
-}
 
 void Curso::ProcessPA(){
     if (queuePA.empty()) {cout << "Nenhum pedido para processar\n" << endl;
@@ -474,4 +469,21 @@ void Curso::WriteArchive(PedidoAlteracao* p){
         Turma* t2 = p->getTurma2();
         newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC dos estudante: " << t->get_ucCode() << "," << "Atuais turmas(respetivas)" << t->get_turmaCode() << "," << t2->get_turmaCode() << endl;
     }
+}
+
+int Curso::getDefaultCap() {
+    auto it = allTurmas.begin();
+    return (*it)->defaultCap;
+}
+
+void Curso::setDefaultCap(int newCap) {
+    for (Turma* t: allTurmas){
+        t->defaultCap = newCap;
+    }
+}
+
+int Curso::getTurmaMostStudents(){
+    vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
+    std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
+    return (todasTurmas[todasTurmas.size() - 1])->get_nrStudentsTurma();
 }

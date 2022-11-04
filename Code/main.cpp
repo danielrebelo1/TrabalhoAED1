@@ -449,11 +449,18 @@ int main() {
                         // configuracoes
                         case 1:
                         {
-                            cout << "Qual a nova capacidade: ";
-                            int newCap;
-                            cin >> newCap;
-                            curso.setDefaultCap(newCap);
-                            // definir novo Cap
+
+                            cout << "Atual capacidade: " << curso.getDefaultCap() << endl;
+                            cout << "Pretende alterar?(Y/N) ";
+                            char response;
+                            cin >> response;
+                            if (tolower(response) == 'y')
+                            {cout << "Para efeitos de comparacao a turma com mais alunos tem " << curso.getTurmaMostStudents() << " alunos." << endl;
+                                cout << "Introduza novo limite de capacidade das turmas: ";
+                                int newCap;
+                                cin >> newCap;
+                                curso.setDefaultCap(newCap);
+                            }
                             break;
                         }
                         case 0:

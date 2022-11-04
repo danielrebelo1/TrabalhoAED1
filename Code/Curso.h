@@ -72,10 +72,13 @@ public:
     Turma* FindTurmaLowestCapacity(Student* s , std::string ucCode);
     Turma* GetTurma(Student* s , std::string ucCode);
     void setDefaultCap(int newCap);
+    int getDefaultCap();
     void ProcessPA();
     void Save();
     void WriteArchive(PedidoAlteracao* p);
-    // static int defaultCap = 24;
+    static std::vector<Turma*> minMaxTurma(Turma* t);
+    int getTurmaMostStudents();
+
 };
 
 #endif //PROJETO_AED_CURSO_H
