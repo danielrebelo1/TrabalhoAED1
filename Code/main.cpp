@@ -469,6 +469,7 @@ int main() {
         } while (temp != 0);
 
     } while (op != 0);
+    cout << "\n";
     cout << "Obrigado por usar a nossa plataforma! :) " << endl;
 
     return 0;

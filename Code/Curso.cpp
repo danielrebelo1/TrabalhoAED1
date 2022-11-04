@@ -80,7 +80,7 @@ std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *
 }
 
 Student* Curso::PrintStudentByName() {
-    cout << "Qual o nome do estudante ?\n";
+    cout << "\nQual o nome do estudante ?\n";
     string name;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while(true) {
@@ -90,9 +90,10 @@ Student* Curso::PrintStudentByName() {
         auto iterator = std::find_if(allStudents.begin(), allStudents.end(),
                                      [&name](const Student *student) { return tolowerString(student->get_Name()) == name; });
         if (iterator != allStudents.end()) {
+            cout << "\nEstudante encontrado!\n";
             cout << left << "Nome: " <<  (*iterator)->get_Name() << "\t\t" << "Numero de estudante: " <<  (*iterator)->get_student_Code() << "\n";
             return (*iterator);
-        } else { cout << "\nEstudante nao encontrado, insira novamente o nome: \n";}
+        } else { cout << "\nEstudante não encontrado, insira novamente o nome: \n";}
     }
 }
 
@@ -125,7 +126,7 @@ vector<Turma*> Curso::FindTurma(){
                                 [&turma](const Turma *t) { return t->get_turmaCode() != turma; });
         allTurmasPrev.erase(itr, allTurmasPrev.end());
         if (allTurmasPrev.size() != 0) {
-            cout << "Turma encontrada!" << endl;
+            cout << "\nTurma encontrada!" << endl;
             cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << "\n";
         } else { cout << "\nTurma nao encontrada, tente novamente: \n"; }
         return allTurmasPrev;
@@ -150,7 +151,7 @@ void Curso::PrintHorarioTurma(std::vector<Turma *> vt, std::string uc) {
 
     sort(horarioTurmaInteira.begin(), horarioTurmaInteira.end(), sorterHorarioSlot);
 
-    cout << "Horario da turma: " << (vt[0])->get_turmaCode() << endl;
+    cout << "\nHorário da turma: " << (vt[0])->get_turmaCode() << endl;
     cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
          << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
     for (Slot* s : horarioTurmaInteira){
@@ -158,6 +159,7 @@ void Curso::PrintHorarioTurma(std::vector<Turma *> vt, std::string uc) {
                  << Fixer(s->getHorarioInicio()) << setw(1) <<
                  "-" << setw(8) << GetFinishTime(s->getHorarioInicio(), s->getDuracao()) << endl;
     }
+    cout << endl;
 }
 
 std::set<Student *, studentComparator> Curso::getStudentsTurma(std::vector<Turma*> turmas, std::string ucCode){
