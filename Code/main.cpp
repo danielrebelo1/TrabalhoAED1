@@ -14,7 +14,7 @@ int main() {
     ofs.open("Code/schedule/students_classes1.csv", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
     ifstream studentsinfo_file, aulas_file;
-    cout << "Bem-vindo a plataforma de gestao dos horarios de LEIC. O que deseja fazer?\n";
+    cout << "Bem-vindo à plataforma de gestão dos horários de LEIC. O que deseja fazer?\n";
     Menu(studentsinfo_file, aulas_file);
 
     FileReader fileReader = FileReader(studentsinfo_file,
@@ -25,9 +25,8 @@ int main() {
     int op;
     Student *s;
     vector<Turma *> vt;
-
     do {
-        int op = mainMenu();
+        op = mainMenu();
         int temp;
 
         do {

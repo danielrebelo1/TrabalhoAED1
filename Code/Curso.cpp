@@ -385,6 +385,7 @@ void Curso::ProcessPA(){
                          << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;
                 } else {
                     cout << "\nPedido de alteracao nao aceite! Por favor tenha em conta o numero de alunos na turma e tambem a compatibilidade de horarios" << endl;
+                    WriteArchive(p);
                 }
                 break;
             }
@@ -393,12 +394,32 @@ void Curso::ProcessPA(){
                 result = p->RemoveFromClass(s,t);
                 if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
                                  << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
+                else {
+                    WriteArchive(p);
+                }
                 break;
             }
             case 3: // troca direta
             {
+                Student *s2 = p->getStudent2();
+                Turma *t2 = p->getTurma2();
+                result = p->TrocaDiretaTurma(s,s2,t,t2);
+                if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
+                                 << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
+                else {
+                    WriteArchive(p);
+                }
                 break;
             }
+            case 4: // troca singular entre duas turmas
+            {
+                vector<Turma*> vt = s->get_TurmasAluno();
+                auto it = find_if(vt.begin(),vt.end(),[t](const Turma* turma) {return turma->get_ucCode() == t->get_ucCode();});
+                Turma* torigem = *it;
+                result = p->TrocaTurma(allTurmas,s,torigem,t);
+                break;
+            }
+
         }
         queuePA.pop();
     }
@@ -422,4 +443,33 @@ void Curso::Save(){
     }
     newFile.close();
     cout << "Saved!\n";
+}
+
+void Curso::WriteArchive(PedidoAlteracao* p){
+    fstream newFile;
+    try{
+        newFile.open("Code/schedule/students_classes1.csv");
+    }
+    catch(exception e)
+    {
+        cout << "File not found!\n";
+    }
+    if (p->getTypeRequest() == 1 || p->getTypeRequest() == 2){
+        Student* s = p->getStudent();
+        Turma* t = p->getTurma();
+        newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC/Turma a alocar o estudante: " << t->get_ucCode() << "," << t->get_turmaCode() << endl;
+    }
+    else if(p->getTypeRequest() == 2)
+    {
+        Student* s = p->getStudent();
+        Turma* t = p->getTurma();
+        newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC/Turma a remover o estudante: " << t->get_ucCode() << "," << t->get_turmaCode() << endl;
+    }
+    else {
+        Student* s = p->getStudent();
+        Turma* t = p->getTurma();
+        Student* s2 = p->getStudent2();
+        Turma* t2 = p->getTurma2();
+        newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC dos estudante: " << t->get_ucCode() << "," << "Atuais turmas(respetivas)" << t->get_turmaCode() << "," << t2->get_turmaCode() << endl;
+    }
 }

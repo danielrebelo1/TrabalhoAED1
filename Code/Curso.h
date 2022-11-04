@@ -74,6 +74,7 @@ public:
     void setDefaultCap(int newCap);
     void ProcessPA();
     void Save();
+    void WriteArchive(PedidoAlteracao* p);
     // static int defaultCap = 24;
 };
 
