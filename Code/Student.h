@@ -29,7 +29,7 @@ public:
 
     std::string get_Name() const;
     std::string get_student_Code() const;
-    std::vector<Turma *> get_TurmasAluno() ;
+    std::vector<Turma *> get_TurmasAluno();
 
     void UpdateTurmas(Turma *turma);
     void RemoveFromTurma(Turma *turma);

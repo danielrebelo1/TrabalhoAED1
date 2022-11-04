@@ -29,18 +29,21 @@ int PedidoAlteracao::TrocaTurma(std::set<Turma*, turmaComparator> allTurmas , St
     int x;
     bool limit = turmaDestino->get_nrStudentsTurma() < turmaDestino->defaultCap ;
     bool cap = (abs(t1 - t2) < 4);
-    if (!cap){
-
+    if (!cap && limit){
+        cout << "Fazer esta mudanca podera gerar desequilibrio. Deseja continuar?(Y/N)";
+        char response;
+        cin >> response;
+        response = tolower(response);
+        if(response == 'y') cap = true;
     }
-
-    if ( limit ) {
+    if ( limit && cap ) {
         x = RemoveFromClass(student, turmaOrigem);
+        x = AddtoClass(student,turmaDestino);
         student->UpdateTurmas(turmaDestino);
         turmaDestino->AddStudent(student);
     }
     else {
         x = 0;
-        // escrever pedido p archive
         cout << "Impossível adicionar aluno à turma desejada" << endl;
     }
     return x;
