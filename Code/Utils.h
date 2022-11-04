@@ -9,6 +9,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include "FileReader.h"
 
 class Slot;
 class Turma;
@@ -29,7 +30,9 @@ void PrintVector(std::vector<Turma*> v , char option);
 
 std::string tolowerString(std::string s);
 
-bool isCompatible(std::list<Slot *>, std::vector< std::pair <Slot * , Turma *>>);
+bool isCompatible(std::list<Slot *>, std::vector< std::pair <Slot * , Turma *>> , Turma* turma = NULL);
+
+vector<Turma*> minMaxTurma(Turma* turma);
 
 
 #endif //PROJECT_AED_UTILS_H

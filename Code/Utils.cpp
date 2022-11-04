@@ -3,8 +3,6 @@
 //
 
 #include "Utils.h"
-#include "FileReader.h"
-
 
 
 using namespace std;
@@ -103,22 +101,50 @@ std::string tolowerString(std::string s){
     return lowername;
 }
 
-bool isCompatible(std::list<Slot *> horarioUcTurma , std::vector< std::pair <Slot * , Turma *>> horarioStudent){
-    for (Slot* novaAula : horarioUcTurma) {
-        std::vector< std::pair <Slot * , Turma *>> hs = horarioStudent;
-        auto it = std::remove_if( hs.begin(), hs.end(),
-                                [&novaAula](const std::pair <Slot * , Turma *> aula){ return novaAula->getDiaSemana() != aula.first->getDiaSemana();} );
-        hs.erase(it,hs.end());
-        for (pair <Slot * , Turma *> p : hs ){
-            Slot* aula = p.first;
-            float begTimeAula = stof(aula->getHorarioInicio());
-            float finishTimeAula = begTimeAula + stof(aula->getDuracao());
-            float begTimenovaAula = stof(novaAula->getHorarioInicio());
-            float finishTimenovaAula = begTimenovaAula + stof(novaAula->getDuracao());
-            if (!(begTimenovaAula >= finishTimeAula || finishTimenovaAula <= begTimeAula)){
-                return false;
+bool isCompatible(std::list<Slot *> horarioUcTurma , std::vector< std::pair <Slot * , Turma *>> horarioStudent , Turma* turma ){
+    if (turma == NULL) {
+        for (Slot *novaAula: horarioUcTurma) {
+            std::vector<std::pair<Slot *, Turma *>> hs = horarioStudent;
+            auto it = std::remove_if(hs.begin(), hs.end(),
+                                     [&novaAula](const std::pair<Slot *, Turma *> aula) {
+                                         return novaAula->getDiaSemana() != aula.first->getDiaSemana();
+                                     });
+            hs.erase(it, hs.end());
+            for (pair<Slot *, Turma *> p: hs) {
+                Slot *aula = p.first;
+                float begTimeAula = stof(aula->getHorarioInicio());
+                float finishTimeAula = begTimeAula + stof(aula->getDuracao());
+                float begTimenovaAula = stof(novaAula->getHorarioInicio());
+                float finishTimenovaAula = begTimenovaAula + stof(novaAula->getDuracao());
+                if (!(begTimenovaAula >= finishTimeAula || finishTimenovaAula <= begTimeAula)) {
+                    return false;
+                }
             }
         }
+        return true;
     }
-    return true;
+
+    else{
+        for (Slot *novaAula: horarioUcTurma) {
+            std::vector<std::pair<Slot *, Turma *>> hs = horarioStudent;
+            auto it = std::remove_if(hs.begin(), hs.end(),
+                                     [&novaAula](const std::pair<Slot *, Turma *> aula) {
+                                         return novaAula->getDiaSemana() != aula.first->getDiaSemana();
+                                     });
+            hs.erase(it, hs.end());
+            for (pair<Slot *, Turma *> p: hs) {
+                Slot *aula = p.first;
+                Turma* t = p.second;
+                if (t->get_ucCode() == turma->get_ucCode()){continue;}
+                float begTimeAula = stof(aula->getHorarioInicio());
+                float finishTimeAula = begTimeAula + stof(aula->getDuracao());
+                float begTimenovaAula = stof(novaAula->getHorarioInicio());
+                float finishTimenovaAula = begTimenovaAula + stof(novaAula->getDuracao());
+                if (!(begTimenovaAula >= finishTimeAula || finishTimenovaAula <= begTimeAula)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
