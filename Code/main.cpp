@@ -10,8 +10,11 @@ using namespace std;
 
 
 int main() {
+    std::ofstream ofs;
+    ofs.open("Code/schedule/students_classes1.csv", std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
     ifstream studentsinfo_file, aulas_file;
-    cout << "Bem-vindo a plataforma de gestao dos horarios de LEIC. O que deseja fazer?\n";
+    cout << "Bem-vindo à plataforma de gestão dos horários de LEIC. O que deseja fazer?\n";
     Menu(studentsinfo_file, aulas_file);
 
     FileReader fileReader = FileReader(studentsinfo_file,
@@ -22,7 +25,6 @@ int main() {
     int op;
     Student *s;
     vector<Turma *> vt;
-
     do {
         op = mainMenu();
         int temp;
@@ -217,14 +219,14 @@ int main() {
                                     std::string x;
                                     cout << "Qual a UC pretendida?\n";
                                     cin >> x;
-                                    curso.SortbyTurmaCapacity(curso.getAllTurmas(), x, '1');
+                                    curso.SortbyTurmaCapacity( x, '1');
                                     break;
                                 }
                                 case 3:{
                                     std::string x;
                                     cout << "Qual a UC pretendida?\n";
                                     cin >> x;
-                                    curso.SortbyTurmaCapacity(curso.getAllTurmas(), x, '2');
+                                    curso.SortbyTurmaCapacity( x, '2');
                                     break;
                                 }
                                 case 4:{
@@ -284,7 +286,11 @@ int main() {
                                         }
                                         case 2:
                                         {
-                                            Turma* t = curso.FindTurmaLowestCapacity(uc);
+                                            Turma* t = curso.FindTurmaLowestCapacity(s,uc);
+                                            if (t == NULL) {
+                                                cout << "Impossivel encontrar turma com horario compativel.\n" << endl;
+                                                break;
+                                            }
                                             curso.AddPA(s,t,1);
                                             break;
                                         }
@@ -309,7 +315,11 @@ int main() {
                                         }
                                         case 2:
                                         {
-                                            Turma* t = curso.FindTurmaLowestCapacity(uc);
+                                            Turma* t = curso.FindTurmaLowestCapacity(s,uc);
+                                            if (t == NULL) {
+                                                cout << "Impossivel encontrar turma com horario compativel.\n" << endl;
+                                                break;
+                                            }
                                             curso.AddPA(s,t,1);
                                             break;
                                         }
@@ -358,11 +368,9 @@ int main() {
                                             break;
                                         case 1: {
                                             Turma* t;
-                                            try{
-                                                t = curso.GetTurma(s,uc);
-                                            }
-                                            catch (exception e){
-                                                cout << "O aluno nao esta inscrito nesta turma." << endl;
+                                            t = curso.GetTurma(s,uc);
+                                            if (t == NULL) {
+                                                cout << "O aluno nao esta inscrito nesta turma.\n" << endl;
                                                 break;
                                             }
                                             curso.AddPA(s, t , 2);
@@ -373,7 +381,7 @@ int main() {
                                 } // find por code
                             }
                             break;
-                        case 3:
+                        case 3: {
                             // troca direta
                             temp2 = studentMenu();
                             switch (temp2) {
@@ -390,8 +398,8 @@ int main() {
                                         case 0:
                                             break;
                                         case 1: {
-                                            Turma* t = curso.GetTurma(s,uc);
-                                            curso.AddPA(s, t , 3);
+                                            Turma *t = curso.GetTurma(s, uc);
+                                            curso.AddPA(s, t, 3);
                                             break;
                                         }
                                     }
@@ -408,7 +416,11 @@ int main() {
                                             break;
                                         case 1: {
                                             Turma* t = curso.GetTurma(s,uc);
-                                            curso.AddPA(s, t , 3);
+                                            if (t == NULL) {
+                                                cout << "O aluno nao esta inscrito nesta turma.\n" << endl;
+                                                break;
+                                            }
+                                            curso.AddPA(s, t, 3);
                                             break;
                                         }
                                     }
@@ -416,12 +428,22 @@ int main() {
                                 } // find por code
                             }
                             break;
+                        }
+                        case 4:
+                        {
+                            curso.ProcessPA();
+                            // Process requests
+                        }
+                        break;
                     }
                     break;
-                case 5:
-                    // salvar alteracoes
+                case 5: {
+                    curso.Save();
+                    temp = 0;
                     break;
+                }
                 case 6:
+                {
                     temp = ConfigMenu();
                     switch (temp) {
                         // configuracoes
@@ -438,11 +460,15 @@ int main() {
                             break;
                     }
                     break;
+                }
+                case 0: {
+                    temp = 0;
+                    break;
+                }
             }
         } while (temp != 0);
 
     } while (op != 0);
-
     cout << "Obrigado por usar a nossa plataforma! :) " << endl;
 
     return 0;

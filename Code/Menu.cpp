@@ -15,7 +15,6 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
         case 1:
         {
             try {
-
                 studentsinfo_file.open("C:\\Users\\Jaime\\Desktop\\projeto-aed\\Code\\schedule\\students_classes.csv");
             }
             catch (exception e) {
@@ -79,7 +78,7 @@ int studentMenu2(){
 
 int turmaMenu(){
     cout << setw(30) << left << "Informações de uma turma" << endl;
-    cout << "Qual o ano da turma: ";
+    cout << "Qual o ano da turma: (clique 0 para voltar atras) ";
     return auxMenu(3,0);
 }
 
@@ -125,6 +124,7 @@ int displayStudents(){
     cout << "2. Ordem inversa através do nome\n";
     cout << "3. Ordem crescente através do código do aluno\n";
     cout << "4. Ordem decrescente através do código do aluno\n";
+    cout << "0. Voltar atras\n";
     return auxMenu(4, 0);
 }
 
@@ -164,7 +164,8 @@ int turmaListagemMenu(){
     cout << "2. Por capacidade\n";
     cout << "3. Por número de vagas\n";
     cout << "4. Todas as turmas\n";
-    return auxMenu(4,1);
+    cout << "0. Voltar atras\n";
+    return auxMenu(4,0);
 }
 
 int ucListagemMenu(){
@@ -178,8 +179,9 @@ int PAMenu(){
     cout << "1.Alocar estudante numa turma/UC" << endl;
     cout << "2.Remover estudante de uma turma/UC" << endl;
     cout << "3.Troca direta entre dois estudantes de uma turma/UC" << endl;
+    cout << "4.Processar pedidos" << endl;
     cout << "0.Voltar atras" << endl;
-    return auxMenu(3,0);
+    return auxMenu(4,0);
 }
 
 int AlocationUCMenu(){

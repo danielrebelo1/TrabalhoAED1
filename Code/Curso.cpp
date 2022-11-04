@@ -251,12 +251,17 @@ void Curso::SortByEnrolledUC(int op, string ucCode){
     }
 }
 
-Turma* Curso::FindTurmaLowestCapacity(string ucCode){
+Turma* Curso::FindTurmaLowestCapacity(Student* s , string ucCode){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
     auto it = std::remove_if(todasTurmas.begin(), todasTurmas.end(),[ucCode] (Turma* t){return (t->get_ucCode() != ucCode); } );
     todasTurmas.erase(it,todasTurmas.end());
     std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
-    return todasTurmas[0];
+    std::vector< std::pair <Slot * , Turma *>> horarioStudent = s->createHorario();
+    for (Turma* turma: todasTurmas){
+        std::list<Slot *> horarioUcTurma = turma->getHorarioUcTurma();
+        if (isCompatible(horarioUcTurma,horarioStudent)) return turma;
+    }
+    return NULL;
 }
 
 void Curso::AddPA(Student* s, Turma* t , int typeRequest){
@@ -339,10 +344,11 @@ Turma* Curso::GetTurma(Student* s , std::string ucCode){
     return t;
 }
 
-void Curso::SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , int option){
+void Curso::SortbyTurmaCapacity(std::string ucCode , int option){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
     auto it = std::remove_if(todasTurmas.begin(), todasTurmas.end(),[ucCode] (Turma* t){return (t->get_ucCode() != ucCode); } );
     todasTurmas.erase(it,todasTurmas.end());
+    if (todasTurmas.empty()) {cout << "Dados para esta UC ainda não estão definidos.\nVoltando ao menu principal...\n\n";return;}
     cout << "Para a UC : " << ucCode << endl;
     std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
     switch (option) {
@@ -361,3 +367,109 @@ void Curso::setDefaultCap(int newCap){
     t->defaultCap = newCap;
 }
 
+void Curso::ProcessPA(){
+    if (queuePA.empty()) {cout << "Nenhum pedido para processar\n" << endl;
+        return;}
+    PedidoAlteracao* p;
+    while (!queuePA.empty()){
+        p = queuePA.front();
+        int typeR = p->getTypeRequest() , result;
+        Student *s = p->getStudent();
+        Turma *t = p->getTurma();
+        switch (typeR) {
+            case 1: // alocacao de aluno numa turma
+            {
+                result = p->AddtoClass(s, t);
+                if (result == 1) {
+                    cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " inscrito na turma: "
+                         << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;
+                } else {
+                    cout << "\nPedido de alteracao nao aceite! Por favor tenha em conta o numero de alunos na turma e tambem a compatibilidade de horarios" << endl;
+                    WriteArchive(p);
+                }
+                break;
+            }
+            case 2: // remocao de aluno numa turma
+            {
+                result = p->RemoveFromClass(s,t);
+                if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
+                                 << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
+                else {
+                    WriteArchive(p);
+                }
+                break;
+            }
+            case 3: // troca direta
+            {
+                Student *s2 = p->getStudent2();
+                Turma *t2 = p->getTurma2();
+                result = p->TrocaDiretaTurma(s,s2,t,t2);
+                if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
+                                 << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
+                else {
+                    WriteArchive(p);
+                }
+                break;
+            }
+            case 4: // troca singular entre duas turmas
+            {
+                vector<Turma*> vt = s->get_TurmasAluno();
+                auto it = find_if(vt.begin(),vt.end(),[t](const Turma* turma) {return turma->get_ucCode() == t->get_ucCode();});
+                Turma* torigem = *it;
+                result = p->TrocaTurma(allTurmas,s,torigem,t);
+                break;
+            }
+
+        }
+        queuePA.pop();
+    }
+}
+
+void Curso::Save(){
+    fstream newFile;
+    try{
+        newFile.open("Code/schedule/students_classes1.csv");
+    }
+    catch(exception e)
+    {
+        cout << "File not found!\n";
+    }
+    newFile << "StudentCode,StudentName,UcCode,ClassCode" << endl;
+    for (Student* s : allStudents){
+        std::vector<Turma *> vt = s->get_TurmasAluno();
+        for (Turma* t : vt){
+            newFile << s->get_student_Code() << "," <<  s->get_Name() << "," << t->get_ucCode() << "," << t->get_turmaCode() << endl;
+        }
+    }
+    newFile.close();
+    cout << "Saved!\n";
+}
+
+void Curso::WriteArchive(PedidoAlteracao* p){
+    fstream newFile;
+    try{
+        newFile.open("Code/schedule/students_classes1.csv");
+    }
+    catch(exception e)
+    {
+        cout << "File not found!\n";
+    }
+    if (p->getTypeRequest() == 1 || p->getTypeRequest() == 2){
+        Student* s = p->getStudent();
+        Turma* t = p->getTurma();
+        newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC/Turma a alocar o estudante: " << t->get_ucCode() << "," << t->get_turmaCode() << endl;
+    }
+    else if(p->getTypeRequest() == 2)
+    {
+        Student* s = p->getStudent();
+        Turma* t = p->getTurma();
+        newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC/Turma a remover o estudante: " << t->get_ucCode() << "," << t->get_turmaCode() << endl;
+    }
+    else {
+        Student* s = p->getStudent();
+        Turma* t = p->getTurma();
+        Student* s2 = p->getStudent2();
+        Turma* t2 = p->getTurma2();
+        newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC dos estudante: " << t->get_ucCode() << "," << "Atuais turmas(respetivas)" << t->get_turmaCode() << "," << t2->get_turmaCode() << endl;
+    }
+}

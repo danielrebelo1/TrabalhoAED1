@@ -7,11 +7,13 @@
 
 #include "Student.h"
 #include "Turma.h"
+
 #include <cmath>
 #include <iostream>
 #include <string>
 #include <set>
 #include <cmath>
+#include "FileReader.h"
 
 using namespace std;
 
@@ -21,10 +23,15 @@ public:
     PedidoAlteracao(Student *student , Turma* turma , int typeRequest);
     PedidoAlteracao(Student *student , Student *student2 , Turma *turma , Turma *turma2);
 
-    void TrocaTurma(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino);
-    void RemoveFromClass(Student *student, Turma *turma);
-    void TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2 );
-
+    int TrocaTurma(std::set<Turma*, turmaComparator> allTurmas , Student *student , Turma* turmaOrigem , Turma* turmaDestino);
+    int AddtoClass(Student *student1 , Turma* turma );
+    int RemoveFromClass(Student *student, Turma *turma);
+    int TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2 );
+    Student* getStudent();
+    Student* getStudent2();
+    Turma* getTurma();
+    Turma* getTurma2();
+    int getTypeRequest();
 private:
     Student* student;
     Student* student2;
