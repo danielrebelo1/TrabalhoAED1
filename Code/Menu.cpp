@@ -7,9 +7,8 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
     int option;
     cout << "1 -> Processar/Consultar dados atuais" << endl;
     cout << "2 -> Inserir novos dados" << endl;
-
+    cout << "Escolha opção: ";
     cin >> option;
-    cout << endl;
 
     switch (option) {
         case 1:
@@ -57,34 +56,38 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
 }
 
 int mainMenu() {
-    cout << "1.Ver informações de um estudante" << '\t' << "2.Consultar turmas" << '\t' << "3.Listagens" << '\t'<< "4.Pedidos de alteração" << '\t' << "5.Salvar alteracoes" << '\t' << "6.Configurações" << '\t' << "0.Sair" << '\n';
+    cout << "\n";
+    cout << "MENU PRINCIPAL\n\n";
+    cout << "1.Ver informações de um estudante" << '\n' << "2.Consultar turmas" << '\n' << "3.Listagens" << '\n'<< "4.Pedidos de alteração" << '\n' << "5.Salvar alteracoes" << '\n' << "6.Configurações" << '\n' << "0.Sair" << "\n\n";
+    cout << "Escolha opção: ";
     return auxMenu(6, 0);
 }
 
 int studentMenu(){
-    cout << setw(30) << left << "Informações estudante" << endl;
-    cout << "Qual o estudante pretendido?" << endl;
     cout << "\n";
+    cout << setw(30) << left << "Menu de informações dos estudantes\n" << endl;
     cout << "1.Procurar por nome de estudante" << endl;
     cout << "2.Procurar por número do estudante " << endl;
-    cout << "0.Voltar\n";
+    cout << "0.Voltar\n\n";
+    cout << "Escolha opção: ";
     return auxMenu(3, 0);
 }
 
 int studentMenu2(){
-    cout << endl << "1.Ver UC's/Turmas em que está inscrito \n" << "2.Ver horário \n" << "0.Voltar \n";
+    cout << endl << "1.Ver UC's/Turmas em que está inscrito \n" << "2.Ver horário \n" << "0.Voltar \n\n";
+    cout << "Escolha opção: ";
     return auxMenu(3,0);
 }
 
 int turmaMenu(){
-    cout << setw(30) << left << "Informações de uma turma" << endl;
-    cout << "Qual o ano da turma: (clique 0 para voltar atras) ";
+    cout << setw(30) << left << "\nInformações de uma turma" << endl;
+    cout << "Qual o ano da turma: ";
     return auxMenu(3,0);
 }
 
 
 int turmaMenu2(int ano){
-    cout << "Qual o número da turma: ";
+    cout << "Qual o número da turma(yLEIC0x/yLEICxx): ";
     switch(ano){
         case 1:
             return auxMenu(16,1);
@@ -97,10 +100,11 @@ int turmaMenu2(int ano){
 }
 
 int turmaMenu3(){
-    cout << "O que deseja fazer?\n";
+    cout << "\nO que deseja fazer?\n";
     cout << "1. Ver o horário desta turma" << "\n";
     cout << "2. Ver os estudantes desta turma" << "\n";
     cout << "0. Voltar atras" << "\n";
+    cout << "Escolha opção: ";
     return auxMenu(2,0);
 }
 
@@ -108,23 +112,26 @@ int turmaMenuHorário(){
     cout << "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?\n";
     cout << "1. Todas as UCs\n";
     cout << "2. De apenas uma UC em específico\n";
+    cout << "Escolha opção: ";
     return auxMenu(2,1);
 }
 
 int turmaMenuStudents(){
-    cout << "Deseja ver os students desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+    cout << "\nDeseja ver os estudantes desta turma a todas as UCs ou apenas de uma UC em específico?\n";
     cout << "1. Todas as UCs\n";
-    cout << "2. De apenas uma UC em específico\n";
+    cout << "2. De uma UC em específico\n";
+    cout << "Escolha opção: ";
     return auxMenu(2, 1);
 }
 
 int displayStudents(){
-    cout << "Como deseja visualizar os estudantes?\n";
+    cout << "\nComo deseja visualizar os estudantes?\n";
     cout << "1. Alfabeticamente através do nome\n";
     cout << "2. Ordem inversa através do nome\n";
     cout << "3. Ordem crescente através do código do aluno\n";
     cout << "4. Ordem decrescente através do código do aluno\n";
     cout << "0. Voltar atras\n";
+    cout << "Escolha opção: ";
     return auxMenu(4, 0);
 }
 
@@ -149,27 +156,29 @@ std::string ucCode(std::vector<Turma*> vt){
 
 
 int listagensMenu(){
-    cout << "O que deseja fazer?\n";
+    cout << "\nO que deseja fazer?\n";
     cout << "1. Ver todos os estudantes inscritos\n";
     cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
     cout << "3. Ver todas as turmas\n";
     cout << "4. Ver nr estudantes inscritos em todas as UC\n";
-    cout << "0. Voltar atras\n";
+    cout << "0. Voltar atras\n\n";
+    cout << "Escolha opção: ";
     return auxMenu(4,0);
 }
 
 int turmaListagemMenu(){
-    cout << "Como deseja visualizar as turmas?\n";
+    cout << "\nComo deseja visualizar as turmas?\n";
     cout << "1. Por ano\n";
     cout << "2. Por capacidade\n";
     cout << "3. Por número de vagas\n";
     cout << "4. Todas as turmas\n";
-    cout << "0. Voltar atras\n";
+    cout << "0. Voltar atras\n\n";
+    cout << "Escolha opção: ";
     return auxMenu(4,0);
 }
 
 int ucListagemMenu(){
-    cout << "1.Ver lista de todas as UC" << endl;
+    cout << "\n1.Ver lista de todas as UC" << endl;
     cout << "2.Ver nr de alunos inscritos numa UC" << endl;
     cout << "0.Voltar atras" << endl;
     return auxMenu(2,0);
