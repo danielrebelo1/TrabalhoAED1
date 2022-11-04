@@ -12,14 +12,15 @@ PedidoAlteracao::PedidoAlteracao(Student *student , Turma* turma , int typeReque
     this->typeRequest = typeRequest;
 }
 
-PedidoAlteracao::PedidoAlteracao(Student* student1, Student* student2 ,Turma *turma1 , Turma *turma2) {
-    student1 = student1;
-    student2 = student2;
-    turma1 = turma1;
-    turma2 = turma2;
+PedidoAlteracao::PedidoAlteracao(Student* student, Student* student2 ,Turma *turma , Turma *turma2, int typeRequest) {
+    this->student = student;
+    this->student2 = student2;
+    this->turma = turma;
+    this->turma2 = turma2;
+    this->typeRequest = typeRequest;
 }
 
-int PedidoAlteracao::TrocaTurma(std::set<Turma*, turmaComparator> allTurmas , Student *student ,Turma* turmaOrigem ,  Turma* turmaDestino) {
+int PedidoAlteracao::TrocaTurma( Student *student ,Turma* turmaOrigem ,  Turma* turmaDestino) {
     std::list<Slot *> horarioUcTurma = turmaDestino->getHorarioUcTurma();
     std::vector< std::pair <Slot * , Turma *>> horarioStudent = student->createHorario();
     bool noDesequilibrium = abs(turmaDestino->get_nrStudentsTurma() - turmaOrigem->get_nrStudentsTurma()) < 4;

@@ -51,7 +51,7 @@ public:
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
     void PrintHorarioTurma(std::vector<Turma*> , std::string uc = "");
-    std::vector<Turma*> FindTurma();
+    std::vector<Turma*> FindTurma(std::string ucCode = "");
     Student* PrintStudentByName();
     Student* PrintStudentByCode();
 

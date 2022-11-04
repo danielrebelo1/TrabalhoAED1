@@ -280,7 +280,8 @@ int main() {
                                             break;
                                         case 1:
                                         {
-                                            vt = curso.FindTurma();
+
+                                            vt = curso.FindTurma(uc);
                                             curso.AddPA(s,vt[0],1);
                                             break;
                                         }
@@ -449,7 +450,6 @@ int main() {
                         // configuracoes
                         case 1:
                         {
-
                             cout << "Atual capacidade: " << curso.getDefaultCap() << endl;
                             cout << "Pretende alterar?(Y/N) ";
                             char response;
