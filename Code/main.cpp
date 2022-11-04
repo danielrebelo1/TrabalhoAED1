@@ -467,6 +467,10 @@ int main() {
                     }
                     break;
                 }
+                case 7:
+                {
+                    temp = AboutUsMenu();
+                }
                 case 0: {
                     temp = 0;
                     break;

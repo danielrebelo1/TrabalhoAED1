@@ -58,9 +58,9 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
 int mainMenu() {
     cout << "\n";
     cout << "MENU PRINCIPAL\n\n";
-    cout << "1.Ver informações de um estudante" << '\n' << "2.Consultar turmas" << '\n' << "3.Listagens" << '\n'<< "4.Pedidos de alteração" << '\n' << "5.Salvar alteracoes" << '\n' << "6.Configurações" << '\n' << "0.Sair" << "\n\n";
+    cout << "1.Ver informações de um estudante" << '\n' << "2.Consultar turmas" << '\n' << "3.Listagens" << '\n'<< "4.Pedidos de alteração" << '\n' << "5.Salvar alteracoes" << '\n' << "6.Configurações" << '\n' << "7.Sobre nós" << '\n' << "0.Sair" << "\n\n";
     cout << "Escolha opção: ";
-    return auxMenu(6, 0);
+    return auxMenu(7, 0);
 }
 
 int studentMenu(){
@@ -215,6 +215,16 @@ int ConfigMenu(){
     cout << "1.Definir capacidade maxima das turmas " << endl;
     cout << "0.Voltar atras" << endl;
     return auxMenu(1,0);
+}
+
+int AboutUsMenu(){
+    cout << "\nPlataforma de gestão de horários de LEIC criada em prol da disciplina de Algoritmos e Estrutura de Dados\n" << endl;
+    cout << "Meet the team: \n";
+    cout << left << setw(16) <<  "Carlos Daniel Rebelo\t" << "número estudante: " << setw(9) << "202108885\n";
+    cout << left << setw(20)  << "Jaime Fonseca\t" << setw(20) << "número estudante: " << setw(9) << "202108789\n";
+    cout << left << setw(20)  << "Hélder Costa\t" << setw(20) << "número estudante: " << setw(9) << "202108719\n";
+    cout << "0.Voltar atras" << endl;
+    return auxMenu(0,0);
 }
 
 

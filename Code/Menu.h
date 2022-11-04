@@ -51,5 +51,7 @@ int TrocaDiretaMenu();
 
 int ConfigMenu();
 
+int AboutUsMenu();
+
 #endif //AEDTP1_MENU_H
 
