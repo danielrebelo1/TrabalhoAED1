@@ -113,7 +113,7 @@ Student* Curso::PrintStudentByCode() {
     }
 }
 
-vector<Turma*> Curso::FindTurma(){
+vector<Turma*> Curso::FindTurma(string ucCode){
     vector<Turma *>  allTurmasPrev(allTurmas.begin(), allTurmas.end());
     while(true) {
         int turmaAno = turmaMenu();
@@ -128,9 +128,18 @@ vector<Turma*> Curso::FindTurma(){
         if (allTurmasPrev.size() != 0) {
             cout << "\nTurma encontrada!" << endl;
             cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << "\n";
+            break;
         } else { cout << "\nTurma nao encontrada, tente novamente: \n"; }
-        return allTurmasPrev;
     }
+    if(ucCode != ""){
+        while(allTurmasPrev.size() != 1){
+            auto itr = std::remove_if(allTurmasPrev.begin(), allTurmasPrev.end(), [&ucCode](const Turma* t){return t->get_ucCode() != ucCode;});
+            allTurmasPrev.erase(itr, allTurmasPrev.end());
+        }
+    }
+
+    return allTurmasPrev;
+
 }
 
 void Curso::PrintHorarioTurma(std::vector<Turma *> vt, std::string uc) {
@@ -281,6 +290,7 @@ void Curso::AddPA(Student* s, Turma* t , int typeRequest){
             cin >> response;
             if (tolower(response) == 'n') { cout << "Pedido cancelado\n"; break; }
             p = new PedidoAlteracao(s,t,1);
+            queuePA.push(p);
             break;
         } // adicionar
         case 2:
@@ -293,9 +303,8 @@ void Curso::AddPA(Student* s, Turma* t , int typeRequest){
             char response;
             cin >> response;
             if (tolower(response) == 'n') { cout << "Pedido cancelado\n"; break; }
-            p = new PedidoAlteracao(s,t,1);
+            p = new PedidoAlteracao(s,t,2);
             queuePA.push(p);
-            cout << "Pedido enviado. Para verificar se o pedido e aceite por favor acesse a aba de processamento de pedidos na aba anterior\n\n";
             break;
         } // remover
         case 3:
@@ -329,13 +338,11 @@ void Curso::AddPA(Student* s, Turma* t , int typeRequest){
             char response;
             cin >> response;
             if (tolower(response) == 'n') { cout << "Pedido cancelado\n"; break; }
-            p = new PedidoAlteracao(s,s2,t,t2);
+            p = new PedidoAlteracao(s,s2,t,t2, 3);
             queuePA.push(p);
-            cout << "Pedido enviado. Para verificar se o pedido e aceite por favor acesse a aba de processamento de pedidos na aba anterior\n\n";
             break;
         } // troca direta
     }
-    queuePA.push(p);
     cout << "Pedido enviado. Para verificar se o pedido e aceite por favor acesse a aba de processamento de pedidos na aba anterior!\n\n";
 }
 
@@ -370,6 +377,7 @@ void Curso::ProcessPA(){
     PedidoAlteracao* p;
     while (!queuePA.empty()){
         p = queuePA.front();
+        int x  = queuePA.size();
         int typeR = p->getTypeRequest() , result;
         Student *s = p->getStudent();
         Turma *t = p->getTurma();
@@ -390,7 +398,8 @@ void Curso::ProcessPA(){
             {
                 result = p->RemoveFromClass(s,t);
                 if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
-                                 << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
+                                 << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;
+                }
                 else {
                     WriteArchive(p);
                 }
@@ -404,6 +413,7 @@ void Curso::ProcessPA(){
                 if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
                                  << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
                 else {
+                    cout << "\n O seu pedido de alteracao nao foi efetuado por conflito de horario. Foi anotada a tentativa de mudanca no ficheiro students_classes1. Obrigado\n";
                     WriteArchive(p);
                 }
                 break;
