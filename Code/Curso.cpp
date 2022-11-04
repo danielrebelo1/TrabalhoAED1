@@ -416,7 +416,6 @@ void Curso::ProcessPA(){
                 result = p->TrocaTurma(s,torigem,t);
                 break;
             }
-
         }
         queuePA.pop();
     }
