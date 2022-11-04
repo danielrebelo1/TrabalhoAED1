@@ -41,11 +41,12 @@ struct studentComparatorDecreasingCode {
 class Curso {
     std::set<Student*, studentComparator> allStudents;
     std::set<Turma*, turmaComparator> allTurmas;
+    std::vector<Slot *> allSlots;
     std::queue<PedidoAlteracao* > queuePA;
     bool needSave = false;
 public:
     Curso() = default;
-    Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator> );
+    Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator>, std::vector<Slot *> allSlots );
     std::set<Student*, studentComparator> getAllStudents() const;
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
@@ -78,6 +79,8 @@ public:
     void WriteArchive(PedidoAlteracao* p);
     static std::vector<Turma*> minMaxTurma(Turma* t);
     int getTurmaMostStudents();
+    std::vector<Slot*> findCertainSlots();
+    void findListStudentsUC(int n = -1);
 
 };
 

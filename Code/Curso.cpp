@@ -6,9 +6,10 @@
 using namespace std;
 
 
-Curso::Curso(std::set<Student*, studentComparator> allStudents, std::set<Turma*, turmaComparator> allTurmas){
+Curso::Curso(std::set<Student*, studentComparator> allStudents, std::set<Turma*, turmaComparator> allTurmas ,  std::vector<Slot *> allSlots){
     this->allStudents = allStudents;
     this->allTurmas = allTurmas;
+    this->allSlots = allSlots;
 }
 
 std::set<Student*, studentComparator> Curso::getAllStudents() const{
@@ -496,4 +497,24 @@ int Curso::getTurmaMostStudents(){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
     std::sort(todasTurmas.begin(),todasTurmas.end(),[](const Turma* t1 , const Turma*t2 ){return t1->get_nrStudentsTurma() < t2->get_nrStudentsTurma();});
     return (todasTurmas[todasTurmas.size() - 1])->get_nrStudentsTurma();
+}
+
+std::vector<Slot*> Curso::findCertainSlots(){
+    std::vector<Slot*> allSlots2 (allSlots.begin(),allSlots.end());
+
+    return allSlots2;
+}
+
+void Curso::findListStudentsUC(int n){
+    vector<Student*> todosStudents(allStudents.begin(),allStudents.end());
+    sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return (s1->get_TurmasAluno()).size() < (s2->get_TurmasAluno()).size();});
+    if (n != -1){
+        auto it = remove_if(todosStudents.begin(),todosStudents.end(),[&n]( Student*s){return (s->get_TurmasAluno()).size() > n; });
+        todosStudents.erase(it,todosStudents.end());
+    }
+    cout << "Nome do estudante" << "\t\t" << "Número de UCS";
+    for (Student* s : todosStudents){
+        cout << s->get_Name() << "\t\t" << (s->get_TurmasAluno()).size() << endl;
+    }
+    cout << "\n";
 }
