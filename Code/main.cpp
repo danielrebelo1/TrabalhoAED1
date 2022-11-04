@@ -20,7 +20,7 @@ int main() {
     FileReader fileReader = FileReader(studentsinfo_file,
                                        aulas_file); //read the files, organizing them through standard method
     Curso curso = Curso(fileReader.getStudents(),
-                        fileReader.getTurmas()); //create an object curso with all the information
+                        fileReader.getTurmas(),fileReader.getSlots()); //create an object curso with all the information
 
     int op;
     Student *s;
@@ -467,6 +467,10 @@ int main() {
                             break;
                     }
                     break;
+                }
+                case 7:
+                {
+                    temp = AboutUsMenu();
                 }
                 case 0: {
                     temp = 0;
