@@ -19,7 +19,7 @@ PedidoAlteracao::PedidoAlteracao(Student* student1, Student* student2 ,Turma *tu
     turma2 = turma2;
 }
 
-int PedidoAlteracao::TrocaTurma(std::set<Turma*, turmaComparator> allTurmas , Student *student ,Turma* turmaOrigem ,  Turma* turmaDestino) {
+int PedidoAlteracao::TrocaTurma( Student *student ,Turma* turmaOrigem ,  Turma* turmaDestino) {
     std::list<Slot *> horarioUcTurma = turmaDestino->getHorarioUcTurma();
     std::vector< std::pair <Slot * , Turma *>> horarioStudent = student->createHorario();
     bool noDesequilibrium = abs(turmaDestino->get_nrStudentsTurma() - turmaOrigem->get_nrStudentsTurma()) < 4;

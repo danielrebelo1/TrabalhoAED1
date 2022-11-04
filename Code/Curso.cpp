@@ -413,7 +413,7 @@ void Curso::ProcessPA(){
                 vector<Turma*> vt = s->get_TurmasAluno();
                 auto it = find_if(vt.begin(),vt.end(),[t](const Turma* turma) {return turma->get_ucCode() == t->get_ucCode();});
                 Turma* torigem = *it;
-                result = p->TrocaTurma(allTurmas,s,torigem,t);
+                result = p->TrocaTurma(s,torigem,t);
                 break;
             }
 

@@ -449,7 +449,6 @@ int main() {
                         // configuracoes
                         case 1:
                         {
-
                             cout << "Atual capacidade: " << curso.getDefaultCap() << endl;
                             cout << "Pretende alterar?(Y/N) ";
                             char response;
