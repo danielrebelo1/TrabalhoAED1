@@ -43,7 +43,6 @@ class Curso {
     std::set<Turma*, turmaComparator> allTurmas;
     std::vector<Slot *> allSlots;
     std::queue<PedidoAlteracao* > queuePA;
-    bool needSave = false;
 public:
     Curso() = default;
     Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator>, std::vector<Slot *> allSlots );
@@ -80,7 +79,7 @@ public:
     static std::vector<Turma*> minMaxTurma(Turma* t);
     int getTurmaMostStudents();
     std::vector<Slot*> findCertainSlots();
-    void findListStudentsUC(int n = -1);
+    void findListStudentsUC(int n, int exactN, int orderType);
 
 };
 

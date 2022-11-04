@@ -238,21 +238,50 @@ int main() {
 
                             break;
                         case 4:
+                        {
                             int temp2 = ucListagemMenu();
                             switch (temp2) {
-                                    case 1:
-                                        curso.SortByEnrolledUC();
-                                        cout << endl;
-                                        break;
-                                    case 2:
-                                    {
-                                        string turmaCode = curso.ucCodeNormalizer();
-                                        curso.SortByEnrolledUC(2,turmaCode);
-                                        break;
-                                    }
-                                    case 0:
-                                        break;
+                                case 1:
+                                    curso.SortByEnrolledUC();
+                                    cout << endl;
+                                    break;
+                                case 2:
+                                {
+                                    string turmaCode = curso.ucCodeNormalizer();
+                                    curso.SortByEnrolledUC(2,turmaCode);
+                                    break;
                                 }
+                                case 0:
+                                    break;
+                            }
+                        }
+                        case 5:
+                        {
+                            int temp2 = EstudantesUCMenu();
+                            switch (temp2) {
+                                case 0:
+                                    break;
+                                case 1: { // mais do que n UCS
+                                    int temp3 = defNrUcMenu();
+                                    int temp4 = orderTypeMenu();
+                                    curso.findListStudentsUC(temp3,temp2,temp4);
+                                    break;
+                                }
+                                case 2: {
+                                    int temp3 = defNrUcMenu();
+                                    int temp4 = orderTypeMenu();
+                                    curso.findListStudentsUC(temp3,temp2,temp4);
+                                    break;
+                                }
+                                case 3: {
+                                    int temp3 = defNrUcMenu();
+                                    int temp4 = orderTypeMenu();
+                                    curso.findListStudentsUC(temp3,temp2,temp4);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
                     }
 
                     break;
@@ -431,6 +460,60 @@ int main() {
                             break;
                         }
                         case 4:
+                        {
+                            temp2 = studentMenu();
+                            switch (temp2) {
+                                // tipo de find do student
+                                case 0:
+                                    break;
+                                case 1: {
+                                    s = curso.PrintStudentByName();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    Turma *t = curso.GetTurma(s, uc);
+                                    if (t == NULL) {
+                                        cout << "O aluno nao esta inscrito nesta UC.\n" << endl;
+                                        break;
+                                    }
+                                    cout << endl;
+                                    cout << s->get_Name() << " quer trocar da turma " << t->get_turmaCode()  << endl;
+                                    int temp3 = TrocaDiretaMenu();
+                                    switch (temp3) {
+                                        case 0:
+                                            break;
+                                        case 1: {
+                                            curso.AddPA(s,t,4);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por nome
+                                case 2: {
+                                    s = curso.PrintStudentByCode();
+                                    s->PrintStudentTurmas();
+                                    string uc = curso.ucCodeNormalizer();
+                                    int temp3 = TrocaDiretaMenu();
+                                    cout << s->get_Name() << endl;
+                                    switch (temp3) {
+                                        case 0:
+                                            break;
+                                        case 1: {
+                                            Turma* t = curso.GetTurma(s,uc);
+                                            if (t == NULL) {
+                                                cout << "O aluno nao esta inscrito nesta UC.\n" << endl;
+                                                break;
+                                            }
+                                            curso.AddPA(s, t, 3);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                } // find por code
+                            }
+                            break;
+                            // TROCA TURMA ENTRE DOIS ESTUDANTES
+                        }
+                        case 5:
                         {
                             curso.ProcessPA();
                             // Process requests

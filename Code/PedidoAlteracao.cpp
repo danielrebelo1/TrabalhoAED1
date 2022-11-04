@@ -39,12 +39,12 @@ int PedidoAlteracao::TrocaTurma( Student *student ,Turma* turmaOrigem ,  Turma* 
         x = AddtoClass(student,turmaDestino);
         student->UpdateTurmas(turmaDestino);
         turmaDestino->AddStudent(student);
-        return x;
+        return 1;
     }
     else {
         x = 0;
         cout << "Impossível adicionar aluno à turma desejada" << endl;
-        return x;
+        return 0;
     }
 }
 

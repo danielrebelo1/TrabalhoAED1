@@ -80,20 +80,22 @@ int studentMenu2(){
 }
 
 int turmaMenu(){
-    cout << setw(30) << left << "\nInformações de uma turma" << endl;
+    cout << setw(30) << left << "\nInformações de uma turma\n" << endl;
     cout << "Qual o ano da turma: ";
     return auxMenu(3,0);
 }
 
 
 int turmaMenu2(int ano){
-    cout << "Qual o número da turma(yLEIC0x/yLEICxx): ";
     switch(ano){
         case 1:
+            cout << "Qual o número da turma(1LEIC0x/1LEICxx): ";
             return auxMenu(16,1);
         case 2:
+            cout << "Qual o número da turma(2LEIC0x/2LEICxx): ";
             return auxMenu(16,1);
         case 3:
+            cout << "Qual o número da turma(3LEIC0x/3LEICxx): ";
             return auxMenu(15,1);
     }
     return 0;
@@ -160,10 +162,11 @@ int listagensMenu(){
     cout << "1. Ver todos os estudantes inscritos\n";
     cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
     cout << "3. Ver todas as turmas\n";
-    cout << "4. Ver nr estudantes inscritos em todas as UC\n";
+    cout << "4. Ver numero de estudantes inscritos em todas as UC\n";
+    cout << "5. Ver estudantes inscritos em certo numero de UCs\n";
     cout << "0. Voltar atras\n\n";
     cout << "Escolha opção: ";
-    return auxMenu(4,0);
+    return auxMenu(5,0);
 }
 
 int turmaListagemMenu(){
@@ -185,12 +188,14 @@ int ucListagemMenu(){
 }
 
 int PAMenu(){
-    cout << "1.Alocar estudante numa turma/UC" << endl;
+    cout << "\n1.Alocar estudante numa turma/UC" << endl;
     cout << "2.Remover estudante de uma turma/UC" << endl;
     cout << "3.Troca direta entre dois estudantes de uma turma/UC" << endl;
-    cout << "4.Processar pedidos" << endl;
+    cout << "4.Troca de turmas de aluno da mesma UC" << endl;
+    cout << "5.Processar pedidos" << endl;
     cout << "0.Voltar atras" << endl;
-    return auxMenu(4,0);
+    cout << "Escolha opção: ";
+    return auxMenu(5,0);
 }
 
 int AlocationUCMenu(){
@@ -206,8 +211,9 @@ int RemovalUCMenu(){
 }
 
 int TrocaDiretaMenu(){
-    cout << "1.Pretende avancar com a troca do aluno: " << endl;
+    cout << "1.Pretendo avancar com a troca do aluno" << endl;
     cout << "0.Voltar atras" << endl;
+    cout << "Escolha opção: ";
     return auxMenu(1,0);
 }
 
@@ -227,7 +233,27 @@ int AboutUsMenu(){
     return auxMenu(0,0);
 }
 
+int EstudantesUCMenu(){
+    cout << "\n1.Ver estudantes inscritos em mais do que n UCs" << endl;
+    cout << "2.Ver estudantes inscritos em n UCs" << endl;
+    cout << "3.Ver estudantes inscritos em menos de n UCs" << endl;
+    cout << "0.Voltar atras\n\n";
+    cout << "Escolha opção: ";
+    return auxMenu(3,0);
+}
 
+int defNrUcMenu(){
+    cout << "\nDefinir um numero de UCs: ";
+    return auxMenu(10,0);
+}
+
+int orderTypeMenu(){
+    cout << "\nEscolha o tipo de ordenacao\n";
+    cout << "1.Crescente" << endl;
+    cout << "2.Decrescente\n" << endl;
+    cout << "Escolha opção: ";
+    return auxMenu(2,1);
+}
 
 
 

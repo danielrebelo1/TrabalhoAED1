@@ -124,21 +124,19 @@ vector<Turma*> Curso::FindTurma(string ucCode){
             turmaCode = "0" + turmaCode;
         std::string turma = turmaAnoStr + "LEIC" + turmaCode;
         auto itr = std::remove_if(allTurmasPrev.begin(), allTurmasPrev.end(),
-                                [&turma](const Turma *t) { return t->get_turmaCode() != turma; });
+                                [&turma,&ucCode](const Turma *t) { return t->get_turmaCode() != turma ;});
         allTurmasPrev.erase(itr, allTurmasPrev.end());
+        if(ucCode != "")
+        {
+            auto itr = std::remove_if(allTurmasPrev.begin(), allTurmasPrev.end(), [&ucCode](const Turma* t){return t->get_ucCode() != ucCode;});
+            allTurmasPrev.erase(itr, allTurmasPrev.end());
+        }
         if (allTurmasPrev.size() != 0) {
             cout << "\nTurma encontrada!" << endl;
             cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << "\n";
             break;
         } else { cout << "\nTurma nao encontrada, tente novamente: \n"; }
     }
-    if(ucCode != ""){
-        while(allTurmasPrev.size() != 1){
-            auto itr = std::remove_if(allTurmasPrev.begin(), allTurmasPrev.end(), [&ucCode](const Turma* t){return t->get_ucCode() != ucCode;});
-            allTurmasPrev.erase(itr, allTurmasPrev.end());
-        }
-    }
-
     return allTurmasPrev;
 
 }
@@ -343,6 +341,19 @@ void Curso::AddPA(Student* s, Turma* t , int typeRequest){
             queuePA.push(p);
             break;
         } // troca direta
+        case 4:
+        {
+            string uc = t->get_ucCode();
+            vector<Turma*> vt = FindTurma(uc);
+            Turma* newTurma = vt[0];
+            cout << "Este pedido podera ser recusado por falta de espaco na turma desejada ou por gerar desequilibrio nas turmas. Pretende prosseguir?(Y/N): ";
+            char response;
+            cin >> response;
+            if (tolower(response) == 'n') { cout << "Pedido cancelado\n"; break; }
+            p = new PedidoAlteracao(s,NULL,t,newTurma,4);
+            queuePA.push(p);
+            break;
+        }
     }
     cout << "Pedido enviado. Para verificar se o pedido e aceite por favor acesse a aba de processamento de pedidos na aba anterior!\n\n";
 }
@@ -421,10 +432,14 @@ void Curso::ProcessPA(){
             }
             case 4: // troca singular entre duas turmas
             {
-                vector<Turma*> vt = s->get_TurmasAluno();
-                auto it = find_if(vt.begin(),vt.end(),[t](const Turma* turma) {return turma->get_ucCode() == t->get_ucCode();});
-                Turma* torigem = *it;
-                result = p->TrocaTurma(s,torigem,t);
+                Turma* newTurma = p->getTurma2();
+                result = p->TrocaTurma(s,t,newTurma);
+                if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " trocada da turma: "
+                                 << t->get_turmaCode() << " para a turma " << newTurma->get_ucCode() << " na UC " << t->get_ucCode() << endl;}
+                else {
+                    cout << "\n O seu pedido de alteracao nao foi efetuado por conflito de horario. Foi anotada a tentativa de mudanca no ficheiro students_classes1. Obrigado\n";
+                    WriteArchive(p);
+                }
                 break;
             }
         }
@@ -461,7 +476,7 @@ void Curso::WriteArchive(PedidoAlteracao* p){
     {
         cout << "File not found!\n";
     }
-    if (p->getTypeRequest() == 1 || p->getTypeRequest() == 2){
+    if (p->getTypeRequest() == 1){
         Student* s = p->getStudent();
         Turma* t = p->getTurma();
         newFile << "Nome do estudante: " << s->get_Name() << "," << "Numero do estudante: " << s->get_student_Code() << "," << "UC/Turma a alocar o estudante: " << t->get_ucCode() << "," << t->get_turmaCode() << endl;
@@ -504,16 +519,31 @@ std::vector<Slot*> Curso::findCertainSlots(){
     return allSlots2;
 }
 
-void Curso::findListStudentsUC(int n){
+void Curso::findListStudentsUC(int n, int exactN,int orderType){
     vector<Student*> todosStudents(allStudents.begin(),allStudents.end());
-    sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return (s1->get_TurmasAluno()).size() < (s2->get_TurmasAluno()).size();});
-    if (n != -1){
-        auto it = remove_if(todosStudents.begin(),todosStudents.end(),[&n]( Student*s){return (s->get_TurmasAluno()).size() > n; });
+
+    if (orderType){sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return (s1->get_TurmasAluno()).size() < (s2->get_TurmasAluno()).size();});}
+    else{sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return (s1->get_TurmasAluno()).size() > (s2->get_TurmasAluno()).size();});}
+
+    if(exactN == 1){
+        auto it = remove_if(todosStudents.begin(),todosStudents.end(),[&n]( Student*s){return (int)((s->get_TurmasAluno()).size()) <= n;});
         todosStudents.erase(it,todosStudents.end());
     }
-    cout << "Nome do estudante" << "\t\t" << "Número de UCS";
+
+    if (exactN == 2){
+        auto it = remove_if(todosStudents.begin(),todosStudents.end(),[&n]( Student*s){return (int)((s->get_TurmasAluno()).size()) != n;});
+        todosStudents.erase(it,todosStudents.end());
+    }
+
+    else {
+        auto it = remove_if(todosStudents.begin(),todosStudents.end(),[&n]( Student*s){return (int)((s->get_TurmasAluno()).size()) > n;});
+        todosStudents.erase(it,todosStudents.end());
+    }
+
+    if (todosStudents.empty()){cout << "Nenhum estudante esta inscrito em mais de " << n << "UCs.Por favor tente um valor mais baixo.\n"; return;}
+    cout << setw(20) << "Nome do estudante" << setw(8) << "Número de UCS";
     for (Student* s : todosStudents){
-        cout << s->get_Name() << "\t\t" << (s->get_TurmasAluno()).size() << endl;
+        cout << left << setw(20) << s->get_Name() << setw(8) << (s->get_TurmasAluno()).size() << endl;
     }
     cout << "\n";
 }
