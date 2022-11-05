@@ -88,7 +88,7 @@ int auxMenu(int maxOption, int minOption){
     do{
         cin >> op;
         if( op > maxOption || op < minOption)
-            cout << "Número inválido. Introduza um valor valido: ";
+            cout << "Número inválido. Introduza um valor válido: ";
     } while(op > maxOption || op < minOption);
     return op;
 }

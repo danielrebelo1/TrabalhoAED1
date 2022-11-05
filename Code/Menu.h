@@ -43,6 +43,8 @@ int ucListagemMenu();
 
 int PAMenu();
 
+int studentSearchMenu();
+
 int AlocationUCMenu();
 
 int RemovalUCMenu();
@@ -58,5 +60,6 @@ int EstudantesUCMenu();
 int defNrUcMenu();
 
 int orderTypeMenu();
+
 #endif //AEDTP1_MENU_H
 

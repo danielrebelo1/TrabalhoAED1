@@ -34,7 +34,7 @@ void Student::RemoveFromTurma(Turma *turma) {
 }
 
 void Student::PrintStudentTurmas(){
-    if (horarioStudent.empty()){cout << "\n Estudante nao esta inscrito em nenhuma turma." << endl; return;}
+    if (turmas.empty()){cout << "\n Estudante nao esta inscrito em nenhuma turma." << endl; return;}
     std::sort(turmas.begin(),turmas.end(),[] (Turma *t1 , Turma *t2) -> bool {if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_ucCode() < t2->get_ucCode());
     else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode() < t2->get_turmaCode());
         return false;}); // default sort ,  talvez implementar sort por turmas
@@ -57,8 +57,8 @@ std::vector< std::pair <Slot * , Turma *>> Student::createHorario() {
 }
 
 void Student::PrintHorario() {
+    if (turmas.empty()){cout << "\n Horario do estudante vazio." << endl; return;}
     horarioStudent = createHorario();
-    if (horarioStudent.empty()){cout << "\n Horario do estudante vazio." << endl; return;}
     cout << "\nHorário de " << studentName << ":" << endl;
     cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
          << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;
