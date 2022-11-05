@@ -240,7 +240,6 @@ void Curso::getTurmasYear(int year){
 
 void Curso::SortByEnrolledUC(int op, string ucCode){
     vector<Turma*> todasTurmas(allTurmas.begin(),allTurmas.end());
-    // vector<pair<std::string , int> > nrEnrolledUC;
     cout << endl;
     map<std::string , int> nrEnrolledUC;
     for (Turma *t : todasTurmas){
@@ -388,6 +387,7 @@ void Curso::ProcessPA(){
     if (queuePA.empty()) {cout << "Nenhum pedido para processar\n" << endl;
         return;}
     PedidoAlteracao* p;
+    std::queue<PedidoAlteracao* > recusadosPA;
     while (!queuePA.empty()){
         p = queuePA.front();
         int x  = queuePA.size();
@@ -402,6 +402,7 @@ void Curso::ProcessPA(){
                     cout << "\nPedido de alteracao concluído! Estudante " << s->get_Name() << " inscrito na turma: "
                          << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;
                 } else {
+                    recusadosPA.push(p);
                     cout << "\nPedido de alteração não aceite! Por favor tenha em conta o número de alunos na turma e também a compatibilidade de horários" << endl;
                     WriteArchive(p);
                 }
@@ -414,6 +415,8 @@ void Curso::ProcessPA(){
                                  << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;
                 }
                 else {
+                    recusadosPA.push(p);
+                    cout << "\n O seu pedido de alteração não foi efetuado por conflito de horários. Foi anotada a tentativa de mudança no arquivo. Obrigado!\n";
                     WriteArchive(p);
                 }
                 break;
@@ -426,7 +429,8 @@ void Curso::ProcessPA(){
                 if (result){cout << "\nPedido de alteração concluído! Estudante " << s->get_Name() << " removido da turma: "
                                  << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
                 else {
-                    cout << "\n O seu pedido de alteração não foi efetuado por conflito de horários. Foi anotada a tentativa de mudança no ficheiro students_classes1. Obrigado!\n";
+                    recusadosPA.push(p);
+                    cout << "\n O seu pedido de alteracao nao foi efetuado por conflito de horario. Foi anotada a tentativa de mudanca no ficheiro students_classes1. Obrigado\n";
                     WriteArchive(p);
                 }
                 break;
@@ -438,7 +442,8 @@ void Curso::ProcessPA(){
                 if (result){cout << "\nPedido de alteração concluído! Estudante " << s->get_Name() << " trocado da turma: "
                                  << t->get_turmaCode() << " para a turma " << newTurma->get_ucCode() << " na UC " << t->get_ucCode() << endl;}
                 else {
-                    cout << "\n O seu pedido de alteração não foi efetuado por conflito de horários. Foi anotada a tentativa de mudança no ficheiro students_classes1. Obrigado!\n";
+                    recusadosPA.push(p);
+                    cout << "\n O seu pedido de alteracao nao foi efetuado por conflito de horario. Foi anotada a tentativa de mudanca no ficheiro students_classes1. Obrigado\n";
                     WriteArchive(p);
                 }
                 break;
@@ -446,6 +451,7 @@ void Curso::ProcessPA(){
         }
         queuePA.pop();
     }
+    queuePA = recusadosPA;
 }
 
 void Curso::Save(){
@@ -471,7 +477,7 @@ void Curso::Save(){
 void Curso::WriteArchive(PedidoAlteracao* p){
     fstream newFile;
     try{
-        newFile.open("Code/schedule/students_classes1.csv");
+        newFile.open("Code/schedule/archive.txt");
     }
     catch(exception e)
     {

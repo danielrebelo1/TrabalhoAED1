@@ -58,7 +58,7 @@ void Menu(std::ifstream &studentsinfo_file, std::ifstream &aulas_file){
 int mainMenu() {
     cout << "\n";
     cout << "MENU PRINCIPAL\n\n";
-    cout << "1.Ver informações de um estudante" << '\n' << "2.Consultar turmas" << '\n' << "3.Listagens" << '\n'<< "4.Pedidos de alteração" << '\n' << "5.Salvar alterações" << '\n' << "6.Configurações" << '\n' << "7.Sobre nós" << '\n' << "0.Sair" << "\n\n";
+    cout << "1.Ver informações de um estudante" << '\n' << "2.Consultar turmas" << '\n' << "3.Listagens" << '\n'<< "4.Pedidos de alteração" << '\n' << "5.Salvar alterações"<< '\n' << "6.Configurações" << '\n' << "7.Sobre nós" << '\n' << "0.Sair" << "\n\n";
     cout << "Escolha opção: ";
     return auxMenu(7, 0);
 }
@@ -111,6 +111,7 @@ int turmaMenu3(){
 
 int turmaMenuHorário(){
     cout << endl <<  "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+
     cout << "1. Todas as UCs\n";
     cout << "2. De apenas uma UC em específico\n";
     cout << "Escolha opção: ";
@@ -141,8 +142,8 @@ std::string ucCode(std::vector<Turma*> vt){
     bool condition = true;
 
     cout << endl << "Qual é a UcCode desejada? (introduza apenas o número da UC , por exemplo para L.EIC001 introduza 1)\n";
-    cout << "L.EIC: ";
     while(condition){
+        cout << "L.EIC: ";
         cin >> ucCode;
         if (ucCode.size() == 1){ucCode = "00" + ucCode;}
         else if (ucCode.size() == 2){ucCode = "0" + ucCode;}
