@@ -27,7 +27,7 @@ int PedidoAlteracao::TrocaTurma( Student *student ,Turma* turmaOrigem ,  Turma* 
     int x;
 
     if (!noDesequilibrium){
-        cout << "Fazer esta mudanca podera gerar desequilibrio. Deseja continuar?(Y/N) ";
+        cout << "Fazer esta mudança poderá gerar desequilíbrio. Deseja continuar?(Y/N) ";
         char response;
         cin >> response;
         response = tolower(response);

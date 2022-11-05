@@ -34,7 +34,7 @@ void Student::RemoveFromTurma(Turma *turma) {
 }
 
 void Student::PrintStudentTurmas(){
-    if (turmas.empty()){cout << "\n Estudante nao esta inscrito em nenhuma turma." << endl; return;}
+    if (turmas.empty()){cout << "\n Estudante não está inscrito em nenhuma turma." << endl; return;}
     std::sort(turmas.begin(),turmas.end(),[] (Turma *t1 , Turma *t2) -> bool {if (t1->get_ucCode() != t2->get_ucCode()) return (t1->get_ucCode() < t2->get_ucCode());
     else if (t1->get_turmaCode() != t2->get_turmaCode()) return (t1->get_turmaCode() < t2->get_turmaCode());
         return false;}); // default sort ,  talvez implementar sort por turmas

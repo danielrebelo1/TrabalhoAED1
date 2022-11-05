@@ -18,7 +18,9 @@
 #include <type_traits>
 #include <vector>
 
-
+/**
+ * The studentComparator is a function that compares two students and allows sorting in multiple ways.
+ */
 struct studentComparator
 {
     bool operator()(Student* s1, Student* s2) const {
@@ -27,6 +29,9 @@ struct studentComparator
     }
 };
 
+/**
+ * The turmaComparator is a function that compares two classes and allows sorting in multiple ways.
+ */
 struct turmaComparator
 {
     bool operator()(Turma* t1, Turma* t2) const {
@@ -45,11 +50,30 @@ class FileReader{
         std::vector<Slot *> allSlots;
 
     public:
+        /**
+         * Initializer that starts the reading of files.
+         * @param studentsinfo_file Path to to student's info file
+         * @param aulas_file Path to lesson's info file
+         */
         FileReader(std::istream &studentsinfo_file,std::istream &aulas_file);
+
+        /**
+         * The getStudents function is getter for all students.
+         * @return All students
+         */
         std::set<Student *, studentComparator> getStudents() const;
+
+        /**
+         * The getTurmas function is a getter for all classes.<
+         * @return All classes
+         */
         std::set<Turma*, turmaComparator> getTurmas() const;
+
+        /**
+         * The getSlots is a getter for all lesson slots
+         * @return All lessons slots
+         */
         std::vector<Slot*> getSlots() const;
-        void Init();
 };
 
 #endif //AEDTP1_FILEREADER_H

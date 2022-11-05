@@ -44,7 +44,6 @@ void Turma::PrintTurma(){
         std::cout << std::left << ++nrAluno << ".\t"  << std::setw(3)  << "Nome: " << std::setw(15) << student->get_Name() << "\t\t" << std::setw(10) << "Número de estudante: " << student->get_student_Code() << std::endl;
     }
 }
-
 std::vector<Student *> Turma::getStudentsTurma() const{
     return studentsTurma;
 }
