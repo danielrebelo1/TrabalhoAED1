@@ -18,7 +18,7 @@
 #include <climits>
 
 /**
- * The studentComparator2 is a function that compares two students and allows sorting in multiple ways.
+ * The studentComparator2 is a function that compares two students and allows sorting in descending alphabetical order.
  */
 struct studentComparator2{
     bool operator()(Student* s1, Student* s2) const {
@@ -28,7 +28,8 @@ struct studentComparator2{
 };
 
 /**
- * The studentComparatorCode  is a function that compares two students by student code and allows sorting.
+ * The studentComparatorCode  is a function that compares two students by student code and allows sorting
+ * in ascending order.
  */
 struct studentComparatorCode {
     bool operator()(Student* s1, Student* s2) const {
@@ -37,7 +38,8 @@ struct studentComparatorCode {
     }
 };
 /**
- * The studentComparatorDecreasingCode  is a function that compares two students by student code and allows sorting.
+ * The studentComparatorDecreasingCode  is a function that compares two students by student code and
+ * allows sorting in descending order.
  */
 struct studentComparatorDecreasingCode {
     bool operator()(Student* s1, Student* s2) const {
@@ -83,7 +85,7 @@ public:
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
 
     /**
-     * The PrintHorarioTurma is a function that print a class schedule
+     * The PrintHorarioTurma is a function that prints a class schedule
      * @param uc Uc chosen is users requests the schedule for a specific UC
      */
     void PrintHorarioTurma(std::vector<Turma*> , std::string uc = "");
@@ -96,13 +98,13 @@ public:
     std::vector<Turma*> FindTurma(std::string ucCode = "");
 
     /**
-     * The PrintStudentByName function finds a student by his name and then prints it.
+     * The PrintStudentByName function finds a student by his name and prints it.
      * @return The student requested by the user
      */
     Student* PrintStudentByName();
 
     /**
-     * The PrintStudentByCode function finds a student by his student code and the prints it.
+     * The PrintStudentByCode function finds a student by his student code and prints it.
      * @return The student requested by the user
      */
     Student* PrintStudentByCode();
@@ -110,13 +112,13 @@ public:
     /**
      * The getStudentsTurma function returns all students in a certain class
      * @param turmas The class the user wants to see the students from
-     * @param ucCode The Uc Code in case the user wants the user in only a specific UC.
+     * @param ucCode In case the user wants, students only a specific UC/Class.
      * @return The students requested by the user
      */
     std::set<Student*, studentComparator> getStudentsTurma(std::vector<Turma*> turmas, std::string ucCode = "");
 
     /**
-     * Function that allows sorting of a certain group of students.
+     * Function that allows sorting of students in descending alphabetical order.
      * @param students Students to be sorted
      * @param newstudents Sorted students
      * @return Sorted students
@@ -124,7 +126,7 @@ public:
     static std::set<Student* , studentComparator2> StudentReverseSortAlpha(std::set<Student *, studentComparator> students, std::set<Student *, studentComparator2> &newstudents);
 
     /**
-    * Function that allows sorting of a certain group of students.
+    * Function that allows sorting of students by their student code in ascending order.
     * @param students Students to be sorted
     * @param newstudents Sorted students
     * @return Sorted students
@@ -132,7 +134,7 @@ public:
     static std::set<Student* , studentComparatorCode> StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents);
 
     /**
-    * Function that allows sorting of a certain group of students.
+    * Function that allows sorting of students by their student code in descending order.
     * @param students Students to be sorted
     * @param newstudents Sorted students
     * @return Sorted students
@@ -141,21 +143,21 @@ public:
 
     /**
      * The SortbyTurmaCapacity function allows sorting of classes in a certain Uc by user choice.
-     * @param ucCode Uc that the classes belong to
+     * @param ucCode classes' UC
      * @param option Sorting option
      */
     void SortbyTurmaCapacity( std::string ucCode , int option);
 
     /**
-     * The getStudentsYears function returns all students in a certain year
-     * @param students The students to be printed
+     * The getStudentsYears function returns all students enrolled in a certain year
+     * @param students The set of all students
      * @param year The year chosen by the user
      * @return All students in a certain year
      */
     std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
 
     /**
-     * The getTurmasYear function returns all classes in a certain year.
+     * The getTurmasYear function returns all classes in a certain year/ in all years
      * @param year The year chosen by the user
      */
     void getTurmasYear( int year = INT_MAX);
@@ -174,9 +176,9 @@ public:
     std::string ucCodeNormalizer();
 
     /**
-     * The AddPA function executes request changes
+     * The AddPA function add a request change to the request change queue
      * @param s Student involved in the change
-     * @param t Class that the student will be changed to
+     * @param t Class that the student will be changed to / class where he is now
      * @param typeRequest The type of request
      */
     void AddPA(Student* s, Turma* t  , int typeRequest);
@@ -190,7 +192,7 @@ public:
     Turma* FindTurmaLowestCapacity(Student* s , std::string ucCode);
 
     /**
-     * The GetTurma function returns a student's class for a certain UC
+     * The GetTurma function returns the student's class for that UC
      * @param s Student
      * @param ucCode UC Code
      * @return Class in which the student is enrolled
@@ -215,12 +217,12 @@ public:
     void ProcessPA();
 
     /**
-     * The Save function saves all the changes made ProcessPA runs, must be user called.
+     * The Save function saves all the changes made, must be user called.
      */
     void Save();
 
     /**
-     * The WriteArchive function makes note of all the change request that were impossibe to do.
+     * The WriteArchive function makes note of all the change request that did not get accepted.
      * @param p The request that was denied
      */
     void WriteArchive(PedidoAlteracao* p);

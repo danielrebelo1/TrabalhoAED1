@@ -457,8 +457,9 @@ void Curso::ProcessPA(){
 
 void Curso::Save(){
     fstream newFile;
+    string file = "Code/schedule/students_classes1.csv";
     try{
-        newFile.open("Code/schedule/students_classes1.csv");
+        newFile.open(file);
     }
     catch(exception e)
     {
@@ -472,7 +473,7 @@ void Curso::Save(){
         }
     }
     newFile.close();
-    cout << "Saved!\n";
+    cout << "\nAlterações guardadas no ficheiro " << file << "!\n";
 }
 
 void Curso::WriteArchive(PedidoAlteracao* p){
