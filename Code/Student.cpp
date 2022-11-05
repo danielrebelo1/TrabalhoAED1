@@ -58,7 +58,7 @@ std::vector< std::pair <Slot * , Turma *>> Student::createHorario() {
 
 void Student::PrintHorario() {
     horarioStudent = createHorario();
-    if (horarioStudent.empty()){cout << "\n Horario do estudante vazio." << endl; return;}
+    if (horarioStudent.empty()){cout << "\n Horário do estudante vazio." << endl; return;}
     cout << "\nHorário de " << studentName << ":" << endl;
     cout << setw(9) << left << "Day" << '\t' << setw(12) << "Class Type" << '\t' << setw(3) << "Time" << '\t' << '\t'
          << setw(10) << "UcCode" << '\t' << setw(5) << "TurmaCode" << std::endl;

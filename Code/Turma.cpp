@@ -35,16 +35,6 @@ void Turma::AddSlot(Slot *slot) {
     this->horarioUcTurma.push_back(slot);
 }
 
-void Turma::PrintTurma(){
-    std::sort(studentsTurma.begin(),studentsTurma.end(),[](const Student* s1, const Student* s2) {return s1->get_Name() < s2->get_Name();});
-    std::cout << "Cadeira: " << this->get_ucCode() << " Turma: " << this->get_turmaCode() << std::endl;
-    std::cout << "Lista de Alunos:" << std::endl;
-    int nrAluno = 0;
-    for (Student* student : studentsTurma){
-      std::cout << std::left << ++nrAluno << ".\t"  << std::setw(3)  << "Nome: " << std::setw(15) << student->get_Name() << "\t\t" << std::setw(10) << "Número de estudante: " << student->get_student_Code() << std::endl;
-    }
-}
-
 std::vector<Student *> Turma::getStudentsTurma() const{
     return studentsTurma;
 }

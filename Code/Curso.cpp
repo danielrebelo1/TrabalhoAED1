@@ -514,11 +514,6 @@ int Curso::getTurmaMostStudents(){
     return (todasTurmas[todasTurmas.size() - 1])->get_nrStudentsTurma();
 }
 
-std::vector<Slot*> Curso::findCertainSlots(){
-    std::vector<Slot*> allSlots2 (allSlots.begin(),allSlots.end());
-
-    return allSlots2;
-}
 
 void Curso::findListStudentsUC(int n, int exactN,int orderType){
     vector<Student*> todosStudents(allStudents.begin(),allStudents.end());
