@@ -82,7 +82,7 @@ std::set<Student* , studentComparator> Curso::getStudentsYear(std::set<Student *
 }
 
 Student* Curso::PrintStudentByName() {
-    cout << "\nQual o nome do estudante ?\n";
+    cout << "\nInserir nome do estudante: ";
     string name;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while(true) {
@@ -100,7 +100,7 @@ Student* Curso::PrintStudentByName() {
 }
 
 Student* Curso::PrintStudentByCode() {
-    cout << "Qual o código de estudante\n";
+    cout << "\nInserir número mecanográfico do estudante: ";
     string ucCode;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     while(true) {
@@ -109,6 +109,7 @@ Student* Curso::PrintStudentByCode() {
             return student->get_student_Code() == ucCode;
         });
         if (iterator != allStudents.end()) {
+            cout << "\nEstudante encontrado!\n";
             cout << left << "Nome: " << (*iterator)->get_Name() << "\t\t" << "Número de estudante: " <<  ucCode << "\n";
             return (*iterator);
         }else { cout << "\nCódigo inválido, insira novamente o nome: \n";}
@@ -529,7 +530,7 @@ std::vector<Slot*> Curso::findCertainSlots(){
 void Curso::findListStudentsUC(int n, int exactN,int orderType){
     vector<Student*> todosStudents(allStudents.begin(),allStudents.end());
 
-    if (orderType){sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return (s1->get_TurmasAluno()).size() < (s2->get_TurmasAluno()).size();});}
+    if (orderType){sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return ((s1->get_TurmasAluno()).size() < (s2->get_TurmasAluno()).size()) && (s1->get_Name() < s2->get_Name());});}
     else{sort(todosStudents.begin(),todosStudents.end(),[](Student* s1 , Student* s2){return (s1->get_TurmasAluno()).size() > (s2->get_TurmasAluno()).size();});}
 
     if(exactN == 1){
@@ -542,15 +543,14 @@ void Curso::findListStudentsUC(int n, int exactN,int orderType){
         todosStudents.erase(it,todosStudents.end());
     }
 
-    else {
+    else if (exactN == 3) {
         auto it = remove_if(todosStudents.begin(),todosStudents.end(),[&n]( Student*s){return (int)((s->get_TurmasAluno()).size()) > n;});
         todosStudents.erase(it,todosStudents.end());
     }
 
     if (todosStudents.empty()){cout << "Nenhum estudante está inscrito em mais de " << n << " UCs.Por favor tente um valor mais baixo.\n"; return;}
-    cout << setw(20) << "Nome do estudante" << setw(8) << "Número de UCs\n";
+    cout << endl << setw(20) << "Nome do estudante" << setw(8) << "Número de UCs\n";
     for (Student* s : todosStudents){
         cout << left << setw(20) << s->get_Name() << setw(8) << (s->get_TurmasAluno()).size() << endl;
     }
-    cout << "\n";
 }

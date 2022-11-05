@@ -40,8 +40,8 @@ struct turmaComparator
 class FileReader{
 
         std::set<Student*, studentComparator> students;
-        std::vector<Turma*> turmaAluno;
         std::set<Turma*, turmaComparator> allTurmas;
+        std::vector<Turma*> turmaAluno;
         std::vector<Slot *> allSlots;
 
     public:

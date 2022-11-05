@@ -67,7 +67,7 @@ int studentMenu(){
     cout << "\n";
     cout << setw(30) << left << "Menu de informações dos estudantes\n" << endl;
     cout << "1.Procurar por nome de estudante" << endl;
-    cout << "2.Procurar por número do estudante " << endl;
+    cout << "2.Procurar por número mecanográfico do estudante " << endl;
     cout << "0.Voltar\n\n";
     cout << "Escolha opção: ";
     return auxMenu(3, 0);
