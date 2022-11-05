@@ -150,7 +150,6 @@ int main() {
                         cout << endl << "Deseja sair deste menu? (Y/N)\n";
                         cin >> choice;
 
-                        cout << endl;
                         if (tolower(choice[0]) == 'n') { control = 1; }
                         else if (tolower(choice[0]) == 'y') {
                             control = 0;
@@ -185,7 +184,7 @@ int main() {
                             break;
                         }
                         case 2: {
-                            int x = turmaMenu();
+                            int x = listagensAnoMenu();
                             temp2 = displayStudents();
 
                             switch (temp2) {

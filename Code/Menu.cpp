@@ -110,7 +110,8 @@ int turmaMenu3(){
 }
 
 int turmaMenuHorário(){
-    cout << endl <<  "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?\n";;
+    cout << endl <<  "Deseja ver o horário desta turma a todas as UCs ou apenas de uma UC em específico?\n";
+
     cout << "1. Todas as UCs\n";
     cout << "2. De apenas uma UC em específico\n";
     cout << "Escolha opção: ";
@@ -158,15 +159,20 @@ std::string ucCode(std::vector<Turma*> vt){
 
 int listagensMenu(){
     cout << setw(30) << left << "\nListagens\n" << endl;
-    cout << "O que deseja fazer?\n";;
+    cout << "O que deseja fazer?\n";
     cout << "1. Ver todos os estudantes inscritos\n";
     cout << "2. Ver todos os estudantes inscritos em um ano específico\n";
     cout << "3. Ver todas as turmas\n";
     cout << "4. Ver número de estudantes inscritos em todas as UCs\n";
     cout << "5. Ver estudantes inscritos em certo número de UCs\n";
     cout << "0. Voltar\n";
-    cout << "\nEscolha opção: ";;
+    cout << "\nEscolha opção: ";
     return auxMenu(5,0);
+}
+
+int listagensAnoMenu(){
+    cout << endl << "Qual o ano: ";
+    return auxMenu(3,0);
 }
 
 int turmaListagemMenu(){
@@ -206,7 +212,6 @@ int studentSearchMenu(){
     cout << "Escolha opção: ";
     return auxMenu(3, 0);
 }
-
 
 int AlocationUCMenu(){
     cout << endl <<  "1.Tentar alocar estudante numa respetiva turma" << endl;

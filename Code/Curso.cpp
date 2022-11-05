@@ -135,7 +135,7 @@ vector<Turma*> Curso::FindTurma(string ucCode){
         }
         if (allTurmasPrev.size() != 0) {
             cout << "\nTurma encontrada!" << endl;
-            cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << "\n" << endl;
+            cout << "Turma: " << ((allTurmasPrev[0])->get_turmaCode()) << endl;
             break;
         } else { cout << "\nTurma não encontrada, tente novamente: \n"; }
     }
@@ -427,7 +427,7 @@ void Curso::ProcessPA(){
                 Student *s2 = p->getStudent2();
                 Turma *t2 = p->getTurma2();
                 result = p->TrocaDiretaTurma(s,s2,t,t2);
-                if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " removido da turma: "
+                if (result){cout << "\nPedido de alteração concluído! Estudante " << s->get_Name() << " removido da turma: "
                                  << t->get_turmaCode() << " na UC: " << t->get_ucCode() << endl;}
                 else {
                     recusadosPA.push(p);
@@ -440,7 +440,7 @@ void Curso::ProcessPA(){
             {
                 Turma* newTurma = p->getTurma2();
                 result = p->TrocaTurma(s,t,newTurma);
-                if (result){cout << "\nPedido de alteracao concluido! Estudante " << s->get_Name() << " trocada da turma: "
+                if (result){cout << "\nPedido de alteração concluído! Estudante " << s->get_Name() << " trocado da turma: "
                                  << t->get_turmaCode() << " para a turma " << newTurma->get_ucCode() << " na UC " << t->get_ucCode() << endl;}
                 else {
                     recusadosPA.push(p);
@@ -521,11 +521,6 @@ int Curso::getTurmaMostStudents(){
     return (todasTurmas[todasTurmas.size() - 1])->get_nrStudentsTurma();
 }
 
-std::vector<Slot*> Curso::findCertainSlots(){
-    std::vector<Slot*> allSlots2 (allSlots.begin(),allSlots.end());
-
-    return allSlots2;
-}
 
 void Curso::findListStudentsUC(int n, int exactN,int orderType){
     vector<Student*> todosStudents(allStudents.begin(),allStudents.end());

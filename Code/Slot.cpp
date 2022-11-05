@@ -26,19 +26,3 @@ std::string Slot::getDuracao() const {
 std::string Slot::getTipo() const {
     return tipoAula;
 }
-
-void Slot::setHorarioInicio(std::string horarioInicio) {
-    this->horarioInicio = horarioInicio;
-}
-
-void Slot::setDiaSemana( std::string diaSemana) {
-    this->diaSemana = diaSemana;
-}
-
-void Slot::setDuracao(std::string duracao) {
-    this->duracao = duracao;
-}
-
-void Slot::setTipo( std::string tipo) {
-    this->tipoAula = tipo;
-}

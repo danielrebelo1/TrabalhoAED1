@@ -19,7 +19,7 @@ bool sorterHorarioSlot(Slot* s1,Slot* s2){
 
 bool sorterHorario(pair <Slot *, Turma *> s1, pair <Slot *, Turma *> s2){
     if(weekDays[s1.first->getDiaSemana()] != weekDays[s2.first->getDiaSemana()]) return (weekDays[s1.first->getDiaSemana()] < weekDays[s2.first->getDiaSemana()]);
-    if(s1.first->getHorarioInicio() != s2.first->getHorarioInicio()) return ( stof(s1.first->getHorarioInicio()) < stof(s2.first->getHorarioInicio()));
+    if(s1.first->getHorarioInicio() != s2.first->getHorarioInicio()) return (stof(s1.first->getHorarioInicio()) < stof(s2.first->getHorarioInicio()));
     return false;
 }
 
@@ -45,17 +45,6 @@ std::string Fixer(std::string horarioInicio) {
     else {
         return std::to_string((int)hInicio_f) + "h";
     }
-}
-
-std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , char year)
-{
-    std::set<Student* , studentComparator> students2;
-    for (Student* s : students){
-        std::vector<Turma*> v = s->get_TurmasAluno();
-        auto it = std::find_if(v.begin(),v.end(),[year](const Turma* t) {return (t->get_turmaCode()[0]) == year ;});
-        if (it != v.end()){students2.insert(s);}
-    }
-    return students2;
 }
 
 void PrintVector(std::vector<Turma*> v , char option){
@@ -103,7 +92,7 @@ std::string tolowerString(std::string s){
 }
 
 bool isCompatible(std::list<Slot *> horarioUcTurma , std::vector< std::pair <Slot * , Turma *>> horarioStudent , Turma* turma ){
-    if (turma == NULL) {
+    if (turma == nullptr) {
         for (Slot *novaAula: horarioUcTurma) {
             std::vector<std::pair<Slot *, Turma *>> hs = horarioStudent;
             auto it = std::remove_if(hs.begin(), hs.end(),
