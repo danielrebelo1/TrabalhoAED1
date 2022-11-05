@@ -35,6 +35,8 @@ int displayStudents();
 
 int listagensMenu();
 
+int listagensAnoMenu();
+
 int turmaListagemMenu();
 
 std::string ucCode(std::vector<Turma*> vt);
@@ -43,7 +45,11 @@ int ucListagemMenu();
 
 int PAMenu();
 
+int studentSearchMenu();
+
 int AlocationUCMenu();
+
+int turmaPickMenu();
 
 int RemovalUCMenu();
 
@@ -58,5 +64,6 @@ int EstudantesUCMenu();
 int defNrUcMenu();
 
 int orderTypeMenu();
+
 #endif //AEDTP1_MENU_H
 

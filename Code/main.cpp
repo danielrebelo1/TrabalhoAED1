@@ -86,6 +86,7 @@ int main() {
                     string choice;
                     vector<Turma *> vt;
                     do {
+                        cout << setw(30) << left << "\nInformações de uma turma\n";
                         while (vt.size() == 0) {
                             vt = curso.FindTurma(); }
                         temp = turmaMenu3();
@@ -146,10 +147,9 @@ int main() {
 
                             } while (temp2 != 0);
                         }
-                        cout << "Deseja sair deste menu? (Y/N)\n";
+                        cout << endl << "Deseja sair deste menu? (Y/N)\n";
                         cin >> choice;
 
-                        cout << endl;
                         if (tolower(choice[0]) == 'n') { control = 1; }
                         else if (tolower(choice[0]) == 'y') {
                             control = 0;
@@ -184,7 +184,7 @@ int main() {
                             break;
                         }
                         case 2: {
-                            int x = turmaMenu();
+                            int x = listagensAnoMenu();
                             temp2 = displayStudents();
 
                             switch (temp2) {
@@ -210,21 +210,21 @@ int main() {
                             switch (temp2) {
                                 case 1:{
                                     int x;
-                                    cout << "Qual o ano pretendido?\n";
+                                    cout << endl << "Qual o ano pretendido?\n";
                                     cin >> x;
                                     curso.getTurmasYear(x);
                                     break;
                                 }
                                 case 2:{
                                     std::string x;
-                                    cout << "Qual a UC pretendida?\n";
+                                    cout << endl << "Qual a UC pretendida?\n";
                                     cin >> x;
                                     curso.SortbyTurmaCapacity( x, '1');
                                     break;
                                 }
                                 case 3:{
                                     std::string x;
-                                    cout << "Qual a UC pretendida?\n";
+                                    cout << endl << "Qual a UC pretendida?\n";
                                     cin >> x;
                                     curso.SortbyTurmaCapacity( x, '2');
                                     break;
@@ -243,7 +243,6 @@ int main() {
                             switch (temp2) {
                                 case 1:
                                     curso.SortByEnrolledUC();
-                                    cout << endl;
                                     break;
                                 case 2:
                                 {
@@ -254,6 +253,7 @@ int main() {
                                 case 0:
                                     break;
                             }
+                            break;
                         }
                         case 5:
                         {
@@ -292,7 +292,7 @@ int main() {
                     switch (temp) {
                         case 1:
                             // alocar estudante numa uc
-                            temp2 = studentMenu();
+                            temp2 = studentSearchMenu();
                             switch (temp2) {
                                 // tipo de find do student
                                 case 0:
@@ -318,7 +318,7 @@ int main() {
                                         {
                                             Turma* t = curso.FindTurmaLowestCapacity(s,uc);
                                             if (t == NULL) {
-                                                cout << "Impossivel encontrar turma com horario compativel.\n" << endl;
+                                                cout << "Impossível encontrar turma com horário compatível.\n" << endl;
                                                 break;
                                             }
                                             curso.AddPA(s,t,1);
@@ -360,7 +360,7 @@ int main() {
                             break;
                         case 2:
                             // remover estudante de uma uc
-                            temp2 = studentMenu();
+                            temp2 = studentSearchMenu();
                             switch (temp2) {
                                 // tipo de find do student
                                 case 0:
@@ -413,7 +413,7 @@ int main() {
                             break;
                         case 3: {
                             // troca direta
-                            temp2 = studentMenu();
+                            temp2 = studentSearchMenu();
                             switch (temp2) {
                                 // tipo de find do student
                                 case 0:
@@ -461,7 +461,7 @@ int main() {
                         }
                         case 4:
                         {
-                            temp2 = studentMenu();
+                            temp2 = studentSearchMenu();
                             switch (temp2) {
                                 // tipo de find do student
                                 case 0:
@@ -533,12 +533,12 @@ int main() {
                         // configuracoes
                         case 1:
                         {
-                            cout << "Atual capacidade: " << curso.getDefaultCap() << endl;
+                            cout << "\nAtual capacidade: " << curso.getDefaultCap() << endl;
                             cout << "Pretende alterar?(Y/N) ";
                             char response;
                             cin >> response;
                             if (tolower(response) == 'y')
-                            {cout << "Para efeitos de comparacao a turma com mais alunos tem " << curso.getTurmaMostStudents() << " alunos." << endl;
+                            {cout << "\nPara efeitos de comparação a turma com mais alunos tem " << curso.getTurmaMostStudents() << " alunos." << endl;
                                 cout << "Introduza novo limite de capacidade das turmas: ";
                                 int newCap;
                                 cin >> newCap;
