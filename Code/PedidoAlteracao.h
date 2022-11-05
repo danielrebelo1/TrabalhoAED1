@@ -7,6 +7,8 @@
 
 #include "Student.h"
 #include "Turma.h"
+#include "FileReader.h"
+
 #include <cmath>
 #include <iostream>
 #include <string>
@@ -19,12 +21,16 @@ class PedidoAlteracao {
 
 public:
     PedidoAlteracao(Student *student , Turma* turma , int typeRequest);
-    PedidoAlteracao(Student *student , Student *student2 , Turma *turma , Turma *turma2);
-
-    void TrocaTurma(Student *student1 , Turma* turmaOrigem , Turma* turmaDestino);
-    void RemoveFromClass(Student *student, Turma *turma);
-    void TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2 );
-
+    PedidoAlteracao(Student *student , Student *student2 , Turma *turma , Turma *turma2, int typeRequest);
+    int TrocaTurma(Student *student , Turma* turmaOrigem , Turma* turmaDestino);
+    int AddtoClass(Student *student1 , Turma* turma );
+    int RemoveFromClass(Student *student, Turma *turma);
+    int TrocaDiretaTurma(Student *student1 , Student *student2 , Turma *turma1 , Turma *turma2 );
+    Student* getStudent();
+    Student* getStudent2();
+    Turma* getTurma();
+    Turma* getTurma2();
+    int getTypeRequest();
 private:
     Student* student;
     Student* student2;

@@ -29,8 +29,6 @@ void Turma::AddStudent(Student *student){
 void Turma::RemoveStudent(Student *student) {
     auto it = std::find_if(studentsTurma.begin(),studentsTurma.end(),[student] (const Student* s){ return student->get_student_Code() == s->get_student_Code();});
     studentsTurma.erase(it);
-    // auto iterator = std::remove_if(turmas.begin(),turmas.end(),[turma] (const Turma* t){ return (turma->get_ucCode() == t->get_ucCode()) && (turma->get_turmaCode() == t->get_turmaCode());});
-    //    turmas.erase(iterator, turmas.end());
 }
 
 void Turma::AddSlot(Slot *slot) {
@@ -39,8 +37,6 @@ void Turma::AddSlot(Slot *slot) {
 
 void Turma::PrintTurma(){
     std::sort(studentsTurma.begin(),studentsTurma.end(),[](const Student* s1, const Student* s2) {return s1->get_Name() < s2->get_Name();});
-
-    // sort vector studentsTurma
     std::cout << "Cadeira: " << this->get_ucCode() << " Turma: " << this->get_turmaCode() << std::endl;
     std::cout << "Lista de Alunos:" << std::endl;
     int nrAluno = 0;

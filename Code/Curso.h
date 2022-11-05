@@ -5,6 +5,7 @@
 #ifndef PROJETO_AED_CURSO_H
 #define PROJETO_AED_CURSO_H
 
+#include <fstream>
 #include <set>
 #include <string>
 #include <queue>
@@ -40,16 +41,17 @@ struct studentComparatorDecreasingCode {
 class Curso {
     std::set<Student*, studentComparator> allStudents;
     std::set<Turma*, turmaComparator> allTurmas;
+    std::vector<Slot *> allSlots;
     std::queue<PedidoAlteracao* > queuePA;
 public:
     Curso() = default;
-    Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator> );
+    Curso(std::set<Student*, studentComparator> , std::set<Turma*, turmaComparator>, std::vector<Slot *> allSlots );
     std::set<Student*, studentComparator> getAllStudents() const;
     std::set<Turma*, turmaComparator> getAllTurmas() const;
 
     void PrintStudents(std::set<Student* , studentComparator> students , char option);
     void PrintHorarioTurma(std::vector<Turma*> , std::string uc = "");
-    std::vector<Turma*> FindTurma();
+    std::vector<Turma*> FindTurma(std::string ucCode = "");
     Student* PrintStudentByName();
     Student* PrintStudentByCode();
 
@@ -59,16 +61,26 @@ public:
     static std::set<Student* , studentComparatorCode> StudentSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorCode> &newstudents);
     static std::set<Student* , studentComparatorDecreasingCode> StudentReverseSortCode(std::set<Student* , studentComparator> students, std::set<Student *, studentComparatorDecreasingCode> &newstudents);
 
-    void SortbyTurmaCapacity(std::set<Turma*, turmaComparator> allTurmas , std::string ucCode , int option);
+    void SortbyTurmaCapacity( std::string ucCode , int option);
     std::set<Student* , studentComparator> getStudentsYear(std::set<Student* , studentComparator> students , int year);
-    void getTurmasYear(int year = INT_MAX);
+
+    void getTurmasYear( int year = INT_MAX);
+
     void SortByEnrolledUC( int op = 1 , std::string ucCode= "");
     std::string ucCodeNormalizer();
     void AddPA(Student* s, Turma* t  , int typeRequest);
-    Turma* FindTurmaLowestCapacity(std::string ucCode);
+    Turma* FindTurmaLowestCapacity(Student* s , std::string ucCode);
     Turma* GetTurma(Student* s , std::string ucCode);
     void setDefaultCap(int newCap);
-    // static int defaultCap = 24;
+    int getDefaultCap();
+    void ProcessPA();
+    void Save();
+    void WriteArchive(PedidoAlteracao* p);
+    static std::vector<Turma*> minMaxTurma(Turma* t);
+    int getTurmaMostStudents();
+    std::vector<Slot*> findCertainSlots();
+    void findListStudentsUC(int n, int exactN, int orderType);
+
 };
 
 #endif //PROJETO_AED_CURSO_H

@@ -51,5 +51,12 @@ int TrocaDiretaMenu();
 
 int ConfigMenu();
 
+int AboutUsMenu();
+
+int EstudantesUCMenu();
+
+int defNrUcMenu();
+
+int orderTypeMenu();
 #endif //AEDTP1_MENU_H
 
