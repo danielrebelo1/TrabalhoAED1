@@ -102,6 +102,7 @@ bool isCompatible(std::list<Slot *> horarioUcTurma , std::vector< std::pair <Slo
             hs.erase(it, hs.end());
             for (pair<Slot *, Turma *> p: hs) {
                 Slot *aula = p.first;
+                if (aula->getTipo() == "T" || novaAula->getTipo() == "T") continue;
                 float begTimeAula = stof(aula->getHorarioInicio());
                 float finishTimeAula = begTimeAula + stof(aula->getDuracao());
                 float begTimenovaAula = stof(novaAula->getHorarioInicio());
@@ -125,7 +126,7 @@ bool isCompatible(std::list<Slot *> horarioUcTurma , std::vector< std::pair <Slo
             for (pair<Slot *, Turma *> p: hs) {
                 Slot *aula = p.first;
                 Turma* t = p.second;
-                if (t->get_ucCode() == turma->get_ucCode()){continue;}
+                if (t->get_ucCode() == turma->get_ucCode() || aula->getTipo() == "T" || novaAula->getTipo() == "T"){continue;}
                 float begTimeAula = stof(aula->getHorarioInicio());
                 float finishTimeAula = begTimeAula + stof(aula->getDuracao());
                 float begTimenovaAula = stof(novaAula->getHorarioInicio());

@@ -51,6 +51,7 @@ int PedidoAlteracao::TrocaTurma( Student *student ,Turma* turmaOrigem ,  Turma* 
 int PedidoAlteracao::AddtoClass(Student *student1 , Turma* turma ) {
     std::list<Slot *> horarioUcTurma = turma->getHorarioUcTurma();
     std::vector< std::pair <Slot * , Turma *>> horarioStudent = student1->createHorario();
+    bool a = isCompatible(horarioUcTurma , horarioStudent);
     if (turma->get_nrStudentsTurma() < turma->defaultCap && isCompatible(horarioUcTurma , horarioStudent)){
         student1->UpdateTurmas(turma);
         turma->AddStudent(student1);

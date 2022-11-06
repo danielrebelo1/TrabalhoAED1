@@ -269,8 +269,7 @@ int main() {
                                 }
                                 case 2: {
                                     int temp3 = defNrUcMenu();
-                                    int temp4 = orderTypeMenu();
-                                    curso.findListStudentsUC(temp3,temp2,temp4);
+                                    curso.findListStudentsUC(temp3,temp2,1);
                                     break;
                                 }
                                 case 3: {
