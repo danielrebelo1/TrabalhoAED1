@@ -80,7 +80,7 @@ int studentMenu2(){
 }
 
 int turmaMenu(){
-    cout << endl << "Qual o ano da turma: ";
+    cout << endl << "Qual o ano da turma(1-3): ";
     return auxMenu(3,0);
 }
 
@@ -140,7 +140,10 @@ int displayStudents(){
 std::string ucCode(std::vector<Turma*> vt){
     std::string ucCode;
     bool condition = true;
-
+    cout << endl << "Lista de UCs da turma:\n";
+    for (Turma* t : vt ){
+        cout << t->get_ucCode() << endl;
+    }
     cout << endl << "Qual é a UcCode desejada? (introduza apenas o número da UC , por exemplo para L.EIC001 introduza 1)\n";
     while(condition){
         cout << "L.EIC: ";
@@ -151,7 +154,7 @@ std::string ucCode(std::vector<Turma*> vt){
         auto it = std::find_if(vt.begin(), vt.end(), [&ucCode](const Turma* t) {return t->get_ucCode() == ucCode;});
         if(it != vt.end())
             condition = false;
-        else(cout << "O UcCode inserido é inválido, por favor insira um UcCode válido \n");
+        else(cout << "UcCode inválido para esta turma\n");
     }
     return ucCode;
 }
@@ -171,7 +174,7 @@ int listagensMenu(){
 }
 
 int listagensAnoMenu(){
-    cout << endl << "Qual o ano: ";
+    cout << endl << "Qual o ano(1-3): ";
     return auxMenu(3,0);
 }
 
