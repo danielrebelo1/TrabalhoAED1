@@ -38,7 +38,7 @@ int \mbox{\hyperlink{classPedidoAlteracao_affe0cd327195a3cd0be2132923528d50}{get
 \doxysubsubsection{\texorpdfstring{PedidoAlteracao()}{PedidoAlteracao()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Pedido\+Alteracao\+::\+Pedido\+Alteracao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma,  }\item[{int}]{type\+Request }\end{DoxyParamCaption})}
 
-Constructor for class \mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}} in case only 1 student is involved. 
+Constructor for class \mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}} in case only 1 student is involved. Complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em student} & The student that requests the trade \\
 \hline
@@ -53,7 +53,7 @@ Constructor for class \mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}}
 \doxysubsubsection{\texorpdfstring{PedidoAlteracao()}{PedidoAlteracao()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Pedido\+Alteracao\+::\+Pedido\+Alteracao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student,  }\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student2,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma2,  }\item[{int}]{type\+Request }\end{DoxyParamCaption})}
 
-Constructor for class \mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}} in case 2 students are involved. 
+Constructor for class \mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}} in case 2 students are involved. Complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em student} & \mbox{\hyperlink{classStudent}{Student}} 1 involved in trade \\
 \hline
@@ -75,7 +75,7 @@ Constructor for class \mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}}
 \doxysubsubsection{\texorpdfstring{AddtoClass()}{AddtoClass()}}
 {\footnotesize\ttfamily int Pedido\+Alteracao\+::\+Addto\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student1,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma }\end{DoxyParamCaption})}
 
-The Addto\+Class function adds a student to a class. 
+The Addto\+Class function adds a student to a class. Complexity\+: O(n² log(n) 
 \begin{DoxyParams}{Parameters}
 {\em student1} & The student to be added \\
 \hline
@@ -91,7 +91,7 @@ The Addto\+Class function adds a student to a class.
 \doxysubsubsection{\texorpdfstring{getStudent()}{getStudent()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classStudent}{Student}} $\ast$ Pedido\+Alteracao\+::get\+Student (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+Student function is a getter for the first student. \begin{DoxyReturn}{Returns}
+The get\+Student function is a getter for the first student. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 The first student 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPedidoAlteracao_ae513246f6d5c122484b29bde088e1399}\label{classPedidoAlteracao_ae513246f6d5c122484b29bde088e1399}} 
@@ -100,7 +100,7 @@ The first student
 \doxysubsubsection{\texorpdfstring{getStudent2()}{getStudent2()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classStudent}{Student}} $\ast$ Pedido\+Alteracao\+::get\+Student2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+Student function is a getter for the second student. \begin{DoxyReturn}{Returns}
+The get\+Student function is a getter for the second student. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 The second student 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPedidoAlteracao_a2864dc3e2bf1e003b6d3f29b377d9327}\label{classPedidoAlteracao_a2864dc3e2bf1e003b6d3f29b377d9327}} 
@@ -109,7 +109,7 @@ The second student
 \doxysubsubsection{\texorpdfstring{getTurma()}{getTurma()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classTurma}{Turma}} $\ast$ Pedido\+Alteracao\+::get\+Turma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+Turma function is a getter for the first student\textquotesingle{}s class. \begin{DoxyReturn}{Returns}
+The get\+Turma function is a getter for the first student\textquotesingle{}s class. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 First student\textquotesingle{}s class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPedidoAlteracao_ae5201b025a2c67c6874e6657d3447dde}\label{classPedidoAlteracao_ae5201b025a2c67c6874e6657d3447dde}} 
@@ -127,7 +127,7 @@ Second student\textquotesingle{}s class
 \doxysubsubsection{\texorpdfstring{getTypeRequest()}{getTypeRequest()}}
 {\footnotesize\ttfamily int Pedido\+Alteracao\+::get\+Type\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+Type\+Request function is a getter for the type of request. \begin{DoxyReturn}{Returns}
+The get\+Type\+Request function is a getter for the type of request. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 Request type 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPedidoAlteracao_a53401d94d96689441fcfe224a2a4b5d1}\label{classPedidoAlteracao_a53401d94d96689441fcfe224a2a4b5d1}} 
@@ -136,7 +136,7 @@ Request type
 \doxysubsubsection{\texorpdfstring{RemoveFromClass()}{RemoveFromClass()}}
 {\footnotesize\ttfamily int Pedido\+Alteracao\+::\+Remove\+From\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma }\end{DoxyParamCaption})}
 
-The Remove\+From\+Class function removes a student from a class. 
+The Remove\+From\+Class function removes a student from a class. Complexity\+: O(n²) 
 \begin{DoxyParams}{Parameters}
 {\em student} & The student to be removed \\
 \hline
@@ -152,7 +152,7 @@ The Remove\+From\+Class function removes a student from a class.
 \doxysubsubsection{\texorpdfstring{TrocaDiretaTurma()}{TrocaDiretaTurma()}}
 {\footnotesize\ttfamily int Pedido\+Alteracao\+::\+Troca\+Direta\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student1,  }\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student2,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma1,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma2 }\end{DoxyParamCaption})}
 
-The Troca\+Direta\+Turma makes a direct trade between 2 student\textquotesingle{}s classes. 
+The Troca\+Direta\+Turma makes a direct trade between 2 student\textquotesingle{}s classes. Complexity\+: O(n³ log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em student1} & Student1 involved \\
 \hline
@@ -172,7 +172,7 @@ The Troca\+Direta\+Turma makes a direct trade between 2 student\textquotesingle{
 \doxysubsubsection{\texorpdfstring{TrocaTurma()}{TrocaTurma()}}
 {\footnotesize\ttfamily int Pedido\+Alteracao\+::\+Troca\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{student,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma\+Origem,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma\+Destino }\end{DoxyParamCaption})}
 
-The Troca\+Turma function switched a student from 1 class to another. 
+The Troca\+Turma function switched a student from 1 class to another. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em student} & The student to be traded \\
 \hline

@@ -157,7 +157,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Default constructor for class <a class="el" href="classCurso.html">Curso</a>. </p>
+<p>Default constructor for class <a class="el" href="classCurso.html">Curso</a>. Complexity: O(1) </p>
 
 </div>
 </div>
@@ -192,7 +192,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for class <a class="el" href="classCurso.html">Curso</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Constructor for class <a class="el" href="classCurso.html">Curso</a>. Complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">allSlots</td><td>All lesson slots </td></tr>
   </table>
@@ -233,10 +233,10 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The AddPA function executes request changes </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The AddPA function add a request change to the request change queue. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td><a class="el" href="classStudent.html">Student</a> involved in the change </td></tr>
-    <tr><td class="paramname">t</td><td>Class that the student will be changed to </td></tr>
+    <tr><td class="paramname">t</td><td>Class that the student will be changed to / class where he is now </td></tr>
     <tr><td class="paramname">typeRequest</td><td>The type of request </td></tr>
   </table>
   </dd>
@@ -275,7 +275,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The findListStudentsUC function finds and prints all students enrolled in more than/exactly/less than n UCs. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The findListStudentsUC function finds and prints all students enrolled in more than/exactly/less than n UCs. Complexity: O(n log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>The number of UCs chosen by the user </td></tr>
     <tr><td class="paramname">exactN</td><td>The user's choice ( more than / exactly / less than ) </td></tr>
@@ -336,7 +336,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The FindTurmaLowestCapacity function returns the class with the most remaining vacancies that is compatible with a student's schedule </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The FindTurmaLowestCapacity function returns the class with the most remaining vacancies that is compatible with a student's schedule. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td><a class="el" href="classStudent.html">Student</a> </td></tr>
     <tr><td class="paramname">ucCode</td><td>UC code </td></tr>
@@ -361,7 +361,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getAllStudents function is a getter for all students in a sorted way. </p><dl class="section return"><dt>Returns</dt><dd>All students sorted </dd></dl>
+<p>The getAllStudents function is a getter for all students in a sorted way. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>All students sorted </dd></dl>
 
 </div>
 </div>
@@ -379,7 +379,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getAllTurmas function is a getter for all classes in a sorted way. </p><dl class="section return"><dt>Returns</dt><dd>All classes in a sorted way </dd></dl>
+<p>The getAllTurmas function is a getter for all classes in a sorted way. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>All classes in a sorted way </dd></dl>
 
 </div>
 </div>
@@ -397,7 +397,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getDefaultCap function is a getter for the current class size cap. </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>The getDefaultCap function is a getter for the current class size cap. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -426,10 +426,10 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getStudentsTurma function returns all students in a certain class </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The getStudentsTurma function returns all students in a certain class. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">turmas</td><td>The class the user wants to see the students from </td></tr>
-    <tr><td class="paramname">ucCode</td><td>The Uc Code in case the user wants the user in only a specific UC. </td></tr>
+    <tr><td class="paramname">ucCode</td><td>In case the user wants, students only a specific UC/Class. </td></tr>
   </table>
   </dd>
 </dl>
@@ -462,9 +462,9 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getStudentsYears function returns all students in a certain year </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The getStudentsYears function returns all students enrolled in a certain year. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">students</td><td>The students to be printed </td></tr>
+    <tr><td class="paramname">students</td><td>The set of all students </td></tr>
     <tr><td class="paramname">year</td><td>The year chosen by the user </td></tr>
   </table>
   </dd>
@@ -498,7 +498,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The GetTurma function returns a student's class for a certain UC </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The GetTurma function returns the student's class for that UC. Complexity: O(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td><a class="el" href="classStudent.html">Student</a> </td></tr>
     <tr><td class="paramname">ucCode</td><td>UC Code </td></tr>
@@ -523,7 +523,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getTurmaMostStudents return the number of students in the class with the most students. </p><dl class="section return"><dt>Returns</dt><dd>The number os students in the biggest class </dd></dl>
+<p>The getTurmaMostStudents return the number of students in the class with the most students. Complexity: O(n) </p><dl class="section return"><dt>Returns</dt><dd>The number os students in the biggest class </dd></dl>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getTurmasYear function returns all classes in a certain year. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The getTurmasYear function returns all classes in a certain year/ in all years. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">year</td><td>The year chosen by the user </td></tr>
   </table>
@@ -576,7 +576,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The PrintHorarioTurma is a function that print a class schedule </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The PrintHorarioTurma is a function that prints a class schedule. Complexity: O(n²) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">uc</td><td>Uc chosen is users requests the schedule for a specific UC </td></tr>
   </table>
@@ -599,7 +599,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The PrintStudentByCode function finds a student by his student code and the prints it. </p><dl class="section return"><dt>Returns</dt><dd>The student requested by the user </dd></dl>
+<p>The PrintStudentByCode function finds a student by his student code and prints it. Complexity: O(n² log(n)) </p><dl class="section return"><dt>Returns</dt><dd>The student requested by the user </dd></dl>
 
 </div>
 </div>
@@ -617,7 +617,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The PrintStudentByName function finds a student by his name and then prints it. </p><dl class="section return"><dt>Returns</dt><dd>The student requested by the user </dd></dl>
+<p>The PrintStudentByName function finds a student by his name and prints it. Complexity: O(n² log(n)) </p><dl class="section return"><dt>Returns</dt><dd>The student requested by the user </dd></dl>
 
 </div>
 </div>
@@ -646,7 +646,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The PrintStudents fuction print students using a user's choice sorting. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The PrintStudents fuction print students using a user's choice sorting. Complexity: O(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">students</td><td>The students to be printed </td></tr>
     <tr><td class="paramname">option</td><td>Type of sorting chosen </td></tr>
@@ -670,7 +670,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The ProcessPA function processes all change requests made by the user </p>
+<p>The ProcessPA function processes all change requests made by the user. Complexity: O(n³ log(n)) </p>
 
 </div>
 </div>
@@ -688,7 +688,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The Save function saves all the changes made ProcessPA runs, must be user called. </p>
+<p>The Save function saves all the changes made, must be user called. Complexity: O(n²) </p>
 
 </div>
 </div>
@@ -707,7 +707,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The setDefaultCap function allows modifying of the class size cap </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The setDefaultCap function allows modifying of the class size cap. Complexity: O(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">newCap</td><td>The new cap to be set </td></tr>
   </table>
@@ -741,7 +741,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The SortByEnrolledUC function allows sorting by the number of students enrolled in the UC. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The SortByEnrolledUC function allows sorting by the number of students enrolled in the UC. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">op</td><td>Controlled for user's choices </td></tr>
     <tr><td class="paramname">ucCode</td><td>The UC chosen by the user </td></tr>
@@ -776,9 +776,9 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The SortbyTurmaCapacity function allows sorting of classes in a certain Uc by user choice. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The SortbyTurmaCapacity function allows sorting of classes in a certain Uc by user choice. Complexity: O(n log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ucCode</td><td>Uc that the classes belong to </td></tr>
+    <tr><td class="paramname">ucCode</td><td>classes' UC </td></tr>
     <tr><td class="paramname">option</td><td>Sorting option </td></tr>
   </table>
   </dd>
@@ -819,7 +819,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Function that allows sorting of a certain group of students. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function that allows sorting of students in descending alphabetical order. Complexity: O(n log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">students</td><td>Students to be sorted </td></tr>
     <tr><td class="paramname">newstudents</td><td>Sorted students </td></tr>
@@ -863,7 +863,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Function that allows sorting of a certain group of students. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function that allows sorting of students by their student code in descending order. Complexity: O(n log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">students</td><td>Students to be sorted </td></tr>
     <tr><td class="paramname">newstudents</td><td>Sorted students </td></tr>
@@ -907,7 +907,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Function that allows sorting of a certain group of students. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function that allows sorting of students by their student code in ascending order. Complexity: O(n log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">students</td><td>Students to be sorted </td></tr>
     <tr><td class="paramname">newstudents</td><td>Sorted students </td></tr>
@@ -932,7 +932,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The ucCodeNormalizer function facilitates the user input for UcCodes, automatically making the input in the form given by the files. </p><dl class="section return"><dt>Returns</dt><dd>A normalized UcCode </dd></dl>
+<p>The ucCodeNormalizer function facilitates the user input for UcCodes, automatically making the input in the form given by the files. Complexity: O(n² log(n)) </p><dl class="section return"><dt>Returns</dt><dd>A normalized UcCode </dd></dl>
 
 </div>
 </div>
@@ -951,7 +951,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The WriteArchive function makes note of all the change request that were impossibe to do. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The WriteArchive function makes note of all the change request that did not get accepted. Complexity: O(log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>The request that was denied </td></tr>
   </table>

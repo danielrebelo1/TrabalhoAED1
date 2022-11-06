@@ -156,7 +156,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The auxMenu function is used to limit the input that users can make in the menu. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The auxMenu function is used to limit the input that users can make in the menu. Complexity: O(n log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">maxOption</td><td>User input has to be &lt; than this variable </td></tr>
     <tr><td class="paramname">minOption</td><td>User input has to be &gt; than this variable </td></tr>
@@ -182,9 +182,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The Fixer function returns the time provided in the files in a more readable way. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The Fixer function returns the time provided in the files in a more readable way. Complexity: O(log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">horarioInicio</td><td></td></tr>
+    <tr><td class="paramname">horarioInicio</td><td>Start time </td></tr>
   </table>
   </dd>
 </dl>
@@ -217,7 +217,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The GetFinishTime function returns the time that a class ends. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The GetFinishTime function returns the time that a class ends. Complexity: O(log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">horarioInicio</td><td>Class start time </td></tr>
     <tr><td class="paramname">duracao</td><td>Class duration </td></tr>
@@ -259,7 +259,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The isCompatible function verifies is the schedule of a student is compatible with the one of another class. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The isCompatible function verifies is the schedule of a student is compatible with the one of another class. Complexity: O(n²) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">listSlot</td><td>the slot to be verified. </td></tr>
     <tr><td class="paramname">vector</td><td><a class="el" href="classStudent.html">Student</a> schedule. </td></tr>
@@ -296,7 +296,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The PrintVector function prints either the number of students in a class or the free spots in a class. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The PrintVector function prints either the number of students in a class or the free spots in a class. Complexity: O(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Vector containing the classes to print. </td></tr>
     <tr><td class="paramname">option</td><td>Option chosen, either the number of students or free spots. </td></tr>
@@ -331,7 +331,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The sorterHorario function is used to compare two schedules and return them in order. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The sorterHorario function is used to compare two schedules and return them in order. Complexity: O(log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s1</td><td>Pair containing class and schedule 1. </td></tr>
     <tr><td class="paramname">s2</td><td>Pair containing class and schedule 2. </td></tr>
@@ -367,7 +367,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The sorterHorarioSlot function is used to compare two classes and return the one earliest one. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The sorterHorarioSlot function is used to compare two classes and return the one earliest one. Complexity: O(log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s1</td><td>Class 1 </td></tr>
     <tr><td class="paramname">s2</td><td>Class 2 </td></tr>
@@ -393,7 +393,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The tolowerString function returns a string in lower case. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The tolowerString function returns a string in lower case. Complexity: O(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>String received. </td></tr>
   </table>

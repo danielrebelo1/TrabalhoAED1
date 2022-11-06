@@ -17,6 +17,7 @@ private:
 public:
     /**
      * Constructor for class Slot.
+     * Complexity: O(1)
      * @param diaSemana The week day
      * @param horarioInicio Slot's start time
      * @param duracao Slot's duration
@@ -26,24 +27,28 @@ public:
 
     /**
      * The getDiaSemana function is getter for the week day.
+     * Complexity: O(1)
      * @return Week day
      */
     std::string getDiaSemana() const;
 
     /**
      * The getHorarioInicio function is a getter for the slot's start time.
+     * Complexity: O(1)
      * @return Slot's start time
      */
     std::string getHorarioInicio() const;
 
     /**
      * The getDuracao function is a getter for the slot's duration.
+     * Complexity: O(1)
      * @return Slot's duration
      */
     std::string getDuracao() const;
 
     /**
      * The getTipo function is a getter for the class type.
+     * Complexity: O(1)
      * @return Class type
      */
     std::string getTipo() const;

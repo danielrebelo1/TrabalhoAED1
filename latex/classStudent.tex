@@ -34,7 +34,7 @@ void \mbox{\hyperlink{classStudent_a706737cdfaf71d31ac4eff625d492486}{Print\+Hor
 \doxysubsubsection{\texorpdfstring{Student()}{Student()}}
 {\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{std\+::string \&}]{student\+Code }\end{DoxyParamCaption})}
 
-Constructor for class \mbox{\hyperlink{classStudent}{Student}}. 
+Constructor for class \mbox{\hyperlink{classStudent}{Student}}. Complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em name} & \mbox{\hyperlink{classStudent}{Student}}\textquotesingle{}s name \\
 \hline
@@ -50,7 +50,7 @@ Constructor for class \mbox{\hyperlink{classStudent}{Student}}.
 \doxysubsubsection{\texorpdfstring{createHorario()}{createHorario()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$, \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$ $>$ Student\+::create\+Horario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The create\+Horario function creates and associates a schedule to a certain class. \begin{DoxyReturn}{Returns}
+The create\+Horario function creates and associates a schedule to a certain class. Complexity\+: O(n² log(n)) \begin{DoxyReturn}{Returns}
 The associated schedule 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classStudent_a391ebfd3e0430dbc7a9dc96f54aa2a5d}\label{classStudent_a391ebfd3e0430dbc7a9dc96f54aa2a5d}} 
@@ -59,7 +59,7 @@ The associated schedule
 \doxysubsubsection{\texorpdfstring{get\_Name()}{get\_Name()}}
 {\footnotesize\ttfamily std\+::string Student\+::get\+\_\+\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+\_\+\+Name function is a getter for the student\textquotesingle{}s name. \begin{DoxyReturn}{Returns}
+The get\+\_\+\+Name function is a getter for the student\textquotesingle{}s name. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 The student\textquotesingle{}s name 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classStudent_aca2743dbdaf46de0bc352af1baee8356}\label{classStudent_aca2743dbdaf46de0bc352af1baee8356}} 
@@ -68,7 +68,7 @@ The student\textquotesingle{}s name
 \doxysubsubsection{\texorpdfstring{get\_student\_Code()}{get\_student\_Code()}}
 {\footnotesize\ttfamily std\+::string Student\+::get\+\_\+student\+\_\+\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+\_\+student\+\_\+\+Code is a getter for the student\textquotesingle{}s code. \begin{DoxyReturn}{Returns}
+The get\+\_\+student\+\_\+\+Code is a getter for the student\textquotesingle{}s code. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 The student\textquotesingle{}s code. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classStudent_a03050eacc5663f008289be8944499e41}\label{classStudent_a03050eacc5663f008289be8944499e41}} 
@@ -77,7 +77,7 @@ The student\textquotesingle{}s code.
 \doxysubsubsection{\texorpdfstring{get\_TurmasAluno()}{get\_TurmasAluno()}}
 {\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$ Student\+::get\+\_\+\+Turmas\+Aluno (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+\_\+\+Turmas\+Aluno is a getter for the student\textquotesingle{}s classes. \begin{DoxyReturn}{Returns}
+The get\+\_\+\+Turmas\+Aluno is a getter for the student\textquotesingle{}s classes. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classStudent_a706737cdfaf71d31ac4eff625d492486}\label{classStudent_a706737cdfaf71d31ac4eff625d492486}} 
@@ -86,19 +86,19 @@ The get\+\_\+\+Turmas\+Aluno is a getter for the student\textquotesingle{}s clas
 \doxysubsubsection{\texorpdfstring{PrintHorario()}{PrintHorario()}}
 {\footnotesize\ttfamily void Student\+::\+Print\+Horario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The Print\+Horario function prints a student\textquotesingle{}s schedule. \mbox{\Hypertarget{classStudent_a2ff563a1aac154f285516a013ea1b6a7}\label{classStudent_a2ff563a1aac154f285516a013ea1b6a7}} 
+The Print\+Horario function prints a student\textquotesingle{}s schedule. Complexity\+: O(n) \mbox{\Hypertarget{classStudent_a2ff563a1aac154f285516a013ea1b6a7}\label{classStudent_a2ff563a1aac154f285516a013ea1b6a7}} 
 \index{Student@{Student}!PrintStudentTurmas@{PrintStudentTurmas}}
 \index{PrintStudentTurmas@{PrintStudentTurmas}!Student@{Student}}
 \doxysubsubsection{\texorpdfstring{PrintStudentTurmas()}{PrintStudentTurmas()}}
 {\footnotesize\ttfamily void Student\+::\+Print\+Student\+Turmas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The Print\+Student\+Turmas function prints a student\textquotesingle{}s classes. \mbox{\Hypertarget{classStudent_acc05c50a671f12c26f38e9c337df8787}\label{classStudent_acc05c50a671f12c26f38e9c337df8787}} 
+The Print\+Student\+Turmas function prints a student\textquotesingle{}s classes. Complexity\+: O(n log(n)) \mbox{\Hypertarget{classStudent_acc05c50a671f12c26f38e9c337df8787}\label{classStudent_acc05c50a671f12c26f38e9c337df8787}} 
 \index{Student@{Student}!RemoveFromTurma@{RemoveFromTurma}}
 \index{RemoveFromTurma@{RemoveFromTurma}!Student@{Student}}
 \doxysubsubsection{\texorpdfstring{RemoveFromTurma()}{RemoveFromTurma()}}
 {\footnotesize\ttfamily void Student\+::\+Remove\+From\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma }\end{DoxyParamCaption})}
 
-The Remove\+From\+Turma function removes a class from the vector containing all classes. 
+The Remove\+From\+Turma function removes a class from the vector containing all classes. Complexity\+: O(n) 
 \begin{DoxyParams}{Parameters}
 {\em turma} & The class to be removed \\
 \hline
@@ -109,7 +109,7 @@ The Remove\+From\+Turma function removes a class from the vector containing all 
 \doxysubsubsection{\texorpdfstring{UpdateTurmas()}{UpdateTurmas()}}
 {\footnotesize\ttfamily void Student\+::\+Update\+Turmas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma }\end{DoxyParamCaption})}
 
-The Update\+Turmas function adds a new class to the vector containing all classes. 
+The Update\+Turmas function adds a new class to the vector containing all classes. Complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em turma} & The class to be added \\
 \hline

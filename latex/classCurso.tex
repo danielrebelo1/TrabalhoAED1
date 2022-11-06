@@ -75,13 +75,13 @@ static std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyp
 \doxysubsubsection{\texorpdfstring{Curso()}{Curso()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Curso\+::\+Curso (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
-Default constructor for class \mbox{\hyperlink{classCurso}{Curso}}. \mbox{\Hypertarget{classCurso_a3d51a18fb86b65d6e5222ea52dc6b1cd}\label{classCurso_a3d51a18fb86b65d6e5222ea52dc6b1cd}} 
+Default constructor for class \mbox{\hyperlink{classCurso}{Curso}}. Complexity\+: O(1) \mbox{\Hypertarget{classCurso_a3d51a18fb86b65d6e5222ea52dc6b1cd}\label{classCurso_a3d51a18fb86b65d6e5222ea52dc6b1cd}} 
 \index{Curso@{Curso}!Curso@{Curso}}
 \index{Curso@{Curso}!Curso@{Curso}}
 \doxysubsubsection{\texorpdfstring{Curso()}{Curso()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Curso\+::\+Curso (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$}]{all\+Students,  }\item[{std\+::set$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$, \mbox{\hyperlink{structturmaComparator}{turma\+Comparator}} $>$}]{all\+Turmas,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$ $>$}]{all\+Slots }\end{DoxyParamCaption})}
 
-Constructor for class \mbox{\hyperlink{classCurso}{Curso}}. 
+Constructor for class \mbox{\hyperlink{classCurso}{Curso}}. Complexity\+: O(1) 
 \begin{DoxyParams}{Parameters}
 {\em all\+Slots} & All lesson slots \\
 \hline
@@ -95,11 +95,11 @@ Constructor for class \mbox{\hyperlink{classCurso}{Curso}}.
 \doxysubsubsection{\texorpdfstring{AddPA()}{AddPA()}}
 {\footnotesize\ttfamily void Curso\+::\+Add\+PA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{s,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{t,  }\item[{int}]{type\+Request }\end{DoxyParamCaption})}
 
-The Add\+PA function executes request changes 
+The Add\+PA function add a request change to the request change queue. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em s} & \mbox{\hyperlink{classStudent}{Student}} involved in the change \\
 \hline
-{\em t} & Class that the student will be changed to \\
+{\em t} & Class that the student will be changed to / class where he is now \\
 \hline
 {\em type\+Request} & The type of request \\
 \hline
@@ -110,7 +110,7 @@ The Add\+PA function executes request changes
 \doxysubsubsection{\texorpdfstring{findListStudentsUC()}{findListStudentsUC()}}
 {\footnotesize\ttfamily void Curso\+::find\+List\+Students\+UC (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{exactN,  }\item[{int}]{order\+Type }\end{DoxyParamCaption})}
 
-The find\+List\+Students\+UC function finds and prints all students enrolled in more than/exactly/less than n UCs. 
+The find\+List\+Students\+UC function finds and prints all students enrolled in more than/exactly/less than n UCs. Complexity\+: O(n log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em n} & The number of UCs chosen by the user \\
 \hline
@@ -139,7 +139,7 @@ The class requested by the user
 \doxysubsubsection{\texorpdfstring{FindTurmaLowestCapacity()}{FindTurmaLowestCapacity()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classTurma}{Turma}} $\ast$ Curso\+::\+Find\+Turma\+Lowest\+Capacity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{s,  }\item[{std\+::string}]{uc\+Code }\end{DoxyParamCaption})}
 
-The Find\+Turma\+Lowest\+Capacity function returns the class with the most remaining vacancies that is compatible with a student\textquotesingle{}s schedule 
+The Find\+Turma\+Lowest\+Capacity function returns the class with the most remaining vacancies that is compatible with a student\textquotesingle{}s schedule. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em s} & \mbox{\hyperlink{classStudent}{Student}} \\
 \hline
@@ -155,7 +155,7 @@ The class with the most vacancies that is compatible with the student\textquotes
 \doxysubsubsection{\texorpdfstring{getAllStudents()}{getAllStudents()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$ Curso\+::get\+All\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+All\+Students function is a getter for all students in a sorted way. \begin{DoxyReturn}{Returns}
+The get\+All\+Students function is a getter for all students in a sorted way. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 All students sorted 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_a3609274363c661fce515bc526cad8e79}\label{classCurso_a3609274363c661fce515bc526cad8e79}} 
@@ -164,7 +164,7 @@ All students sorted
 \doxysubsubsection{\texorpdfstring{getAllTurmas()}{getAllTurmas()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$, \mbox{\hyperlink{structturmaComparator}{turma\+Comparator}} $>$ Curso\+::get\+All\+Turmas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+All\+Turmas function is a getter for all classes in a sorted way. \begin{DoxyReturn}{Returns}
+The get\+All\+Turmas function is a getter for all classes in a sorted way. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 All classes in a sorted way 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_ab08687acf24caa10644f39c8ec0f9340}\label{classCurso_ab08687acf24caa10644f39c8ec0f9340}} 
@@ -173,7 +173,7 @@ All classes in a sorted way
 \doxysubsubsection{\texorpdfstring{getDefaultCap()}{getDefaultCap()}}
 {\footnotesize\ttfamily int Curso\+::get\+Default\+Cap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+Default\+Cap function is a getter for the current class size cap. \begin{DoxyReturn}{Returns}
+The get\+Default\+Cap function is a getter for the current class size cap. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_ab98b119870d60687065562a8ad0288d5}\label{classCurso_ab98b119870d60687065562a8ad0288d5}} 
@@ -182,11 +182,11 @@ The get\+Default\+Cap function is a getter for the current class size cap. \begi
 \doxysubsubsection{\texorpdfstring{getStudentsTurma()}{getStudentsTurma()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$ Curso\+::get\+Students\+Turma (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$}]{turmas,  }\item[{std\+::string}]{uc\+Code = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
-The get\+Students\+Turma function returns all students in a certain class 
+The get\+Students\+Turma function returns all students in a certain class. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em turmas} & The class the user wants to see the students from \\
 \hline
-{\em uc\+Code} & The Uc Code in case the user wants the user in only a specific UC. \\
+{\em uc\+Code} & In case the user wants, students only a specific UC/\+Class. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -198,9 +198,9 @@ The students requested by the user
 \doxysubsubsection{\texorpdfstring{getStudentsYear()}{getStudentsYear()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$ Curso\+::get\+Students\+Year (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$}]{students,  }\item[{int}]{year }\end{DoxyParamCaption})}
 
-The get\+Students\+Years function returns all students in a certain year 
+The get\+Students\+Years function returns all students enrolled in a certain year. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
-{\em students} & The students to be printed \\
+{\em students} & The set of all students \\
 \hline
 {\em year} & The year chosen by the user \\
 \hline
@@ -214,7 +214,7 @@ All students in a certain year
 \doxysubsubsection{\texorpdfstring{GetTurma()}{GetTurma()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classTurma}{Turma}} $\ast$ Curso\+::\+Get\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} $\ast$}]{s,  }\item[{std\+::string}]{uc\+Code }\end{DoxyParamCaption})}
 
-The Get\+Turma function returns a student\textquotesingle{}s class for a certain UC 
+The Get\+Turma function returns the student\textquotesingle{}s class for that UC. Complexity\+: O(n) 
 \begin{DoxyParams}{Parameters}
 {\em s} & \mbox{\hyperlink{classStudent}{Student}} \\
 \hline
@@ -230,7 +230,7 @@ Class in which the student is enrolled
 \doxysubsubsection{\texorpdfstring{getTurmaMostStudents()}{getTurmaMostStudents()}}
 {\footnotesize\ttfamily int Curso\+::get\+Turma\+Most\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The get\+Turma\+Most\+Students return the number of students in the class with the most students. \begin{DoxyReturn}{Returns}
+The get\+Turma\+Most\+Students return the number of students in the class with the most students. Complexity\+: O(n) \begin{DoxyReturn}{Returns}
 The number os students in the biggest class 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_a6480cfecad24ad3c546f6b4b82d88f55}\label{classCurso_a6480cfecad24ad3c546f6b4b82d88f55}} 
@@ -239,7 +239,7 @@ The number os students in the biggest class
 \doxysubsubsection{\texorpdfstring{getTurmasYear()}{getTurmasYear()}}
 {\footnotesize\ttfamily void Curso\+::get\+Turmas\+Year (\begin{DoxyParamCaption}\item[{int}]{year = {\ttfamily INT\+\_\+MAX} }\end{DoxyParamCaption})}
 
-The get\+Turmas\+Year function returns all classes in a certain year. 
+The get\+Turmas\+Year function returns all classes in a certain year/ in all years. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em year} & The year chosen by the user \\
 \hline
@@ -250,7 +250,7 @@ The get\+Turmas\+Year function returns all classes in a certain year.
 \doxysubsubsection{\texorpdfstring{PrintHorarioTurma()}{PrintHorarioTurma()}}
 {\footnotesize\ttfamily void Curso\+::\+Print\+Horario\+Turma (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$}]{vt,  }\item[{std\+::string}]{uc = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
-The Print\+Horario\+Turma is a function that print a class schedule 
+The Print\+Horario\+Turma is a function that prints a class schedule. Complexity\+: O(n²) 
 \begin{DoxyParams}{Parameters}
 {\em uc} & Uc chosen is users requests the schedule for a specific UC \\
 \hline
@@ -261,7 +261,7 @@ The Print\+Horario\+Turma is a function that print a class schedule
 \doxysubsubsection{\texorpdfstring{PrintStudentByCode()}{PrintStudentByCode()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classStudent}{Student}} $\ast$ Curso\+::\+Print\+Student\+By\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The Print\+Student\+By\+Code function finds a student by his student code and the prints it. \begin{DoxyReturn}{Returns}
+The Print\+Student\+By\+Code function finds a student by his student code and prints it. Complexity\+: O(n² log(n)) \begin{DoxyReturn}{Returns}
 The student requested by the user 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_a107b003f825f99d60a04d0b90434013a}\label{classCurso_a107b003f825f99d60a04d0b90434013a}} 
@@ -270,7 +270,7 @@ The student requested by the user
 \doxysubsubsection{\texorpdfstring{PrintStudentByName()}{PrintStudentByName()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classStudent}{Student}} $\ast$ Curso\+::\+Print\+Student\+By\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The Print\+Student\+By\+Name function finds a student by his name and then prints it. \begin{DoxyReturn}{Returns}
+The Print\+Student\+By\+Name function finds a student by his name and prints it. Complexity\+: O(n² log(n)) \begin{DoxyReturn}{Returns}
 The student requested by the user 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_a01732c2ef088eb7725c11e6215b5e4be}\label{classCurso_a01732c2ef088eb7725c11e6215b5e4be}} 
@@ -279,7 +279,7 @@ The student requested by the user
 \doxysubsubsection{\texorpdfstring{PrintStudents()}{PrintStudents()}}
 {\footnotesize\ttfamily void Curso\+::\+Print\+Students (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$}]{students,  }\item[{char}]{option }\end{DoxyParamCaption})}
 
-The Print\+Students fuction print students using a user\textquotesingle{}s choice sorting. 
+The Print\+Students fuction print students using a user\textquotesingle{}s choice sorting. Complexity\+: O(n) 
 \begin{DoxyParams}{Parameters}
 {\em students} & The students to be printed \\
 \hline
@@ -292,19 +292,19 @@ The Print\+Students fuction print students using a user\textquotesingle{}s choic
 \doxysubsubsection{\texorpdfstring{ProcessPA()}{ProcessPA()}}
 {\footnotesize\ttfamily void Curso\+::\+Process\+PA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The Process\+PA function processes all change requests made by the user \mbox{\Hypertarget{classCurso_acb28836ef923b1566be8737de979191f}\label{classCurso_acb28836ef923b1566be8737de979191f}} 
+The Process\+PA function processes all change requests made by the user. Complexity\+: O(n³ log(n)) \mbox{\Hypertarget{classCurso_acb28836ef923b1566be8737de979191f}\label{classCurso_acb28836ef923b1566be8737de979191f}} 
 \index{Curso@{Curso}!Save@{Save}}
 \index{Save@{Save}!Curso@{Curso}}
 \doxysubsubsection{\texorpdfstring{Save()}{Save()}}
 {\footnotesize\ttfamily void Curso\+::\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The Save function saves all the changes made Process\+PA runs, must be user called. \mbox{\Hypertarget{classCurso_a261d2a40a9047362766756dc227e6a55}\label{classCurso_a261d2a40a9047362766756dc227e6a55}} 
+The Save function saves all the changes made, must be user called. Complexity\+: O(n²) \mbox{\Hypertarget{classCurso_a261d2a40a9047362766756dc227e6a55}\label{classCurso_a261d2a40a9047362766756dc227e6a55}} 
 \index{Curso@{Curso}!setDefaultCap@{setDefaultCap}}
 \index{setDefaultCap@{setDefaultCap}!Curso@{Curso}}
 \doxysubsubsection{\texorpdfstring{setDefaultCap()}{setDefaultCap()}}
 {\footnotesize\ttfamily void Curso\+::set\+Default\+Cap (\begin{DoxyParamCaption}\item[{int}]{new\+Cap }\end{DoxyParamCaption})}
 
-The set\+Default\+Cap function allows modifying of the class size cap 
+The set\+Default\+Cap function allows modifying of the class size cap. Complexity\+: O(n) 
 \begin{DoxyParams}{Parameters}
 {\em new\+Cap} & The new cap to be set \\
 \hline
@@ -315,7 +315,7 @@ The set\+Default\+Cap function allows modifying of the class size cap
 \doxysubsubsection{\texorpdfstring{SortByEnrolledUC()}{SortByEnrolledUC()}}
 {\footnotesize\ttfamily void Curso\+::\+Sort\+By\+Enrolled\+UC (\begin{DoxyParamCaption}\item[{int}]{op = {\ttfamily 1},  }\item[{std\+::string}]{uc\+Code = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
-The Sort\+By\+Enrolled\+UC function allows sorting by the number of students enrolled in the UC. 
+The Sort\+By\+Enrolled\+UC function allows sorting by the number of students enrolled in the UC. Complexity\+: O(n² log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em op} & Controlled for user\textquotesingle{}s choices \\
 \hline
@@ -328,9 +328,9 @@ The Sort\+By\+Enrolled\+UC function allows sorting by the number of students enr
 \doxysubsubsection{\texorpdfstring{SortbyTurmaCapacity()}{SortbyTurmaCapacity()}}
 {\footnotesize\ttfamily void Curso\+::\+Sortby\+Turma\+Capacity (\begin{DoxyParamCaption}\item[{std\+::string}]{uc\+Code,  }\item[{int}]{option }\end{DoxyParamCaption})}
 
-The Sortby\+Turma\+Capacity function allows sorting of classes in a certain Uc by user choice. 
+The Sortby\+Turma\+Capacity function allows sorting of classes in a certain Uc by user choice. Complexity\+: O(n log(n)) 
 \begin{DoxyParams}{Parameters}
-{\em uc\+Code} & Uc that the classes belong to \\
+{\em uc\+Code} & classes\textquotesingle{} UC \\
 \hline
 {\em option} & Sorting option \\
 \hline
@@ -341,7 +341,7 @@ The Sortby\+Turma\+Capacity function allows sorting of classes in a certain Uc b
 \doxysubsubsection{\texorpdfstring{StudentReverseSortAlpha()}{StudentReverseSortAlpha()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator2}{student\+Comparator2}} $>$ Curso\+::\+Student\+Reverse\+Sort\+Alpha (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$}]{students,  }\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator2}{student\+Comparator2}} $>$ \&}]{newstudents }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Function that allows sorting of a certain group of students. 
+Function that allows sorting of students in descending alphabetical order. Complexity\+: O(n log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em students} & Students to be sorted \\
 \hline
@@ -357,7 +357,7 @@ Sorted students
 \doxysubsubsection{\texorpdfstring{StudentReverseSortCode()}{StudentReverseSortCode()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparatorDecreasingCode}{student\+Comparator\+Decreasing\+Code}} $>$ Curso\+::\+Student\+Reverse\+Sort\+Code (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$}]{students,  }\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparatorDecreasingCode}{student\+Comparator\+Decreasing\+Code}} $>$ \&}]{newstudents }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Function that allows sorting of a certain group of students. 
+Function that allows sorting of students by their student code in descending order. Complexity\+: O(n log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em students} & Students to be sorted \\
 \hline
@@ -373,7 +373,7 @@ Sorted students
 \doxysubsubsection{\texorpdfstring{StudentSortCode()}{StudentSortCode()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparatorCode}{student\+Comparator\+Code}} $>$ Curso\+::\+Student\+Sort\+Code (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$}]{students,  }\item[{std\+::set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparatorCode}{student\+Comparator\+Code}} $>$ \&}]{newstudents }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Function that allows sorting of a certain group of students. 
+Function that allows sorting of students by their student code in ascending order. Complexity\+: O(n log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em students} & Students to be sorted \\
 \hline
@@ -389,7 +389,7 @@ Sorted students
 \doxysubsubsection{\texorpdfstring{ucCodeNormalizer()}{ucCodeNormalizer()}}
 {\footnotesize\ttfamily std\+::string Curso\+::uc\+Code\+Normalizer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-The uc\+Code\+Normalizer function facilitates the user input for Uc\+Codes, automatically making the input in the form given by the files. \begin{DoxyReturn}{Returns}
+The uc\+Code\+Normalizer function facilitates the user input for Uc\+Codes, automatically making the input in the form given by the files. Complexity\+: O(n² log(n)) \begin{DoxyReturn}{Returns}
 A normalized Uc\+Code 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCurso_a88bc3b39d66aef11618b5da39c7fd0c3}\label{classCurso_a88bc3b39d66aef11618b5da39c7fd0c3}} 
@@ -398,7 +398,7 @@ A normalized Uc\+Code
 \doxysubsubsection{\texorpdfstring{WriteArchive()}{WriteArchive()}}
 {\footnotesize\ttfamily void Curso\+::\+Write\+Archive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPedidoAlteracao}{Pedido\+Alteracao}} $\ast$}]{p }\end{DoxyParamCaption})}
 
-The Write\+Archive function makes note of all the change request that were impossibe to do. 
+The Write\+Archive function makes note of all the change request that did not get accepted. Complexity\+: O(log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em p} & The request that was denied \\
 \hline
