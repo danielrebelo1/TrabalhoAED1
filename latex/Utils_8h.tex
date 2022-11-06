@@ -46,7 +46,7 @@ bool \mbox{\hyperlink{Utils_8h_a3b6912e60521719de94f82a9474d65a4}{is\+Compatible
 \doxysubsubsection{\texorpdfstring{auxMenu()}{auxMenu()}}
 {\footnotesize\ttfamily int aux\+Menu (\begin{DoxyParamCaption}\item[{int}]{max\+Option,  }\item[{int}]{min\+Option }\end{DoxyParamCaption})}
 
-The aux\+Menu function is used to limit the input that users can make in the menu. 
+The aux\+Menu function is used to limit the input that users can make in the menu. Complexity\+: O(n log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em max\+Option} & User input has to be $<$ than this variable \\
 \hline
@@ -62,9 +62,9 @@ User input
 \doxysubsubsection{\texorpdfstring{Fixer()}{Fixer()}}
 {\footnotesize\ttfamily std\+::string Fixer (\begin{DoxyParamCaption}\item[{std\+::string}]{horario\+Inicio }\end{DoxyParamCaption})}
 
-The Fixer function returns the time provided in the files in a more readable way. 
+The Fixer function returns the time provided in the files in a more readable way. Complexity\+: O(log(n)) 
 \begin{DoxyParams}{Parameters}
-{\em horario\+Inicio} & \\
+{\em horario\+Inicio} & Start time \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -76,7 +76,7 @@ More readable time
 \doxysubsubsection{\texorpdfstring{GetFinishTime()}{GetFinishTime()}}
 {\footnotesize\ttfamily std\+::string Get\+Finish\+Time (\begin{DoxyParamCaption}\item[{std\+::string}]{horario\+Inicio,  }\item[{std\+::string}]{duracao }\end{DoxyParamCaption})}
 
-The Get\+Finish\+Time function returns the time that a class ends. 
+The Get\+Finish\+Time function returns the time that a class ends. Complexity\+: O(log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em horario\+Inicio} & Class start time \\
 \hline
@@ -92,7 +92,7 @@ Class ending time
 \doxysubsubsection{\texorpdfstring{isCompatible()}{isCompatible()}}
 {\footnotesize\ttfamily bool is\+Compatible (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$ $>$}]{horario\+Uc\+Turma,  }\item[{std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$, \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$$>$}]{horario\+Student,  }\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{turma = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
-The is\+Compatible function verifies is the schedule of a student is compatible with the one of another class. 
+The is\+Compatible function verifies is the schedule of a student is compatible with the one of another class. Complexity\+: O(n²) 
 \begin{DoxyParams}{Parameters}
 {\em list\+Slot} & the slot to be verified. \\
 \hline
@@ -110,7 +110,7 @@ The is\+Compatible function verifies is the schedule of a student is compatible 
 \doxysubsubsection{\texorpdfstring{PrintVector()}{PrintVector()}}
 {\footnotesize\ttfamily void Print\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$}]{v,  }\item[{char}]{option }\end{DoxyParamCaption})}
 
-The Print\+Vector function prints either the number of students in a class or the free spots in a class. 
+The Print\+Vector function prints either the number of students in a class or the free spots in a class. Complexity\+: O(n) 
 \begin{DoxyParams}{Parameters}
 {\em v} & Vector containing the classes to print. \\
 \hline
@@ -123,7 +123,7 @@ The Print\+Vector function prints either the number of students in a class or th
 \doxysubsubsection{\texorpdfstring{sorterHorario()}{sorterHorario()}}
 {\footnotesize\ttfamily bool sorter\+Horario (\begin{DoxyParamCaption}\item[{std\+::pair$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$, \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$}]{s1,  }\item[{std\+::pair$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$, \mbox{\hyperlink{classTurma}{Turma}} $\ast$ $>$}]{s2 }\end{DoxyParamCaption})}
 
-The sorter\+Horario function is used to compare two schedules and return them in order. 
+The sorter\+Horario function is used to compare two schedules and return them in order. Complexity\+: O(log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em s1} & Pair containing class and schedule 1. \\
 \hline
@@ -139,7 +139,7 @@ The sorter\+Horario function is used to compare two schedules and return them in
 \doxysubsubsection{\texorpdfstring{sorterHorarioSlot()}{sorterHorarioSlot()}}
 {\footnotesize\ttfamily bool sorter\+Horario\+Slot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSlot}{Slot}} $\ast$}]{s1,  }\item[{\mbox{\hyperlink{classSlot}{Slot}} $\ast$}]{s2 }\end{DoxyParamCaption})}
 
-The sorter\+Horario\+Slot function is used to compare two classes and return the one earliest one. 
+The sorter\+Horario\+Slot function is used to compare two classes and return the one earliest one. Complexity\+: O(log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em s1} & Class 1 \\
 \hline
@@ -155,7 +155,7 @@ The sorter\+Horario\+Slot function is used to compare two classes and return the
 \doxysubsubsection{\texorpdfstring{tolowerString()}{tolowerString()}}
 {\footnotesize\ttfamily std\+::string tolower\+String (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
 
-The tolower\+String function returns a string in lower case. 
+The tolower\+String function returns a string in lower case. Complexity\+: O(n) 
 \begin{DoxyParams}{Parameters}
 {\em s} & String received. \\
 \hline

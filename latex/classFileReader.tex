@@ -24,7 +24,7 @@ std\+::vector$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$ $>$ \mbox{\hyperlink{
 \doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
 {\footnotesize\ttfamily File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{studentsinfo\+\_\+file,  }\item[{std\+::istream \&}]{aulas\+\_\+file }\end{DoxyParamCaption})}
 
-Initializer that starts the reading of files. 
+Initializer that starts the reading of files. Complexity\+: O(n⁴ log(n)) 
 \begin{DoxyParams}{Parameters}
 {\em studentsinfo\+\_\+file} & Path to to student\textquotesingle{}s info file \\
 \hline
@@ -40,7 +40,7 @@ Initializer that starts the reading of files.
 \doxysubsubsection{\texorpdfstring{getSlots()}{getSlots()}}
 {\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classSlot}{Slot}} $\ast$ $>$ File\+Reader\+::get\+Slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+Slots is a getter for all lesson slots \begin{DoxyReturn}{Returns}
+The get\+Slots is a getter for all lesson slots. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 All lessons slots 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classFileReader_ab603132adb49e2e936f10ccf9cc05049}\label{classFileReader_ab603132adb49e2e936f10ccf9cc05049}} 
@@ -49,7 +49,7 @@ All lessons slots
 \doxysubsubsection{\texorpdfstring{getStudents()}{getStudents()}}
 {\footnotesize\ttfamily set$<$ \mbox{\hyperlink{classStudent}{Student}} $\ast$, \mbox{\hyperlink{structstudentComparator}{student\+Comparator}} $>$ File\+Reader\+::get\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+Students function is getter for all students. \begin{DoxyReturn}{Returns}
+The get\+Students function is getter for all students. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 All students 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classFileReader_a0af4f7904390faafb40ca4da41e87f30}\label{classFileReader_a0af4f7904390faafb40ca4da41e87f30}} 
@@ -58,7 +58,7 @@ All students
 \doxysubsubsection{\texorpdfstring{getTurmas()}{getTurmas()}}
 {\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classTurma}{Turma}} $\ast$, \mbox{\hyperlink{structturmaComparator}{turma\+Comparator}} $>$ File\+Reader\+::get\+Turmas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-The get\+Turmas function is a getter for all classes.$<$ \begin{DoxyReturn}{Returns}
+The get\+Turmas function is a getter for all classes. Complexity\+: O(1) \begin{DoxyReturn}{Returns}
 All classes 
 \end{DoxyReturn}
 

@@ -128,7 +128,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for class <a class="el" href="classPedidoAlteracao.html">PedidoAlteracao</a> in case only 1 student is involved. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Constructor for class <a class="el" href="classPedidoAlteracao.html">PedidoAlteracao</a> in case only 1 student is involved. Complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>The student that requests the trade </td></tr>
     <tr><td class="paramname">turma</td><td>The class that he whiches to be added/removed. </td></tr>
@@ -182,7 +182,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for class <a class="el" href="classPedidoAlteracao.html">PedidoAlteracao</a> in case 2 students are involved. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Constructor for class <a class="el" href="classPedidoAlteracao.html">PedidoAlteracao</a> in case 2 students are involved. Complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td><a class="el" href="classStudent.html">Student</a> 1 involved in trade </td></tr>
     <tr><td class="paramname">student2</td><td><a class="el" href="classStudent.html">Student</a> 2 involved in trade </td></tr>
@@ -221,7 +221,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The AddtoClass function adds a student to a class. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The AddtoClass function adds a student to a class. Complexity: O(n² log(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student1</td><td>The student to be added </td></tr>
     <tr><td class="paramname">turma</td><td>The class to be added to </td></tr>
@@ -246,7 +246,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getStudent function is a getter for the first student. </p><dl class="section return"><dt>Returns</dt><dd>The first student </dd></dl>
+<p>The getStudent function is a getter for the first student. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>The first student </dd></dl>
 
 </div>
 </div>
@@ -264,7 +264,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getStudent function is a getter for the second student. </p><dl class="section return"><dt>Returns</dt><dd>The second student </dd></dl>
+<p>The getStudent function is a getter for the second student. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>The second student </dd></dl>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getTurma function is a getter for the first student's class. </p><dl class="section return"><dt>Returns</dt><dd>First student's class </dd></dl>
+<p>The getTurma function is a getter for the first student's class. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>First student's class </dd></dl>
 
 </div>
 </div>
@@ -318,7 +318,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getTypeRequest function is a getter for the type of request. </p><dl class="section return"><dt>Returns</dt><dd>Request type </dd></dl>
+<p>The getTypeRequest function is a getter for the type of request. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>Request type </dd></dl>
 
 </div>
 </div>
@@ -347,7 +347,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The RemoveFromClass function removes a student from a class. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The RemoveFromClass function removes a student from a class. Complexity: O(n²) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>The student to be removed </td></tr>
     <tr><td class="paramname">turma</td><td>The class to be remvoed from </td></tr>
@@ -395,7 +395,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The TrocaDiretaTurma makes a direct trade between 2 student's classes. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The TrocaDiretaTurma makes a direct trade between 2 student's classes. Complexity: O(n³ log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student1</td><td>Student1 involved </td></tr>
     <tr><td class="paramname">student2</td><td>Student2 involved </td></tr>
@@ -439,7 +439,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The TrocaTurma function switched a student from 1 class to another. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The TrocaTurma function switched a student from 1 class to another. Complexity: O(n² log(n)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>The student to be traded </td></tr>
     <tr><td class="paramname">turmaOrigem</td><td>Original class </td></tr>

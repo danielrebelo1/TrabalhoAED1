@@ -20,6 +20,7 @@
 
 /**
  * The studentComparator is a function that compares two students and allows sorting in multiple ways.
+ * Complexity: O(log(n))
  */
 struct studentComparator
 {
@@ -31,6 +32,7 @@ struct studentComparator
 
 /**
  * The turmaComparator is a function that compares two classes and allows sorting in multiple ways.
+ * Complexity: O( log(n))
  */
 struct turmaComparator
 {
@@ -52,6 +54,7 @@ class FileReader{
     public:
         /**
          * Initializer that starts the reading of files.
+         * Complexity: O(n⁴ log(n))
          * @param studentsinfo_file Path to to student's info file
          * @param aulas_file Path to lesson's info file
          */
@@ -59,18 +62,21 @@ class FileReader{
 
         /**
          * The getStudents function is getter for all students.
+         * Complexity: O(1)
          * @return All students
          */
         std::set<Student *, studentComparator> getStudents() const;
 
         /**
-         * The getTurmas function is a getter for all classes.<
+         * The getTurmas function is a getter for all classes.
+         * Complexity: O(1)
          * @return All classes
          */
         std::set<Turma*, turmaComparator> getTurmas() const;
 
         /**
-         * The getSlots is a getter for all lesson slots
+         * The getSlots is a getter for all lesson slots.
+         * Complexity: O(1)
          * @return All lessons slots
          */
         std::vector<Slot*> getSlots() const;

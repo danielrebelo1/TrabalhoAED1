@@ -23,6 +23,7 @@ class Turma {
 public:
     /**
      * Constructor for class Turma.
+     * Complexity: O(1)
      * @param turmaCode Class Code
      * @param ucCode Uc Code
      */
@@ -30,6 +31,7 @@ public:
 
     /**
      * The get_turmaCode function is a getter for the class code.
+     * Complexity: O(1)
      * @return Class code
      */
 
@@ -37,6 +39,7 @@ public:
 
     /**
      *The get_ucCode function is a getter for the Uc Code of a class.
+     * Complexity: O(1)
      * @return Uc Code
      */
 
@@ -44,24 +47,28 @@ public:
 
     /**
      * The get_nrStudentsTurma fucntion return the number of students in a class.
+     * Complexity: O(1)
      * @return The number of students in that class
      */
     int get_nrStudentsTurma()const;
 
     /**
      * The getHorarioUcTurma returns the schedule of a class for a certain Uc.
+     * Complexity: O(1)
      * @return Schedule for that UC
      */
     std::list<Slot *> getHorarioUcTurma() const;
 
     /**
      * The getStudentsTurma returns the students in a class.
+     * Complexity: O(1)
      * @return Students in that class
      */
     std::vector<Student *> getStudentsTurma() const;
 
     /**
      * The AddStudent function adds a student to a class.
+     * Complexity: O(1)
      * @param student The student to be added
      */
 
@@ -69,13 +76,15 @@ public:
 
     /**
      * The RemoveStudent function removes a student from a class.
+     * Complexity: O(n)
      * @param student The student to be removed
      */
 
     void RemoveStudent(Student *student);
 
     /**
-     * The AddSlot function adds a slot for a lesson
+     * The AddSlot function adds a slot for a lesson.
+     * Complexity: O(1)
      * @param slot The slot to be added
      */
     void AddSlot(Slot *slot);
@@ -85,6 +94,10 @@ public:
      */
     int defaultCap = 24;
 
+    /**
+     * The PrintTurma function prints the students enrolled in a certain class.
+     * Complexity: O(n)
+     */
     void PrintTurma();
 
 private:

@@ -92,6 +92,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae1ec80daa89abda0f98ff8302c4ddc6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af494d395333a41053016de747dc134c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTurma.html#af494d395333a41053016de747dc134c8">AddSlot</a> (<a class="el" href="classSlot.html">Slot</a> *slot)</td></tr>
 <tr class="separator:af494d395333a41053016de747dc134c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a766612f657807135c08d39aec3cfdcb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTurma.html#a766612f657807135c08d39aec3cfdcb2">PrintTurma</a> ()</td></tr>
+<tr class="separator:a766612f657807135c08d39aec3cfdcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -124,7 +126,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for class <a class="el" href="classTurma.html">Turma</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Constructor for class <a class="el" href="classTurma.html">Turma</a>. Complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">turmaCode</td><td>Class Code </td></tr>
     <tr><td class="paramname">ucCode</td><td>Uc Code </td></tr>
@@ -150,7 +152,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The AddSlot function adds a slot for a lesson </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The AddSlot function adds a slot for a lesson. Complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">slot</td><td>The slot to be added </td></tr>
   </table>
@@ -174,7 +176,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The AddStudent function adds a student to a class. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The AddStudent function adds a student to a class. Complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>The student to be added </td></tr>
   </table>
@@ -197,7 +199,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The get_nrStudentsTurma fucntion return the number of students in a class. </p><dl class="section return"><dt>Returns</dt><dd>The number of students in that class </dd></dl>
+<p>The get_nrStudentsTurma fucntion return the number of students in a class. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>The number of students in that class </dd></dl>
 
 </div>
 </div>
@@ -215,7 +217,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The get_turmaCode function is a getter for the class code. </p><dl class="section return"><dt>Returns</dt><dd>Class code </dd></dl>
+<p>The get_turmaCode function is a getter for the class code. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>Class code </dd></dl>
 
 </div>
 </div>
@@ -233,7 +235,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The get_ucCode function is a getter for the Uc Code of a class. </p><dl class="section return"><dt>Returns</dt><dd>Uc Code </dd></dl>
+<p>The get_ucCode function is a getter for the Uc Code of a class. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>Uc Code </dd></dl>
 
 </div>
 </div>
@@ -251,7 +253,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getHorarioUcTurma returns the schedule of a class for a certain Uc. </p><dl class="section return"><dt>Returns</dt><dd>Schedule for that UC </dd></dl>
+<p>The getHorarioUcTurma returns the schedule of a class for a certain Uc. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>Schedule for that UC </dd></dl>
 
 </div>
 </div>
@@ -269,7 +271,25 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The getStudentsTurma returns the students in a class. </p><dl class="section return"><dt>Returns</dt><dd>Students in that class </dd></dl>
+<p>The getStudentsTurma returns the students in a class. Complexity: O(1) </p><dl class="section return"><dt>Returns</dt><dd>Students in that class </dd></dl>
+
+</div>
+</div>
+<a id="a766612f657807135c08d39aec3cfdcb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a766612f657807135c08d39aec3cfdcb2">&#9670;&nbsp;</a></span>PrintTurma()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Turma::PrintTurma </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The PrintTurma function prints the students enrolled in a certain class. Complexity: O(n) </p>
 
 </div>
 </div>
@@ -288,7 +308,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The RemoveStudent function removes a student from a class. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>The RemoveStudent function removes a student from a class. Complexity: O(n) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">student</td><td>The student to be removed </td></tr>
   </table>
